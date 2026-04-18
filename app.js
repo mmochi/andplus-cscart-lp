@@ -45,13 +45,14 @@ const { getEarlyAccessState } = require("./lib/freemiusEaCoupon");
 
 const PORT = process.env.PORT || 3000;
 
-/** 先頭 / を付け、末尾 / を除く。空なら "" */
+/** 先頭 / を付け、末尾 / を除く。ルートのみ（"/"）はプレフィックス無しの ""（テンプレで /style.css と連結するため） */
 function normalizePathPrefix(raw) {
   if (raw == null || typeof raw !== "string") return "";
   let s = raw.trim();
   if (!s) return "";
   s = s.replace(/\/+$/, "");
   if (!s.startsWith("/")) s = `/${s}`;
+  if (s === "/") return "";
   return s;
 }
 
@@ -64,10 +65,11 @@ const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
  * 2) BASE_PATH 環境変数
  */
 function resolvePublicBasePath(req) {
-  const fromHeader = normalizePathPrefix(
-    req.get("X-Forwarded-Prefix") || req.headers["x-forwarded-prefix"] || ""
-  );
-  if (fromHeader) return fromHeader;
+  const rawHeader =
+    req.get("X-Forwarded-Prefix") || req.headers["x-forwarded-prefix"] || "";
+  if (String(rawHeader).trim() !== "") {
+    return normalizePathPrefix(rawHeader);
+  }
   return PUBLIC_BASE_PATH;
 }
 /**
