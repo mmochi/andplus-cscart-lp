@@ -97,6 +97,8 @@ sudo systemctl restart safecache-lp
 
 手動の `node app.js` は SSH を切ると止まる。**再起動後も動かす**には systemd に登録する。リポジトリにはユニットファイルは含めない。**サーバー上で** `/etc/systemd/system/safecache-lp.service` を作成する（`sudo nano` など）。
 
+**andplus-apps 構成**（clone が `.../andplus-apps/cscart` など）では、`app.js` は **`../common/cscart-ap-safecache_lp.env` を優先**し、無ければ **`cscart-ap-safecache.env`**（旧名）を読む。
+
 **本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を **`Environment=`** でその **絶対パス**にする。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にする（listen ポートの確定用）。
 
 ```ini

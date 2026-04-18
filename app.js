@@ -3,8 +3,9 @@
  *
  * 環境変数の読み方（先に存在したファイルだけを1つ読む）:
  * 1. CSCART_AP_SAFECACHE_ENV … 本番などで絶対パスを指定する場合
- * 2. ../common/cscart-ap-safecache.env … andplus-apps 配下の共通置き場（推奨）
- * 3. このディレクトリの .env … フォールバック
+ * 2. ../common/cscart-ap-safecache_lp.env … LP 用（andplus-apps 配下の共通置き場・推奨）
+ * 3. ../common/cscart-ap-safecache.env … 後方互換（旧ファイル名）
+ * 4. このディレクトリの .env … フォールバック
  * いずれも無ければ OS / ホスト注入の環境変数のみ。
  *
  * BASE_PATH … nginx でサブパス公開するとき（例: /cscart/safecache）。先頭の / あり、末尾 / なし。
@@ -23,6 +24,7 @@ const dotenv = require("dotenv");
   if (explicit && String(explicit).trim()) {
     candidates.push(path.resolve(String(explicit).trim()));
   }
+  candidates.push(path.join(__dirname, "..", "common", "cscart-ap-safecache_lp.env"));
   candidates.push(path.join(__dirname, "..", "common", "cscart-ap-safecache.env"));
   candidates.push(path.join(__dirname, ".env"));
 
