@@ -106,7 +106,16 @@ sudo systemctl enable --now safecache-lp
 
 ## 5. nginx
 
-`deploy/nginx-location.example.conf` を `server { }` 内に取り込み、`proxy_pass` のポートを `.env` の `PORT` と一致させる。
+`deploy/nginx-location.example.conf` を `apps.andplus.tech` の **`server { ... }`** 内に取り込む。
+
+- 公開 URL が **`https://apps.andplus.tech/cscart/safecache/`** のときは **パターン C**（同ファイル内）。`proxy_pass` のポートは **`.env` の `PORT`** と同じにする（例: `3006`）。
+- **`proxy_pass` の URL は末尾 `/` 付き**（例: `http://127.0.0.1:3006/`）にし、`location` も `/cscart/safecache/` のように **末尾 `/` 付き**にすると、Node には `/` だけ渡り、LP の `public/style.css` 等と整合する。
+
+編集後:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
 
 ## 6. トラブルシュート
 
@@ -123,3 +132,7 @@ sudo chown -R mmochi:mmochi /var/www/apps.andplus.tech/cscart
 ### `.../cscart/safecache` のように一段深い場所に置いている
 
 どちらでもよいが、**systemd の `WorkingDirectory`** と **`cd` 先**は **`app.js` があるディレクトリ**にそろえる（例: `WorkingDirectory=/var/www/apps.andplus.tech/cscart/safecache`）。ドキュメントの既定は **`.../cscart` がリポジトリ直下**の想定。
+
+### ブラウザが **403**（`/cscart/safecache/` など）
+
+多くは **nginx がディレクトリを静的配信しようとしている**だけ（`index` が無く `autoindex` も off → 403）。**`location` で `proxy_pass` して Node に渡す**（上記 §5・`nginx-location.example.conf` パターン C）。あわせて **`systemctl status safecache-lp`** で Node が listen しているか確認する。
