@@ -3,7 +3,11 @@
 #
 # リポジトリを .../cscart 直下に置いた場合は WorkingDirectory / EnvironmentFile を
 # /var/www/apps.andplus.tech/cscart に読み替える。
-# .env に PORT=3007 等を書き、nginx の proxy_pass と一致させる。
+#
+# PORT: nginx の proxy_pass（例: 127.0.0.1:3007）と同じにする。
+# 本番で「別の .env を読んでしまう」「EnvironmentFile のパスが違う」と PORT が未設定になり
+# デフォルト 3000 で起動し EADDRINUSE で落ちることがある。
+# [Service] 内の Environment=PORT= でユニット側から上書きすると、listen ポートを確実に揃えられる。
 
 [Unit]
 Description=AP SafeCache marketing LP (Express)
@@ -15,6 +19,7 @@ User=mmochi
 WorkingDirectory=/var/www/apps.andplus.tech/cscart/safecache
 Environment=NODE_ENV=production
 EnvironmentFile=-/var/www/apps.andplus.tech/cscart/safecache/.env
+Environment=PORT=3007
 ExecStart=/usr/bin/node app.js
 Restart=on-failure
 RestartSec=5
