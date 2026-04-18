@@ -13,6 +13,9 @@
  *
  * 本番では nginx に proxy_set_header X-Forwarded-Prefix /cscart/safecache; を付けると、
  * 共通 env に BASE_PATH が無くてもサブパスが効く（ヘッダ優先）。
+ *
+ * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
+ * AP_SAFECACHE_OG_IMAGE … og:image の URL。完全 URL または basePath からのパス（例: /og-image.png）。
  */
 const path = require("path");
 const fs = require("fs");
@@ -80,6 +83,39 @@ function resolvePublicBasePath(req) {
     return normalizePathPrefix(rawHeader);
   }
   return PUBLIC_BASE_PATH;
+}
+
+/** OGP・canonical 用。未設定時は trust proxy 前提で req から。 */
+function getPublicOrigin(req) {
+  const fromEnv = process.env.AP_SAFECACHE_PUBLIC_ORIGIN;
+  if (fromEnv && String(fromEnv).trim()) {
+    return String(fromEnv).trim().replace(/\/+$/, "");
+  }
+  return `${req.protocol}://${req.get("host")}`;
+}
+
+/**
+ * LP トップの絶対 URL。en は ?lang なし、ja は ?lang=ja。
+ */
+function buildLpAbsoluteUrl(req, basePath, lang) {
+  const origin = getPublicOrigin(req);
+  const prefix = basePath || "";
+  const pathPart = prefix ? `${prefix}/` : "/";
+  const qs = new URLSearchParams();
+  if (lang === "ja") qs.set("lang", "ja");
+  const q = qs.toString();
+  return `${origin}${pathPart}${q ? `?${q}` : ""}`;
+}
+
+function resolveOgImageUrl(req, basePath) {
+  const raw = process.env.AP_SAFECACHE_OG_IMAGE;
+  if (!raw || !String(raw).trim()) return "";
+  const s = String(raw).trim();
+  if (/^https?:\/\//i.test(s)) return s;
+  const origin = getPublicOrigin(req);
+  const prefix = basePath || "";
+  const p = s.startsWith("/") ? s : `/${s}`;
+  return `${origin}${prefix}${p}`;
 }
 /**
  * Early Access: API 未使用・API 失敗時のみ使うフォールバック文字列（任意）。
@@ -171,6 +207,10 @@ app.use((req, res, next) => {
   res.locals.lang = lang;
   res.locals.__ = (key) => translate(lang, key, catalogs);
   res.locals.basePath = basePath;
+  res.locals.canonicalUrl = buildLpAbsoluteUrl(req, basePath, lang);
+  res.locals.alternateUrlEn = buildLpAbsoluteUrl(req, basePath, "en");
+  res.locals.alternateUrlJa = buildLpAbsoluteUrl(req, basePath, "ja");
+  res.locals.ogImageUrl = resolveOgImageUrl(req, basePath);
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {

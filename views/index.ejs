@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= __('page_title') %></title>
     <meta name="description" content="<%= __('meta_description') %>" />
+    <meta name="keywords" content="<%= __('meta_keywords') %>" />
+    <meta name="author" content="<%= __('meta_author') %>" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="<%= canonicalUrl %>" />
+    <link rel="alternate" hreflang="en" href="<%= alternateUrlEn %>" />
+    <link rel="alternate" hreflang="ja" href="<%= alternateUrlJa %>" />
+    <link rel="alternate" hreflang="x-default" href="<%= alternateUrlEn %>" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="<%= __('og_site_name') %>" />
+    <meta property="og:title" content="<%= __('page_title') %>" />
+    <meta property="og:description" content="<%= __('meta_description') %>" />
+    <meta property="og:url" content="<%= canonicalUrl %>" />
+    <meta property="og:locale" content="<%= lang === 'ja' ? 'ja_JP' : 'en_US' %>" />
+    <meta property="og:locale:alternate" content="<%= lang === 'ja' ? 'en_US' : 'ja_JP' %>" />
+    <% if (ogImageUrl) { %>
+    <meta property="og:image" content="<%= ogImageUrl %>" />
+    <meta property="og:image:alt" content="<%= __('page_title') %>" />
+    <% } %>
+
+    <meta name="twitter:card" content="<%= ogImageUrl ? 'summary_large_image' : 'summary' %>" />
+    <meta name="twitter:title" content="<%= __('page_title') %>" />
+    <meta name="twitter:description" content="<%= __('meta_description') %>" />
+    <% if (ogImageUrl) { %>
+    <meta name="twitter:image" content="<%= ogImageUrl %>" />
+    <% } %>
+
     <link rel="stylesheet" href="<%= basePath %>/style.css" />
   </head>
   <body class="<%= showEarlyAccessBanner ? 'has-ea-dock' : '' %>">

@@ -8,6 +8,15 @@ msgstr "AP SafeCache — Cloudflare settings you can always roll back to"
 msgid "meta_description"
 msgstr "Versioned backups and rollback for Cloudflare rules on CS-Cart. Free covers fetch and diff; Pro is what makes restore real. Not a speed product."
 
+msgid "meta_keywords"
+msgstr "AP SafeCache, Cloudflare, CS-Cart, backup, rollback, Page Rules, Cache Rules, ANDPLUS, add-on"
+
+msgid "meta_author"
+msgstr "Andplus Co., Ltd."
+
+msgid "og_site_name"
+msgstr "ANDPLUS"
+
 msgid "brand_name"
 msgstr "AP SafeCache"
 
