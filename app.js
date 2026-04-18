@@ -1,12 +1,11 @@
 /**
  * AP SafeCache marketing LP — Express + EJS + gettext (.po)
  *
- * 環境変数の読み方（先に存在したファイルだけを1つ読む）:
- * 1. CSCART_AP_SAFECACHE_ENV … 本番などで絶対パスを指定する場合
- * 2. ../common/cscart-ap-safecache_lp.env … LP 用（andplus-apps 配下の共通置き場・推奨）
- * 3. ../common/cscart-ap-safecache.env … 後方互換（旧ファイル名）
- * 4. このディレクトリの .env … フォールバック
- * いずれも無ければ OS / ホスト注入の環境変数のみ。
+ * 環境変数の読み方:
+ * 1) CSCART_AP_SAFECACHE_ENV、2) ../common/cscart-ap-safecache_lp.env、3) ../common/cscart-ap-safecache.env
+ *    のうち最初に存在するファイルを1つ読む（clone 単体では common が無いことがある）。
+ * 4) このディレクトリの .env があれば必ず読み、上記を上書き（override）。VPS ではここに BASE_PATH を書くと確実。
+ * dotenv は既定で「既にセット済みの process.env を上書きしない」。local .env だけ override: true。
  *
  * BASE_PATH … nginx でサブパス公開するとき（例: /cscart/safecache）。先頭の / あり、末尾 / なし。
  * HTML 内の CSS/JS の URL と言語切替リンクに使う。未設定はルート配信想定。
@@ -19,22 +18,31 @@ const fs = require("fs");
 const dotenv = require("dotenv");
 
 (function loadEnvFile() {
-  const candidates = [];
+  const chain = [];
   const explicit = process.env.CSCART_AP_SAFECACHE_ENV;
   if (explicit && String(explicit).trim()) {
-    candidates.push(path.resolve(String(explicit).trim()));
+    chain.push(path.resolve(String(explicit).trim()));
   }
-  candidates.push(path.join(__dirname, "..", "common", "cscart-ap-safecache_lp.env"));
-  candidates.push(path.join(__dirname, "..", "common", "cscart-ap-safecache.env"));
-  candidates.push(path.join(__dirname, ".env"));
+  chain.push(path.join(__dirname, "..", "common", "cscart-ap-safecache_lp.env"));
+  chain.push(path.join(__dirname, "..", "common", "cscart-ap-safecache.env"));
 
-  for (const p of candidates) {
+  let loaded = false;
+  for (const p of chain) {
     if (fs.existsSync(p)) {
       dotenv.config({ path: p });
+      loaded = true;
       if (process.env.NODE_ENV !== "production") {
         console.log(`[env] loaded ${p}`);
       }
-      return;
+      break;
+    }
+  }
+
+  const localEnv = path.join(__dirname, ".env");
+  if (fs.existsSync(localEnv)) {
+    dotenv.config({ path: localEnv, override: true });
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`[env] loaded ${localEnv} (overrides)`);
     }
   }
 })();

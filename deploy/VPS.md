@@ -99,6 +99,8 @@ sudo systemctl restart safecache-lp
 
 **andplus-apps 構成**（clone が `.../andplus-apps/cscart` など）では、`app.js` は **`../common/cscart-ap-safecache_lp.env` を優先**し、無ければ **`cscart-ap-safecache.env`**（旧名）を読む。
 
+**LP だけ clone している場合**（`WorkingDirectory` が `.../cscart/safecache` など）には **`../common/` が無い**ことが多い。次のどちらかが必要。（1）**そのディレクトリの `.env`** に `BASE_PATH=/cscart/safecache` を書く（`app.js` は共通 env のあと **必ず `.env` を読んで上書き**する）。（2）nginx の **`proxy_set_header X-Forwarded-Prefix /cscart/safecache;`**。HTML が `https://ドメイン/style.css` を取りに行くのは **プレフィックス未設定**の典型なので、**`sudo systemctl restart safecache-lp`** も忘れずに。
+
 **本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を **`Environment=`** でその **絶対パス**にする。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にする（listen ポートの確定用）。
 
 ```ini
