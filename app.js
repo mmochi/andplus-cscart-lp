@@ -9,6 +9,9 @@
  *
  * BASE_PATH … nginx でサブパス公開するとき（例: /cscart/safecache）。先頭の / あり、末尾 / なし。
  * HTML 内の CSS/JS の URL と言語切替リンクに使う。未設定はルート配信想定。
+ *
+ * 本番では nginx に proxy_set_header X-Forwarded-Prefix /cscart/safecache; を付けると、
+ * 共通 env に BASE_PATH が無くてもサブパスが効く（ヘッダ優先）。
  */
 const path = require("path");
 const fs = require("fs");
@@ -40,13 +43,31 @@ const { getEarlyAccessState } = require("./lib/freemiusEaCoupon");
 
 const PORT = process.env.PORT || 3000;
 
-/** ブラウザが見る URL プレフィックス（サブパス配信用）。例: /cscart/safecache */
-function normalizePublicBasePath() {
-  const b = (process.env.BASE_PATH || "").trim();
-  if (!b) return "";
-  return b.replace(/\/+$/, "");
+/** 先頭 / を付け、末尾 / を除く。空なら "" */
+function normalizePathPrefix(raw) {
+  if (raw == null || typeof raw !== "string") return "";
+  let s = raw.trim();
+  if (!s) return "";
+  s = s.replace(/\/+$/, "");
+  if (!s.startsWith("/")) s = `/${s}`;
+  return s;
 }
-const PUBLIC_BASE_PATH = normalizePublicBasePath();
+
+/** env の BASE_PATH（モジュール読み込み時点） */
+const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
+
+/**
+ * リクエストごとの公開パスプレフィックス。
+ * 1) nginx の X-Forwarded-Prefix（推奨・共通 env に BASE_PATH が無くても動く）
+ * 2) BASE_PATH 環境変数
+ */
+function resolvePublicBasePath(req) {
+  const fromHeader = normalizePathPrefix(
+    req.get("X-Forwarded-Prefix") || req.headers["x-forwarded-prefix"] || ""
+  );
+  if (fromHeader) return fromHeader;
+  return PUBLIC_BASE_PATH;
+}
 /**
  * Early Access: API 未使用・API 失敗時のみ使うフォールバック文字列（任意）。
  * 本番は FREEMIUS_API_TOKEN + FREEMIUS_PRODUCT_ID +（任意）FREEMIUS_EA_COUPON_ID で
@@ -123,8 +144,10 @@ app.use((req, res, next) => {
     lang = "en";
   }
 
+  const basePath = resolvePublicBasePath(req);
+
   if (q !== undefined && q !== "" && (q === "en" || q === "ja")) {
-    const cookiePath = PUBLIC_BASE_PATH ? `${PUBLIC_BASE_PATH}/` : "/";
+    const cookiePath = basePath ? `${basePath}/` : "/";
     res.cookie(LANG_COOKIE, lang, {
       maxAge: LANG_COOKIE_MAX_AGE_MS,
       sameSite: "lax",
@@ -134,7 +157,7 @@ app.use((req, res, next) => {
 
   res.locals.lang = lang;
   res.locals.__ = (key) => translate(lang, key, catalogs);
-  res.locals.basePath = PUBLIC_BASE_PATH;
+  res.locals.basePath = basePath;
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
@@ -152,8 +175,8 @@ app.use((req, res, next) => {
     const q = p.toString();
     const pathPart =
       req.path === "/"
-        ? `${PUBLIC_BASE_PATH}/`
-        : `${PUBLIC_BASE_PATH}${req.path.startsWith("/") ? req.path : `/${req.path}`}`;
+        ? `${basePath}/`
+        : `${basePath}${req.path.startsWith("/") ? req.path : `/${req.path}`}`;
     return q ? `${pathPart}?${q}` : `${pathPart}?lang=${targetLang}`;
   };
 
