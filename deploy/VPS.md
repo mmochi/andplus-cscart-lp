@@ -140,3 +140,14 @@ sudo chown -R mmochi:mmochi /var/www/apps.andplus.tech/cscart
 ### `proxy_pass` は **末尾に `/` 必須**（サブパス公開時）
 
 `proxy_pass http://127.0.0.1:3007;` のように **ポートだけで終わっている**と、Node には **`/cscart/safecache/` がそのまま渡る**。この LP は **`/` 前提**なので **`http://127.0.0.1:3007/`** のように **`/` で終える**（`deploy/nginx-location.example.conf` パターン C と同じ形）。
+
+### **502 Bad Gateway**
+
+nginx は動いているが **127.0.0.1 の Node に繋がっていない**ときに出る。次を **同じ順**で確認する。
+
+1. **ポート一致** … `proxy_pass` のポート（例: `3007`）と、**`/var/www/.../cscart/.../.env` の `PORT=`** が同じか。`systemctl` 使う場合は **`EnvironmentFile=`** がその `.env` を指しているか。
+2. **プロセスが動いているか** … `systemctl status safecache-lp` が **active (running)** か。違うなら `journalctl -u safecache-lp -n 80 --no-pager` で **起動失敗理由**（`Cannot find module` / `EADDRINUSE` / `.env` 未配置など）を見る。
+3. **ローカルで応答があるか** … サーバー上で `curl -sI http://127.0.0.1:3007/`（ポートは自分の値に合わせる）。**Connection refused** なら Node が listen していない。
+4. **手動起動テスト** … `app.js` があるディレクトリで `NODE_ENV=production PORT=3007 node app.js` を一時的に実行し、別シェルから `curl -sI http://127.0.0.1:3007/`。ここで動けば **systemd の `WorkingDirectory` / `User` / `EnvironmentFile`** を疑う。
+
+よくある原因: **`npm ci` 未実行**で `node_modules` が無い、`WorkingDirectory` が **`app.js` の無いパス**、**別ポート**のまま nginx だけ直した。
