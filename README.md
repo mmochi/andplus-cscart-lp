@@ -21,7 +21,7 @@ npm start
 
 ## 本番デプロイ（VPS）
 
-**[deploy/VPS.md](deploy/VPS.md)**（`/opt/andplus-cscart-lp` に clone、systemd / nginx 例）
+**[deploy/VPS.md](deploy/VPS.md)**（`/var/www/apps.andplus.tech/cscart` に clone。`wordpress` と同列、systemd / nginx 例）
 
 ## 開発ルール（andplus-dev-rules）— 任意
 

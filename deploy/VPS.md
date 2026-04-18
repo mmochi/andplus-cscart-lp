@@ -1,22 +1,26 @@
 # VPS デプロイ（apps.andplus.tech）
 
-本番の配置先は **同じ VPS 上の `cscart-ap-safecache`（`/opt/cscart-ap-safecache`）と揃え、`/opt` 配下**とします。`~/cscart/...` やホスト名ディレクトリ（`~/apps.andplus.tech/...`）は使いません。
+本番の配置先は **ドキュメントルート配下**とし、WordPress と同列に置きます。
 
 ```text
-/opt/andplus-cscart-lp   ← 本番の clone 先（LP ルート・GitHub リポジトリ名に合わせたパス）
+/var/www/apps.andplus.tech/wordpress   ← 既存（参考）
+/var/www/apps.andplus.tech/cscart      ← 本番の clone 先（LP ルート。/home/mmochi/cscart には置かない）
 ```
+
+`~/cscart/...` や `/opt/andplus-cscart-lp` など **別パスに置く想定の手順は使わない**こと。
 
 LP 本体は **Express（`app.js`）** です。`_rules` サブモジュールは **実行時不要**（開発用 Cursor ルールのみ）なので、本番 clone では `--no-recurse-submodules` で十分です。
 
 ## 1. 初回 clone
 
-`/opt` に書き込みできない場合は `sudo` で clone し、続けてデプロイ用ユーザーに所有者を渡す。
+`/var/www/...` は root 所有のことが多いので、`sudo` で clone してからデプロイ用ユーザーに `chown` する。
 
 ```bash
-cd /opt
-sudo git clone --no-recurse-submodules https://github.com/mmochi/andplus-cscart-lp.git andplus-cscart-lp
-sudo chown -R "$USER:$USER" /opt/andplus-cscart-lp
-cd andplus-cscart-lp
+sudo mkdir -p /var/www/apps.andplus.tech
+cd /var/www/apps.andplus.tech
+sudo git clone --no-recurse-submodules https://github.com/mmochi/andplus-cscart-lp.git cscart
+sudo chown -R "$USER:$USER" /var/www/apps.andplus.tech/cscart
+cd cscart
 npm ci
 cp .env.example .env
 nano .env   # PORT, NODE_ENV=production, Freemius 等
@@ -34,7 +38,7 @@ NODE_ENV=production PORT=3006 node app.js
 ## 3. 更新デプロイ
 
 ```bash
-cd /opt/andplus-cscart-lp
+cd /var/www/apps.andplus.tech/cscart
 git pull
 npm ci
 sudo systemctl restart safecache-lp
