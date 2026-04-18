@@ -9,13 +9,13 @@ msgid "meta_description"
 msgstr "Cloudflare のルールを履歴付きでバックアップし、必要ならロールバック。無料版は取得・差分確認、戻せるかどうかが Pro の差です。速度を売り文句にはしません。"
 
 msgid "meta_keywords"
-msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, アンドプラス, アドオン"
+msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
 
 msgid "meta_author"
-msgstr "株式会社アンドプラス"
+msgstr "株式会社あんどぷらす"
 
 msgid "og_site_name"
-msgstr "アンドプラス"
+msgstr "株式会社あんどぷらす"
 
 msgid "brand_name"
 msgstr "AP SafeCache"
