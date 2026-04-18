@@ -1,25 +1,22 @@
 # VPS デプロイ（apps.andplus.tech）
 
-配置のルートは **ホスト名ディレクトリ配下**とします（`~/cscart/...` ではない）。
+本番の配置先は **同じ VPS 上の `cscart-ap-safecache`（`/opt/cscart-ap-safecache`）と揃え、`/opt` 配下**とします。`~/cscart/...` やホスト名ディレクトリ（`~/apps.andplus.tech/...`）は使いません。
 
 ```text
-~/apps.andplus.tech/cscart/safecache   ← 本番の clone 先（LP ルート）
+/opt/andplus-cscart-lp   ← 本番の clone 先（LP ルート・GitHub リポジトリ名に合わせたパス）
 ```
 
 LP 本体は **Express（`app.js`）** です。`_rules` サブモジュールは **実行時不要**（開発用 Cursor ルールのみ）なので、本番 clone では `--no-recurse-submodules` で十分です。
 
-## 1. ディレクトリ作成
+## 1. 初回 clone
+
+`/opt` に書き込みできない場合は `sudo` で clone し、続けてデプロイ用ユーザーに所有者を渡す。
 
 ```bash
-mkdir -p ~/apps.andplus.tech/cscart/safecache
-```
-
-## 2. 初回 clone
-
-```bash
-cd ~/apps.andplus.tech/cscart
-git clone --no-recurse-submodules https://github.com/mmochi/andplus-cscart-lp.git safecache
-cd safecache
+cd /opt
+sudo git clone --no-recurse-submodules https://github.com/mmochi/andplus-cscart-lp.git andplus-cscart-lp
+sudo chown -R "$USER:$USER" /opt/andplus-cscart-lp
+cd andplus-cscart-lp
 npm ci
 cp .env.example .env
 nano .env   # PORT, NODE_ENV=production, Freemius 等
@@ -27,23 +24,23 @@ nano .env   # PORT, NODE_ENV=production, Freemius 等
 
 秘密は **VPS 上の `.env` のみ**に書き、`git add` しないこと（`.gitignore` に `.env` あり）。
 
-## 3. 動作確認
+## 2. 動作確認
 
 ```bash
 NODE_ENV=production PORT=3006 node app.js
 # 別端末: curl -sI http://127.0.0.1:3006/
 ```
 
-## 4. 更新デプロイ
+## 3. 更新デプロイ
 
 ```bash
-cd ~/apps.andplus.tech/cscart/safecache
+cd /opt/andplus-cscart-lp
 git pull
 npm ci
 sudo systemctl restart safecache-lp
 ```
 
-## 5. systemd
+## 4. systemd
 
 `deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` / `EnvironmentFile` を環境に合わせて編集:
 
@@ -54,6 +51,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now safecache-lp
 ```
 
-## 6. nginx
+## 5. nginx
 
 `deploy/nginx-location.example.conf` を `server { }` 内に取り込み、`proxy_pass` のポートを `.env` の `PORT` と一致させる。
