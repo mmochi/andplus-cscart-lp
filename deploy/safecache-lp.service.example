@@ -8,6 +8,10 @@
 # 本番で「別の .env を読んでしまう」「EnvironmentFile のパスが違う」と PORT が未設定になり
 # デフォルト 3000 で起動し EADDRINUSE で落ちることがある。
 # [Service] 内の Environment=PORT= でユニット側から上書きすると、listen ポートを確実に揃えられる。
+#
+# 本番のみ: /var/www/.../andplus-apps/common/ に置いた共通 env を app.js が読む（CSCART_AP_SAFECACHE_ENV）。
+# ファイル名はデプロイに合わせる（例: cscart-ap-safecache_lp.env）。
+# 共通ファイルだけで足りる場合は下の EnvironmentFile=（リポジトリ直下 .env）はコメントアウトしてよい。
 
 [Unit]
 Description=AP SafeCache marketing LP (Express)
@@ -18,8 +22,10 @@ Type=simple
 User=mmochi
 WorkingDirectory=/var/www/apps.andplus.tech/cscart/safecache
 Environment=NODE_ENV=production
-EnvironmentFile=-/var/www/apps.andplus.tech/cscart/safecache/.env
+Environment=CSCART_AP_SAFECACHE_ENV=/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env
 Environment=PORT=3007
+# リポジトリ直下の .env も読ませる場合のみ（任意。共通 env だけなら不要）
+# EnvironmentFile=-/var/www/apps.andplus.tech/cscart/safecache/.env
 ExecStart=/usr/bin/node app.js
 Restart=on-failure
 RestartSec=5

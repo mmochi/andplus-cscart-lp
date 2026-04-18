@@ -97,7 +97,9 @@ sudo systemctl restart safecache-lp
 
 手動の `node app.js` は SSH を切ると止まる。**再起動後も動かす**には systemd に登録する。
 
-`deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` / `EnvironmentFile` を **`app.js` と本番 `.env` の実パス**に合わせて編集（例は **`.../cscart/safecache`** 前提）。**`EnvironmentFile=` が別ファイルを指していると `PORT` が効かずデフォルト 3000 になる**ことがある。例ファイルでは **`Environment=PORT=3007`** をユニットに書き、nginx と listen ポートを確実に揃えている（番号は環境に合わせて変更）。
+`deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` を **`app.js` があるディレクトリ**に合わせて編集（例は **`.../cscart/safecache`** 前提）。
+
+**本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を systemd の `Environment=` でその **絶対パス**に設定する（例ファイルに記載）。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にし、**`.env` の `PORT` とズレても listen はユニット側が優先**しやすい。
 
 ```bash
 cd /var/www/apps.andplus.tech/cscart/safecache   # 実際のリポジトリルートへ
