@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # VPS 上で初回のみ: /var/www/apps.andplus.tech/cscart に git clone する。
 #
-# 手元の PC（SSH 鍵が通る端末）から例:
-#   scp deploy/vps-init.sh mmochi@apps.andplus.tech:/tmp/
-#   ssh mmochi@apps.andplus.tech 'bash /tmp/vps-init.sh'
+# 手元の PC から（scp 不要・推奨）:
+#   ssh -t USER@HOST "curl -fsSL https://raw.githubusercontent.com/mmochi/andplus-cscart-lp/master/deploy/vps-init.sh | bash"
 #
-# またはサーバーにログインしてから:
-#   bash /tmp/vps-init.sh
+# または scp してから:
+#   scp deploy/vps-init.sh USER@HOST:/tmp/vps-init.sh
+#   ssh -t USER@HOST 'bash /tmp/vps-init.sh'
 #
 # 環境変数:
 #   REPO_URL   既定: https://github.com/mmochi/andplus-cscart-lp.git
