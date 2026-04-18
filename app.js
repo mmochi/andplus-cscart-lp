@@ -123,6 +123,14 @@ function resolveOgImageUrl(req, basePath) {
   return `${origin}${prefix}${p}`;
 }
 
+/**
+ * EJS の <script type="application/ld+json"> 等用。JSON を 2 スペースでネストし、行頭にパディングする。
+ */
+function formatJsonForHtml(obj, linePadSpaces) {
+  const pad = " ".repeat(linePadSpaces);
+  return JSON.stringify(obj, null, 2).replace(/^/gm, pad);
+}
+
 /** 構造化データ（JSON-LD）— Organization / WebSite / WebPage / SoftwareApplication */
 function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
   const t = (key) => translate(lang, key, catalogs);
@@ -280,6 +288,8 @@ app.use((req, res, next) => {
   res.locals.alternateUrlJa = buildLpAbsoluteUrl(req, basePath, "ja");
   res.locals.ogImageUrl = resolveOgImageUrl(req, basePath);
   res.locals.jsonLd = buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl);
+  res.locals.prettyJson = (obj, linePadSpaces = 6) =>
+    formatJsonForHtml(obj, linePadSpaces);
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {

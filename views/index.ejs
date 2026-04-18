@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="<%= lang %>" class="<%= showEarlyAccessBanner ? 'has-ea-dock' : '' %>">
   <head>
+    <!-- Document -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= __('page_title') %></title>
+
+    <!-- Primary SEO -->
     <meta name="description" content="<%= __('meta_description') %>" />
     <meta name="keywords" content="<%= __('meta_keywords') %>" />
     <meta name="author" content="<%= __('meta_author') %>" />
@@ -15,6 +18,7 @@
     <link rel="alternate" hreflang="ja" href="<%= alternateUrlJa %>" />
     <link rel="alternate" hreflang="x-default" href="<%= alternateUrlEn %>" />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="<%= __('og_site_name') %>" />
     <meta property="og:title" content="<%= __('page_title') %>" />
@@ -23,19 +27,21 @@
     <meta property="og:locale" content="<%= lang === 'ja' ? 'ja_JP' : 'en_US' %>" />
     <meta property="og:locale:alternate" content="<%= lang === 'ja' ? 'en_US' : 'ja_JP' %>" />
     <% if (ogImageUrl) { %>
-    <meta property="og:image" content="<%= ogImageUrl %>" />
-    <meta property="og:image:alt" content="<%= __('page_title') %>" />
+      <meta property="og:image" content="<%= ogImageUrl %>" />
+      <meta property="og:image:alt" content="<%= __('page_title') %>" />
     <% } %>
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="<%= ogImageUrl ? 'summary_large_image' : 'summary' %>" />
     <meta name="twitter:title" content="<%= __('page_title') %>" />
     <meta name="twitter:description" content="<%= __('meta_description') %>" />
     <% if (ogImageUrl) { %>
-    <meta name="twitter:image" content="<%= ogImageUrl %>" />
+      <meta name="twitter:image" content="<%= ogImageUrl %>" />
     <% } %>
 
+    <!-- JSON-LD -->
     <script type="application/ld+json">
-<%- JSON.stringify(jsonLd) %>
+<%- prettyJson(jsonLd) %>
     </script>
 
     <link rel="stylesheet" href="<%= basePath %>/style.css" />
@@ -77,28 +83,32 @@
     </div>
 
     <% if (showEarlyAccessBanner) { %>
-    <aside
-      id="ea-floating-banner"
-      class="early-access-banner early-access-banner--floating"
-      role="region"
-      aria-label="<%= __('early_access_aria') %>"
-      aria-hidden="true"
-    >
-      <div class="early-access-banner__inner">
-        <div class="early-access-banner__copy">
-          <p class="early-access-banner__line early-access-banner__line--title"><%= __('early_access_line1') %></p>
-          <p class="early-access-banner__line"><%= __('early_access_line2') %></p>
-          <p class="early-access-banner__line"><%= __('early_access_line3') %></p>
+      <aside
+        id="ea-floating-banner"
+        class="early-access-banner early-access-banner--floating"
+        role="region"
+        aria-label="<%= __('early_access_aria') %>"
+        aria-hidden="true"
+      >
+        <div class="early-access-banner__inner">
+          <div class="early-access-banner__copy">
+            <p class="early-access-banner__line early-access-banner__line--title"><%= __('early_access_line1') %></p>
+            <p class="early-access-banner__line"><%= __('early_access_line2') %></p>
+            <p class="early-access-banner__line"><%= __('early_access_line3') %></p>
+          </div>
+          <button type="button" id="early-access-coupon-btn" class="early-access-banner__cta"><%= __('early_access_cta') %></button>
         </div>
-        <button type="button" id="early-access-coupon-btn" class="early-access-banner__cta"><%= __('early_access_cta') %></button>
-      </div>
-    </aside>
-    <script type="application/json" id="ea-coupon-config"><%- JSON.stringify({
-  code: eaCouponCode,
-  alert: __('early_access_alert').replace(/%s/g, eaCouponCode),
-  hint: __('ea_checkout_hint')
-}) %>
-    </script>
+      </aside>
+      <script type="application/json" id="ea-coupon-config">
+<%- prettyJson(
+          {
+            code: eaCouponCode,
+            alert: __('early_access_alert').replace(/%s/g, eaCouponCode),
+            hint: __('ea_checkout_hint')
+          },
+          8
+        ) %>
+      </script>
     <% } %>
 
     <div
