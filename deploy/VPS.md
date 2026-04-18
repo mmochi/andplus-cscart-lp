@@ -11,6 +11,26 @@
 
 LP 本体は **Express（`app.js`）** です。`_rules` サブモジュールは **実行時不要**（開発用 Cursor ルールのみ）なので、本番 clone では `--no-recurse-submodules` で十分です。
 
+## FTP / SFTP で置いてよい？
+
+**よい。** 置き先は **`/var/www/apps.andplus.tech/cscart`**（WordPress と同列）。多くのクライアントは **SFTP**（FTP over SSH）で同じパスにアップロードする。
+
+次だけ守ること。
+
+- **`node_modules` はアップしない**（容量が大きく、OS 違いで壊れやすい）。サーバーで `npm ci` する。
+- **`.env` はリポジトリに含めず**、サーバー上で `.env.example` をコピーして編集するか、SFTP で **本番用だけ**置く。
+- **`.git` は無くても動く**（あとから `git clone` に切り替えてもよい）。
+
+アップロード後、SSH で次を実行（例）。
+
+```bash
+cd /var/www/apps.andplus.tech/cscart
+npm ci
+# .env が未作成なら: cp .env.example .env && nano .env
+```
+
+続けて **systemd / nginx** はこのドキュメントの後半どおり。
+
 ## 0. 手元からディレクトリ作成＋ git clone（推奨）
 
 **SSH 鍵のある自分の Mac / PC** で実行する（`/tmp/vps-init.sh` が無いと言われたら → **A** を使う。`scp` を忘れるとそのエラーになる）。
