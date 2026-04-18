@@ -136,3 +136,7 @@ sudo chown -R mmochi:mmochi /var/www/apps.andplus.tech/cscart
 ### ブラウザが **403**（`/cscart/safecache/` など）
 
 多くは **nginx がディレクトリを静的配信しようとしている**だけ（`index` が無く `autoindex` も off → 403）。**`location` で `proxy_pass` して Node に渡す**（上記 §5・`nginx-location.example.conf` パターン C）。あわせて **`systemctl status safecache-lp`** で Node が listen しているか確認する。
+
+### `proxy_pass` は **末尾に `/` 必須**（サブパス公開時）
+
+`proxy_pass http://127.0.0.1:3007;` のように **ポートだけで終わっている**と、Node には **`/cscart/safecache/` がそのまま渡る**。この LP は **`/` 前提**なので **`http://127.0.0.1:3007/`** のように **`/` で終える**（`deploy/nginx-location.example.conf` パターン C と同じ形）。
