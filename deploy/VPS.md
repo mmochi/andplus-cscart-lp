@@ -95,15 +95,34 @@ sudo systemctl restart safecache-lp
 
 ## 4. systemd（**自動起動・常駐**）
 
-手動の `node app.js` は SSH を切ると止まる。**再起動後も動かす**には systemd に登録する。
+手動の `node app.js` は SSH を切ると止まる。**再起動後も動かす**には systemd に登録する。リポジトリにはユニットファイルは含めない。**サーバー上で** `/etc/systemd/system/safecache-lp.service` を作成する（`sudo nano` など）。
 
-`deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` を **`app.js` があるディレクトリ**に合わせて編集（例は **`.../cscart/safecache`** 前提）。
+**本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を **`Environment=`** でその **絶対パス**にする。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にする（listen ポートの確定用）。
 
-**本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を systemd の `Environment=` でその **絶対パス**に設定する（例ファイルに記載）。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にし、**`.env` の `PORT` とズレても listen はユニット側が優先**しやすい。
+```ini
+[Unit]
+Description=AP SafeCache marketing LP (Express)
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=mmochi
+WorkingDirectory=/var/www/apps.andplus.tech/cscart/safecache
+Environment=NODE_ENV=production
+Environment=CSCART_AP_SAFECACHE_ENV=/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env
+Environment=PORT=3007
+ExecStart=/usr/bin/node app.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+`User` / `WorkingDirectory` / `ExecStart`（`which node` の実パス）/ `PORT` / `CSCART_AP_SAFECACHE_ENV` は環境に合わせて編集する。
 
 ```bash
-cd /var/www/apps.andplus.tech/cscart/safecache   # 実際のリポジトリルートへ
-sudo cp deploy/safecache-lp.service.example /etc/systemd/system/safecache-lp.service
 sudo nano /etc/systemd/system/safecache-lp.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now safecache-lp
@@ -114,7 +133,7 @@ sudo systemctl enable --now safecache-lp
 
 状態確認: `systemctl status safecache-lp` / ログ: `journalctl -u safecache-lp -f`
 
-**常駐:** 例のユニットは **`Restart=always`**（プロセスが落ちたら数秒後に自動再起動）。OS 再起動後も動かすには **`systemctl enable safecache-lp`** が必要（`enable --now` で登録＋即起動まで一度でできる）。
+**常駐:** 上記の **`Restart=always`** でプロセスが落ちたら数秒後に自動再起動。OS 再起動後も動かすには **`systemctl enable safecache-lp`** が必要（`enable --now` で登録＋即起動まで一度でできる）。
 
 ## 5. nginx
 
