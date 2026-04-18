@@ -2,6 +2,14 @@
 
 **方針・技術スタックは未確定です。** 実装に着手する前に要件と `wordpress/schemabridge`（SchemaBridge LP）との揃え方を決めます。
 
+**GitHub:** https://github.com/mmochi/andplus-cscart-lp  
+
+```bash
+git clone https://github.com/mmochi/andplus-cscart-lp.git
+cd andplus-cscart-lp
+git submodule update --init --recursive
+```
+
 ## LP の置き場所（参照）
 
 - 同一モノレポ内の WordPress 向け LP: `../wordpress/schemabridge`（Next.js App Router）
