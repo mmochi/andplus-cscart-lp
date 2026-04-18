@@ -1,17 +1,23 @@
-# VPS デプロイ（例: apps.andplus.tech）
+# VPS デプロイ（apps.andplus.tech）
+
+配置のルートは **ホスト名ディレクトリ配下**とします（`~/cscart/...` ではない）。
+
+```text
+~/apps.andplus.tech/cscart/safecache   ← 本番の clone 先（LP ルート）
+```
 
 LP 本体は **Express（`app.js`）** です。`_rules` サブモジュールは **実行時不要**（開発用 Cursor ルールのみ）なので、本番 clone では `--no-recurse-submodules` で十分です。
 
 ## 1. ディレクトリ作成
 
 ```bash
-mkdir -p ~/cscart/safecache
+mkdir -p ~/apps.andplus.tech/cscart/safecache
 ```
 
 ## 2. 初回 clone
 
 ```bash
-cd ~/cscart
+cd ~/apps.andplus.tech/cscart
 git clone --no-recurse-submodules https://github.com/mmochi/andplus-cscart-lp.git safecache
 cd safecache
 npm ci
@@ -31,7 +37,7 @@ NODE_ENV=production PORT=3006 node app.js
 ## 4. 更新デプロイ
 
 ```bash
-cd ~/cscart/safecache
+cd ~/apps.andplus.tech/cscart/safecache
 git pull
 npm ci
 sudo systemctl restart safecache-lp

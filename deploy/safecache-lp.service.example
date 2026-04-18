@@ -8,9 +8,9 @@ After=network.target
 [Service]
 Type=simple
 User=mmochi
-WorkingDirectory=/home/mmochi/cscart/safecache
+WorkingDirectory=/home/mmochi/apps.andplus.tech/cscart/safecache
 Environment=NODE_ENV=production
-EnvironmentFile=-/home/mmochi/cscart/safecache/.env
+EnvironmentFile=-/home/mmochi/apps.andplus.tech/cscart/safecache/.env
 ExecStart=/usr/bin/node app.js
 Restart=on-failure
 RestartSec=5

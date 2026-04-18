@@ -21,7 +21,7 @@ npm start
 
 ## 本番デプロイ（VPS）
 
-**[deploy/VPS.md](deploy/VPS.md)**（`~/cscart/safecache` に clone、systemd / nginx 例）
+**[deploy/VPS.md](deploy/VPS.md)**（`~/apps.andplus.tech/cscart/safecache` に clone、systemd / nginx 例）
 
 ## 開発ルール（andplus-dev-rules）— 任意
 
