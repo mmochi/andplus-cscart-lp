@@ -122,6 +122,7 @@ sudo systemctl enable --now safecache-lp
 
 - 公開 URL が **`https://apps.andplus.tech/cscart/safecache/`** のときは **パターン C**（同ファイル内）。`proxy_pass` のポートは **`.env` の `PORT`** と同じにする（例: `3006`）。
 - **`proxy_pass` の URL は末尾 `/` 付き**（例: `http://127.0.0.1:3006/`）にし、`location` も `/cscart/safecache/` のように **末尾 `/` 付き**にすると、Node には `/` だけ渡り、LP の `public/style.css` 等と整合する。
+- **サブパス配信では**、読み込む env（`CSCART_AP_SAFECACHE_ENV` 先のファイルなど）に **`BASE_PATH=/cscart/safecache`** を書く（先頭 `/` あり・末尾 `/` なし）。未設定だと HTML が `/style.css` を参照し **ドメイン直下を取りに行って CSS/JS が効かない**。
 
 編集後:
 
@@ -152,6 +153,10 @@ sudo chown -R mmochi:mmochi /var/www/apps.andplus.tech/cscart
 ### `proxy_pass` は **末尾に `/` 必須**（サブパス公開時）
 
 `proxy_pass http://127.0.0.1:3007;` のように **ポートだけで終わっている**と、Node には **`/cscart/safecache/` がそのまま渡る**。この LP は **`/` 前提**なので **`http://127.0.0.1:3007/`** のように **`/` で終える**（`deploy/nginx-location.example.conf` パターン C と同じ形）。
+
+### **CSS / JS が読み込めない**（HTML は出る）
+
+サブパス（例: `/cscart/safecache/`）のとき、**`BASE_PATH=/cscart/safecache`** を env に入れていないと、ブラウザは **`https://apps.andplus.tech/style.css`** を取りに行き **404** になる。上記 §5 のとおり共通 env または `.env` に **`BASE_PATH`** を追加し、`sudo systemctl restart safecache-lp` する。
 
 ### **502 Bad Gateway**
 

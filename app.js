@@ -6,6 +6,9 @@
  * 2. ../common/cscart-ap-safecache.env … andplus-apps 配下の共通置き場（推奨）
  * 3. このディレクトリの .env … フォールバック
  * いずれも無ければ OS / ホスト注入の環境変数のみ。
+ *
+ * BASE_PATH … nginx でサブパス公開するとき（例: /cscart/safecache）。先頭の / あり、末尾 / なし。
+ * HTML 内の CSS/JS の URL と言語切替リンクに使う。未設定はルート配信想定。
  */
 const path = require("path");
 const fs = require("fs");
@@ -36,6 +39,14 @@ const gettextParser = require("gettext-parser");
 const { getEarlyAccessState } = require("./lib/freemiusEaCoupon");
 
 const PORT = process.env.PORT || 3000;
+
+/** ブラウザが見る URL プレフィックス（サブパス配信用）。例: /cscart/safecache */
+function normalizePublicBasePath() {
+  const b = (process.env.BASE_PATH || "").trim();
+  if (!b) return "";
+  return b.replace(/\/+$/, "");
+}
+const PUBLIC_BASE_PATH = normalizePublicBasePath();
 /**
  * Early Access: API 未使用・API 失敗時のみ使うフォールバック文字列（任意）。
  * 本番は FREEMIUS_API_TOKEN + FREEMIUS_PRODUCT_ID +（任意）FREEMIUS_EA_COUPON_ID で
@@ -113,15 +124,17 @@ app.use((req, res, next) => {
   }
 
   if (q !== undefined && q !== "" && (q === "en" || q === "ja")) {
+    const cookiePath = PUBLIC_BASE_PATH ? `${PUBLIC_BASE_PATH}/` : "/";
     res.cookie(LANG_COOKIE, lang, {
       maxAge: LANG_COOKIE_MAX_AGE_MS,
       sameSite: "lax",
-      path: "/",
+      path: cookiePath,
     });
   }
 
   res.locals.lang = lang;
   res.locals.__ = (key) => translate(lang, key, catalogs);
+  res.locals.basePath = PUBLIC_BASE_PATH;
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
@@ -137,7 +150,11 @@ app.use((req, res, next) => {
     const p = new URLSearchParams(params.toString());
     p.set("lang", targetLang);
     const q = p.toString();
-    return q ? `${req.path}?${q}` : `${req.path}?lang=${targetLang}`;
+    const pathPart =
+      req.path === "/"
+        ? `${PUBLIC_BASE_PATH}/`
+        : `${PUBLIC_BASE_PATH}${req.path.startsWith("/") ? req.path : `/${req.path}`}`;
+    return q ? `${pathPart}?${q}` : `${pathPart}?lang=${targetLang}`;
   };
 
   next();
