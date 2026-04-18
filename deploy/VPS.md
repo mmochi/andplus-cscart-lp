@@ -114,6 +114,8 @@ sudo systemctl enable --now safecache-lp
 
 状態確認: `systemctl status safecache-lp` / ログ: `journalctl -u safecache-lp -f`
 
+**常駐:** 例のユニットは **`Restart=always`**（プロセスが落ちたら数秒後に自動再起動）。OS 再起動後も動かすには **`systemctl enable safecache-lp`** が必要（`enable --now` で登録＋即起動まで一度でできる）。
+
 ## 5. nginx
 
 `deploy/nginx-location.example.conf` を `apps.andplus.tech` の **`server { ... }`** 内に取り込む。

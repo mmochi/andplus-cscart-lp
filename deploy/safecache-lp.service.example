@@ -16,6 +16,8 @@
 [Unit]
 Description=AP SafeCache marketing LP (Express)
 After=network.target
+# 連続再起動のレート制限を無効化（クラッシュループの切り分けは journal で行う）
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
@@ -27,7 +29,8 @@ Environment=PORT=3007
 # リポジトリ直下の .env も読ませる場合のみ（任意。共通 env だけなら不要）
 # EnvironmentFile=-/var/www/apps.andplus.tech/cscart/safecache/.env
 ExecStart=/usr/bin/node app.js
-Restart=on-failure
+# 落ちたら自動で再度起動。常に裏で動かし続けたいなら always（on-failure だと正常終了では再起動しない）
+Restart=always
 RestartSec=5
 
 [Install]
