@@ -4,8 +4,9 @@
  * 環境変数の読み方:
  * 1) CSCART_AP_SAFECACHE_ENV、2) ../common/cscart-ap-safecache_lp.env、3) ../common/cscart-ap-safecache.env
  *    のうち最初に存在するファイルを1つ読む（clone 単体では common が無いことがある）。
- * 4) このディレクトリの .env があれば必ず読み、上記を上書き（override）。VPS ではここに BASE_PATH を書くと確実。
- * dotenv は既定で「既にセット済みの process.env を上書きしない」。local .env だけ override: true。
+ * 4) このディレクトリの .env があれば必ず読み、さらに上書き（override）。
+ * dotenv は既定で process.env を上書きしない。systemd が空の BASE_PATH 等を先に渡すと
+ * ファイルの値が効かないため、共通 env / local .env はどちらも override: true で読む。
  *
  * BASE_PATH … nginx でサブパス公開するとき（例: /cscart/safecache）。先頭の / あり、末尾 / なし。
  * HTML 内の CSS/JS の URL と言語切替リンクに使う。未設定はルート配信想定。
@@ -29,7 +30,7 @@ const dotenv = require("dotenv");
   let loaded = false;
   for (const p of chain) {
     if (fs.existsSync(p)) {
-      dotenv.config({ path: p });
+      dotenv.config({ path: p, override: true });
       loaded = true;
       if (process.env.NODE_ENV !== "production") {
         console.log(`[env] loaded ${p}`);

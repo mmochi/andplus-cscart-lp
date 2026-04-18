@@ -101,6 +101,8 @@ sudo systemctl restart safecache-lp
 
 **LP だけ clone している場合**（`WorkingDirectory` が `.../cscart/safecache` など）には **`../common/` が無い**ことが多い。次のどちらかが必要。（1）**そのディレクトリの `.env`** に `BASE_PATH=/cscart/safecache` を書く（`app.js` は共通 env のあと **必ず `.env` を読んで上書き**する）。（2）nginx の **`proxy_set_header X-Forwarded-Prefix /cscart/safecache;`**。HTML が `https://ドメイン/style.css` を取りに行くのは **プレフィックス未設定**の典型なので、**`sudo systemctl restart safecache-lp`** も忘れずに。
 
+**共通 env に `BASE_PATH` を書いているのに効かないとき**は、systemd の `Environment=BASE_PATH=...` が **空**だったり、別値が先に入っていると、古い挙動では dotenv が上書きしなかった。**`app.js` は env ファイルを `override: true` で読む**ので、最新の `git pull` 後に再起動する。それでもダメなら `systemctl cat safecache-lp.service` で **`Environment=` に BASE_PATH が無いか・空でないか**を確認する。
+
 **本番で共通 env を別パスに置く場合**（例: `/var/www/apps.andplus.tech/andplus-apps/common/cscart-ap-safecache_lp.env`）は、`app.js` が対応している **`CSCART_AP_SAFECACHE_ENV`** を **`Environment=`** でその **絶対パス**にする。**`Environment=PORT=`** は nginx の `proxy_pass` と同じ番号にする（listen ポートの確定用）。
 
 ```ini
