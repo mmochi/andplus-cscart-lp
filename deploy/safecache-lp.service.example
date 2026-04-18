@@ -1,5 +1,9 @@
 # /etc/systemd/system/safecache-lp.service にコピーして使用
 # sudo cp deploy/safecache-lp.service.example /etc/systemd/system/safecache-lp.service
+#
+# リポジトリを .../cscart 直下に置いた場合は WorkingDirectory / EnvironmentFile を
+# /var/www/apps.andplus.tech/cscart に読み替える。
+# .env に PORT=3007 等を書き、nginx の proxy_pass と一致させる。
 
 [Unit]
 Description=AP SafeCache marketing LP (Express)
@@ -8,9 +12,9 @@ After=network.target
 [Service]
 Type=simple
 User=mmochi
-WorkingDirectory=/var/www/apps.andplus.tech/cscart
+WorkingDirectory=/var/www/apps.andplus.tech/cscart/safecache
 Environment=NODE_ENV=production
-EnvironmentFile=-/var/www/apps.andplus.tech/cscart/.env
+EnvironmentFile=-/var/www/apps.andplus.tech/cscart/safecache/.env
 ExecStart=/usr/bin/node app.js
 Restart=on-failure
 RestartSec=5

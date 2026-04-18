@@ -93,16 +93,24 @@ npm ci
 sudo systemctl restart safecache-lp
 ```
 
-## 4. systemd
+## 4. systemd（**自動起動・常駐**）
 
-`deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` / `EnvironmentFile` を環境に合わせて編集:
+手動の `node app.js` は SSH を切ると止まる。**再起動後も動かす**には systemd に登録する。
+
+`deploy/safecache-lp.service.example` を `/etc/systemd/system/safecache-lp.service` にコピーし、`User` / `WorkingDirectory` / `EnvironmentFile` を **`app.js` と `.env` の実パス**に合わせて編集（例は **`.../cscart/safecache`** 前提）。**`.env` に `PORT=`** を書き、nginx の `proxy_pass` と同じポートにする。
 
 ```bash
+cd /var/www/apps.andplus.tech/cscart/safecache   # 実際のリポジトリルートへ
 sudo cp deploy/safecache-lp.service.example /etc/systemd/system/safecache-lp.service
 sudo nano /etc/systemd/system/safecache-lp.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now safecache-lp
 ```
+
+- **`enable`** … OS 起動時に自動起動  
+- **`--now`** … いますぐ起動  
+
+状態確認: `systemctl status safecache-lp` / ログ: `journalctl -u safecache-lp -f`
 
 ## 5. nginx
 
