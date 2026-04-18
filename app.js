@@ -16,11 +16,15 @@
  *
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
  * AP_SAFECACHE_OG_IMAGE … og:image の URL。完全 URL または basePath からのパス（例: /og-image.png）。
- * AP_SAFECACHE_ORG_URL … JSON-LD Organization の URL（既定: https://www.andplus.co.jp）。
+ *
+ * JSON-LD の Organization はコーポレートサイト https://www.andplus.co.jp/ を正本（@id / url）として参照する。
  */
 const path = require("path");
 const fs = require("fs");
 const dotenv = require("dotenv");
+
+/** 株式会社アンドプラス公式サイト（JSON-LD Organization の正本 URL） */
+const ANDPLUS_CORPORATE_ORIGIN = "https://www.andplus.co.jp";
 
 (function loadEnvFile() {
   const chain = [];
@@ -125,12 +129,7 @@ function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
   const origin = getPublicOrigin(req);
   const prefix = basePath || "";
   const siteUrl = prefix ? `${origin}${prefix}/` : `${origin}/`;
-  const orgUrl =
-    process.env.AP_SAFECACHE_ORG_URL &&
-    String(process.env.AP_SAFECACHE_ORG_URL).trim()
-      ? String(process.env.AP_SAFECACHE_ORG_URL).trim().replace(/\/+$/, "")
-      : "https://www.andplus.co.jp";
-  const orgId = `${orgUrl}/#organization`;
+  const orgId = `${ANDPLUS_CORPORATE_ORIGIN}/#organization`;
   const websiteId = `${siteUrl}#website`;
   const pageId = `${canonicalUrl}#webpage`;
   const softwareId = `${canonicalUrl}#software`;
@@ -170,7 +169,7 @@ function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
         "@type": "Organization",
         "@id": orgId,
         name: t("og_site_name"),
-        url: `${orgUrl}/`,
+        url: `${ANDPLUS_CORPORATE_ORIGIN}/`,
       },
       {
         "@type": "WebSite",
