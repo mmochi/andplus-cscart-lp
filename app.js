@@ -16,6 +16,7 @@
  *
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
  * AP_SAFECACHE_OG_IMAGE … og:image の URL。完全 URL または basePath からのパス（例: /og-image.png）。
+ * AP_SAFECACHE_ORG_URL … JSON-LD Organization の URL（既定: https://www.andplus.co.jp）。
  */
 const path = require("path");
 const fs = require("fs");
@@ -117,6 +118,73 @@ function resolveOgImageUrl(req, basePath) {
   const p = s.startsWith("/") ? s : `/${s}`;
   return `${origin}${prefix}${p}`;
 }
+
+/** 構造化データ（JSON-LD）— Organization / WebSite / WebPage / SoftwareApplication */
+function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
+  const t = (key) => translate(lang, key, catalogs);
+  const origin = getPublicOrigin(req);
+  const prefix = basePath || "";
+  const siteUrl = prefix ? `${origin}${prefix}/` : `${origin}/`;
+  const orgUrl =
+    process.env.AP_SAFECACHE_ORG_URL &&
+    String(process.env.AP_SAFECACHE_ORG_URL).trim()
+      ? String(process.env.AP_SAFECACHE_ORG_URL).trim().replace(/\/+$/, "")
+      : "https://www.andplus.co.jp";
+  const orgId = `${orgUrl}/#organization`;
+  const websiteId = `${siteUrl}#website`;
+  const pageId = `${canonicalUrl}#webpage`;
+  const softwareId = `${canonicalUrl}#software`;
+  const ogImg = resolveOgImageUrl(req, basePath);
+
+  const webPage = {
+    "@type": "WebPage",
+    "@id": pageId,
+    url: canonicalUrl,
+    name: t("page_title"),
+    description: t("meta_description"),
+    inLanguage: lang === "ja" ? "ja-JP" : "en-US",
+    isPartOf: { "@id": websiteId },
+    publisher: { "@id": orgId },
+    about: { "@id": softwareId },
+  };
+  if (ogImg) {
+    webPage.primaryImageOfPage = { "@type": "ImageObject", url: ogImg };
+  }
+
+  const software = {
+    "@type": "SoftwareApplication",
+    "@id": softwareId,
+    name: t("brand_name"),
+    description: t("meta_description"),
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "CS-Cart",
+    url: canonicalUrl,
+    publisher: { "@id": orgId },
+  };
+  if (ogImg) software.image = ogImg;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: t("og_site_name"),
+        url: `${orgUrl}/`,
+      },
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        name: t("og_site_name"),
+        url: siteUrl,
+        publisher: { "@id": orgId },
+        inLanguage: ["en-US", "ja-JP"],
+      },
+      webPage,
+      software,
+    ],
+  };
+}
 /**
  * Early Access: API 未使用・API 失敗時のみ使うフォールバック文字列（任意）。
  * 本番は FREEMIUS_API_TOKEN + FREEMIUS_PRODUCT_ID +（任意）FREEMIUS_EA_COUPON_ID で
@@ -207,10 +275,12 @@ app.use((req, res, next) => {
   res.locals.lang = lang;
   res.locals.__ = (key) => translate(lang, key, catalogs);
   res.locals.basePath = basePath;
-  res.locals.canonicalUrl = buildLpAbsoluteUrl(req, basePath, lang);
+  const canonicalUrl = buildLpAbsoluteUrl(req, basePath, lang);
+  res.locals.canonicalUrl = canonicalUrl;
   res.locals.alternateUrlEn = buildLpAbsoluteUrl(req, basePath, "en");
   res.locals.alternateUrlJa = buildLpAbsoluteUrl(req, basePath, "ja");
   res.locals.ogImageUrl = resolveOgImageUrl(req, basePath);
+  res.locals.jsonLd = buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl);
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
