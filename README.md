@@ -1,63 +1,34 @@
-# CS-Cart アドオン販売用 LP（予定）
+# AP SafeCache — CS-Cart 向けマーケティング LP
 
-**方針・技術スタックは未確定です。** 実装に着手する前に要件と `wordpress/schemabridge`（SchemaBridge LP）との揃え方を決めます。
+Express + EJS + gettext（`.po`）のバイリンガル LP です。
 
-**GitHub:** https://github.com/mmochi/andplus-cscart-lp  
+**GitHub:** https://github.com/mmochi/andplus-cscart-lp
+
+## 必要環境
+
+- Node.js 18+（推奨 LTS）
+
+## 開発
 
 ```bash
 git clone https://github.com/mmochi/andplus-cscart-lp.git
 cd andplus-cscart-lp
-git submodule update --init --recursive
+npm ci
+cp .env.example .env
+# .env を編集
+npm start
 ```
 
-## LP の置き場所（参照）
+## 本番デプロイ（VPS）
 
-- 同一モノレポ内の WordPress 向け LP: `../wordpress/schemabridge`（Next.js App Router）
-- 本リポジトリでは、**同様の Next.js 構成で CS-Cart 向け LP を置く**想定でディレクトリを切っています（アプリ本体は未作成）。
+**[deploy/VPS.md](deploy/VPS.md)**（`~/cscart/safecache` に clone、systemd / nginx 例）
 
-## 開発ルール（andplus-dev-rules）
+## 開発ルール（andplus-dev-rules）— 任意
 
-[andplus-dev-rules の `reference/README.md`](reference/README.md) の **サブモジュール方式**に従います（`cscart-ap-safecache` と同じ付け方）。
-
-### ディレクトリ構成
-
-```
-cscart/
-├─ _rules/                # andplus-dev-rules（git submodule）
-│  ├─ .cursor/rules/
-│  ├─ reference/
-│  └─ components/
-├─ .cursor/
-│  └─ rules -> ../_rules/.cursor/rules
-├─ reference -> _rules/reference
-├─ components -> _rules/components
-└─ README.md
-```
-
-- **人向けの入口:** [reference/README.md](reference/README.md)
-- **Cursor ルール:** `.cursor/rules/`（`base.mdc` など）
-
-### 初回 clone 後
+Cursor 用ルールは `_rules` サブモジュール（**実行時不要**）。
 
 ```bash
 git submodule update --init --recursive
 ```
 
-### ルールを更新したあと（このリポジトリ側で取り込む）
-
-```bash
-git submodule update --remote _rules
-```
-
-### ゼロから同じ構成を再現するとき
-
-```bash
-cd /path/to/cscart
-git submodule add https://github.com/mmochi/andplus-dev-rules.git _rules
-mkdir -p .cursor
-ln -sfn ../_rules/.cursor/rules .cursor/rules
-ln -sfn _rules/reference reference
-ln -sfn _rules/components components
-```
-
-Organization 用の submodule URL は `team-andplus/andplus-dev-rules` など、[reference/README.md](reference/README.md) の例に合わせて差し替えてください。
+詳細は従来どおり [reference/README.md](reference/README.md)（サブモジュール未 clone でも LP は起動します）。

@@ -1,0 +1,17 @@
+{
+  "name": "cscart-safecache-lp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual LP for CS-Cart Cloudflare safe operations (Express + EJS + gettext)",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "gettext-parser": "^8.0.0"
+  }
+}

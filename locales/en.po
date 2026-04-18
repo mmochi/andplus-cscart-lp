@@ -1,0 +1,270 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "page_title"
+msgstr "AP SafeCache — Cloudflare settings you can always roll back to"
+
+msgid "meta_description"
+msgstr "Versioned backups and rollback for Cloudflare rules on CS-Cart. Free covers fetch and diff; Pro is what makes restore real. Not a speed product."
+
+msgid "brand_name"
+msgstr "AP SafeCache"
+
+msgid "early_access_aria"
+msgstr "Early Access and coupon"
+
+msgid "early_access_line1"
+msgstr "Early Access"
+
+msgid "early_access_line2"
+msgstr "We are looking for case studies"
+
+msgid "early_access_line3"
+msgstr "Early access with a coupon code"
+
+msgid "early_access_cta"
+msgstr "Save coupon code"
+
+msgid "early_access_alert"
+msgstr "The coupon code has been saved to your clipboard. Paste it on the checkout screen.\n\nCode: %s"
+
+msgid "ea_modal_title"
+msgstr "Coupon"
+
+msgid "ea_modal_ok"
+msgstr "OK"
+
+msgid "ea_checkout_hint"
+msgstr "If the code does not apply at checkout, the coupon may have reached its maximum number of uses."
+
+msgid "skip_to_content"
+msgstr "Skip to content"
+
+msgid "nav_primary_aria"
+msgstr "Site menu"
+
+msgid "nav_features"
+msgstr "Features"
+
+msgid "nav_pricing"
+msgstr "Pricing"
+
+msgid "nav_prereq"
+msgstr "Prerequisites"
+
+msgid "prereq_section_title"
+msgstr "Prerequisites"
+
+msgid "prereq_cloudflare_title"
+msgstr "This add-on assumes you already use Cloudflare"
+
+msgid "prereq_cloudflare_p"
+msgstr "This add-on uses the Cloudflare API to fetch and compare rule configuration. Your domain should be proxied through Cloudflare. The Cloudflare Free plan is enough for what the add-on reads from the API."
+
+msgid "free_tier_title"
+msgstr "What the free add-on tier covers"
+
+msgid "free_tier_hook"
+msgstr "There is only one difference: whether you can roll back."
+
+msgid "free_tier_item_1"
+msgstr "Fetch Page Rules, Cache Rules, and related zone settings and review them in the CS-Cart admin."
+
+msgid "free_tier_item_2"
+msgstr "Show a diff between the last saved snapshot and the current live configuration (read-focused workflows)."
+
+msgid "free_tier_note"
+msgstr "Fetch and diff are enough on Free. Rolling back to the last working state, applying changes, purging cache, and keeping rollback-ready history are Pro."
+
+msgid "nav_lang_group_aria"
+msgstr "Language"
+
+msgid "nav_lang_en"
+msgstr "English"
+
+msgid "nav_lang_ja"
+msgstr "日本語"
+
+msgid "nav_lang_en_abbr"
+msgstr "EN"
+
+msgid "nav_lang_ja_abbr"
+msgstr "JA"
+
+msgid "hero_kicker"
+msgstr "CS-Cart · Cloudflare"
+
+msgid "hero_title"
+msgstr "Keep Cloudflare settings in a state you can always roll back to"
+
+msgid "hero_subtitle"
+msgstr "From CS-Cart admin: keep history and roll back when something breaks. Details below."
+
+msgid "hero_cta_primary"
+msgstr "See pricing"
+
+msgid "hero_cta_secondary"
+msgstr "See main features"
+
+msgid "problem_section_title"
+msgstr "The problem"
+
+msgid "problem_title"
+msgstr "One rule change can affect the whole storefront"
+
+msgid "problem_p1"
+msgstr "Page Rules and Cache Rules are powerful, but mistakes can hit checkout, APIs, and the admin in one shot."
+
+msgid "problem_p2"
+msgstr "Without a fast path back to the last working state, people avoid touching Cloudflare during an outage—and recovery slows down."
+
+msgid "problem_p3"
+msgstr "What matters is stable behavior and a way to return to the last working state—not another dashboard that only talks about speed."
+
+msgid "solution_section_title"
+msgstr "What this add-on does"
+
+msgid "solution_title"
+msgstr "When things break, return to the last working state"
+
+msgid "solution_p1"
+msgstr "On Pro, Page Rules and Cache Rules are stored separately, and a new history entry is added only when the live configuration actually changes—so you always have a path back to the last working state."
+
+msgid "solution_p2"
+msgstr "During an incident, restore from a saved snapshot instead of guessing which line you changed in the Cloudflare UI."
+
+msgid "pro_disclaimer"
+msgstr "Backups, rollback, and applying changes to Cloudflare require Pro. On Free, you can fetch rules and review content locally."
+
+msgid "core_section_title"
+msgstr "Main features (Pro)"
+
+msgid "core_title"
+msgstr "Backups and rollback"
+
+msgid "core_intro"
+msgstr "Built to keep a caching setup that works from being undone by a bad rule—not to chase headline performance metrics."
+
+msgid "core_feature_backup_title"
+msgstr "Separate stores per rule type"
+
+msgid "core_feature_backup_desc"
+msgstr "Page Rules and Cache Rules are backed up on separate tracks so you can reason about each area."
+
+msgid "core_feature_gen_title"
+msgstr "Up to 20 history entries"
+
+msgid "core_feature_gen_desc"
+msgstr "Per zone, recent generations are kept within a fixed limit so history does not grow without bound."
+
+msgid "core_feature_snapshot_title"
+msgstr "Point-in-time snapshots"
+
+msgid "core_feature_snapshot_desc"
+msgstr "Each entry is a snapshot of settings at that moment—compare or restore from it."
+
+msgid "core_feature_fingerprint_title"
+msgstr "Detect Cloudflare-side changes and record them"
+
+msgid "core_feature_fingerprint_desc"
+msgstr "Fingerprints compare the live zone with the last snapshot and add history only when something actually changed—less noisy drift."
+
+msgid "core_feature_change_title"
+msgstr "History grows only on real changes"
+
+msgid "core_feature_change_desc"
+msgstr "Because entries appear when the live config diverges from the last save, you spend less time guessing what moved in the dashboard."
+
+msgid "core_feature_rollback_title"
+msgstr "Restore the last working state"
+
+msgid "core_feature_rollback_desc"
+msgstr "Roll back to the last working snapshot first, then investigate root cause calmly."
+
+msgid "visibility_section_title"
+msgstr "Seeing what changed"
+
+msgid "visibility_title"
+msgstr "Harder to miss unintended changes"
+
+msgid "visibility_p1"
+msgstr "Diffs and history make it easier to follow what changed on Cloudflare—including surprises that are easy to miss if you only stare at the dashboard."
+
+msgid "value_section_title"
+msgstr "What we optimize for"
+
+msgid "value_title"
+msgstr "Staying up beats vanity metrics"
+
+msgid "value_p1"
+msgstr "We care more about fewer outages and fewer panicked hotfixes than about synthetic speed scores—and about not breaking a caching design that already works."
+
+msgid "value_p2"
+msgstr "Restore behavior first; you can still dig into root cause afterward."
+
+msgid "design_section_title"
+msgstr "Design approach"
+
+msgid "design_title"
+msgstr "Guardrails on risky work"
+
+msgid "design_p1"
+msgstr "High-impact steps are staged. Snapshots mean you are not forced to trust “whatever shipped last.”"
+
+msgid "design_p2"
+msgstr "Even under peak traffic, you can return to a stable configuration before a long postmortem."
+
+msgid "pricing_section_title"
+msgstr "Pricing"
+
+msgid "pricing_title"
+msgstr "Monthly plans"
+
+msgid "pricing_subtitle"
+msgstr "Pick the plan that matches your store. The checkout screen is the source of truth for the final price."
+
+msgid "pricing_pro_single_name"
+msgstr "Pro (single storefront)"
+
+msgid "pricing_pro_single_price"
+msgstr "$64"
+
+msgid "pricing_pro_single_period"
+msgstr "/ month"
+
+msgid "pricing_pro_single_desc"
+msgstr "For one CS-Cart storefront. Backups and rollback are available on Pro."
+
+msgid "pricing_pro_mv_name"
+msgstr "Pro (Multi-Vendor)"
+
+msgid "pricing_pro_mv_price"
+msgstr "$128"
+
+msgid "pricing_pro_mv_period"
+msgstr "/ month"
+
+msgid "pricing_pro_mv_desc"
+msgstr "For Multi-Vendor and similar setups—the same Pro capabilities at a higher footprint."
+
+msgid "pricing_plan_activations_note"
+msgstr "Each subscription includes two activations. Use one for your production storefront and one for development or staging."
+
+msgid "pricing_checkout_cta"
+msgstr "Start Pro (Freemius)"
+
+msgid "pricing_note"
+msgstr "Taxes and final totals depend on your Freemius checkout."
+
+msgid "footer_notice"
+msgstr "CS-Cart is a trademark of Bolide Network LLC. Cloudflare is a trademark of Cloudflare, Inc."
+
+msgid "footer_copyright"
+msgstr "© 2000 – Andplus Co. Ltd."
+
+msgid "footer_corporate_link"
+msgstr "Corporate site"
+
+msgid "footer_privacy_link"
+msgstr "Privacy Policy"

@@ -1,0 +1,19 @@
+# /etc/systemd/system/safecache-lp.service にコピーして使用
+# sudo cp deploy/safecache-lp.service.example /etc/systemd/system/safecache-lp.service
+
+[Unit]
+Description=AP SafeCache marketing LP (Express)
+After=network.target
+
+[Service]
+Type=simple
+User=mmochi
+WorkingDirectory=/home/mmochi/cscart/safecache
+Environment=NODE_ENV=production
+EnvironmentFile=-/home/mmochi/cscart/safecache/.env
+ExecStart=/usr/bin/node app.js
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

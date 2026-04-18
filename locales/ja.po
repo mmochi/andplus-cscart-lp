@@ -1,0 +1,270 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "page_title"
+msgstr "AP SafeCache — Cloudflare の設定を、いつでも戻せる状態にする"
+
+msgid "meta_description"
+msgstr "Cloudflare のルールを履歴付きでバックアップし、必要ならロールバック。無料版は取得・差分確認、戻せるかどうかが Pro の差です。速度を売り文句にはしません。"
+
+msgid "brand_name"
+msgstr "AP SafeCache"
+
+msgid "early_access_aria"
+msgstr "Early Access・クーポン案内"
+
+msgid "early_access_line1"
+msgstr "Early Access"
+
+msgid "early_access_line2"
+msgstr "導入事例募集中"
+
+msgid "early_access_line3"
+msgstr "クーポンコードで先行利用"
+
+msgid "early_access_cta"
+msgstr "クーポン取得"
+
+msgid "early_access_alert"
+msgstr "クーポンコードを保存しました。決済画面で入力（ペースト）してください。\n\nコード: %s"
+
+msgid "ea_modal_title"
+msgstr "クーポン"
+
+msgid "ea_modal_ok"
+msgstr "OK"
+
+msgid "ea_checkout_hint"
+msgstr "決済画面でコードを入力しても割引が適用されない場合は、クーポンの利用回数が上限に達している可能性があります。"
+
+msgid "skip_to_content"
+msgstr "本文へスキップ"
+
+msgid "nav_primary_aria"
+msgstr "サイト内メニュー"
+
+msgid "nav_features"
+msgstr "機能"
+
+msgid "nav_pricing"
+msgstr "料金"
+
+msgid "nav_prereq"
+msgstr "前提"
+
+msgid "prereq_section_title"
+msgstr "前提条件"
+
+msgid "prereq_cloudflare_title"
+msgstr "Cloudflare を使っている前提のアドオンです"
+
+msgid "prereq_cloudflare_p"
+msgstr "本アドオンは Cloudflare の API でルール設定を取得・比較します。ドメインを Cloudflare にプロキシして運用していることが前提です。Cloudflare 側は無料プラン（Free）のままで問題ありません。"
+
+msgid "free_tier_title"
+msgstr "無料版アドオンでできること"
+
+msgid "free_tier_hook"
+msgstr "違いはひとつだけ。「戻せるかどうか」です。"
+
+msgid "free_tier_item_1"
+msgstr "ゾーンの Page Rules や Cache Rules などを取得し、CS-Cart 管理画面で内容を確認する"
+
+msgid "free_tier_item_2"
+msgstr "ローカルに保存した内容と Cloudflare 上の最新設定の差分を表示する（取得・確認が中心）"
+
+msgid "free_tier_note"
+msgstr "取得・差分の確認は無料版で足ります。「動いていた状態」へ戻す・Cloudflare に反映する・履歴として残す操作は Pro です。"
+
+msgid "nav_lang_group_aria"
+msgstr "言語"
+
+msgid "nav_lang_en"
+msgstr "English"
+
+msgid "nav_lang_ja"
+msgstr "日本語"
+
+msgid "nav_lang_en_abbr"
+msgstr "EN"
+
+msgid "nav_lang_ja_abbr"
+msgstr "JA"
+
+msgid "hero_kicker"
+msgstr "CS-Cart · Cloudflare"
+
+msgid "hero_title"
+msgstr "Cloudflareを、戻せる前提で運用する"
+
+msgid "hero_subtitle"
+msgstr "CS-Cart の管理画面から操作。設定は履歴として残り、問題があればすぐに戻せます。"
+
+msgid "hero_cta_primary"
+msgstr "料金を見る"
+
+msgid "hero_cta_secondary"
+msgstr "主な機能を見る"
+
+msgid "problem_section_title"
+msgstr "よくある悩み"
+
+msgid "problem_title"
+msgstr "ルールひとつで店舗全体に影響することがある"
+
+msgid "problem_p1"
+msgstr "Cloudflare の Page Rules と Cache Rules は便利ですが、設定を誤るとチェックアウトや API、管理画面にまで影響することがあります。"
+
+msgid "problem_p2"
+msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラブル中は Cloudflare を触りづらくなり、復旧が遅れがちです。"
+
+msgid "problem_p3"
+msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
+
+msgid "solution_section_title"
+msgstr "このアドオンでできること"
+
+msgid "solution_title"
+msgstr "問題が起きても、「動いていた状態」に戻せる"
+
+msgid "solution_p1"
+msgstr "Pro では Page Rules と Cache Rules を別々に保存し、前回から内容が変わったときだけ履歴に追加します。いつでも「動いていた状態」に戻す道を残します。"
+
+msgid "solution_p2"
+msgstr "障害時は、ダッシュボードのどの項目を直したか当てずっぽうにせず、保存しておいた「動いていた状態」へ戻せます。"
+
+msgid "pro_disclaimer"
+msgstr "※ 「戻せる」ためのバックアップ・ロールバック・Cloudflare への設定反映は Pro。無料版はルールの取得と内容の確認が中心です。"
+
+msgid "core_section_title"
+msgstr "主な機能（Pro）"
+
+msgid "core_title"
+msgstr "バックアップとロールバック"
+
+msgid "core_intro"
+msgstr "キャッシュを効かせる設計を、誤設定で壊さないための機能です。速度の数値より、いざというときに戻せることを重視しています。"
+
+msgid "core_feature_backup_title"
+msgstr "ルールを分けて保存"
+
+msgid "core_feature_backup_desc"
+msgstr "Page Rules と Cache Rules を別々に保存するため、どちらの変更か切り分けて扱えます。"
+
+msgid "core_feature_gen_title"
+msgstr "最大 20 件の履歴"
+
+msgid "core_feature_gen_desc"
+msgstr "ゾーンあたり、直近の履歴を一定件数まで保持します。必要以上に増えすぎないようにします。"
+
+msgid "core_feature_snapshot_title"
+msgstr "時点ごとの保存"
+
+msgid "core_feature_snapshot_desc"
+msgstr "それぞれの履歴は、その時点の設定として比較したり、戻したりできます。"
+
+msgid "core_feature_fingerprint_title"
+msgstr "Cloudflare側の変化を検知・記録する"
+
+msgid "core_feature_fingerprint_desc"
+msgstr "フィンガープリントで前回保存との差分を見て、変わったときだけ履歴を増やします。勝手に増えるノイズを抑えます。"
+
+msgid "core_feature_change_title"
+msgstr "本当に変わったときだけ履歴が増える"
+
+msgid "core_feature_change_desc"
+msgstr "ライブ設定が前回の保存と違うときだけ履歴に残るため、「いつ誰が触ったか」当てずっぽうになりにくくなります。"
+
+msgid "core_feature_rollback_title"
+msgstr "「動いていた状態」へ戻す"
+
+msgid "core_feature_rollback_desc"
+msgstr "「動いていた状態」に戻してから、落ち着いて原因を調べられます。"
+
+msgid "visibility_section_title"
+msgstr "変更の把握"
+
+msgid "visibility_title"
+msgstr "設定変更を「勝手に」見逃さない"
+
+msgid "visibility_p1"
+msgstr "差分と履歴で、Cloudflare 上で起きた変化を追いやすくします。ダッシュボードだけでは拾いにくい、意図しない変更にも気づきやすくなります。"
+
+msgid "value_section_title"
+msgstr "目指すこと"
+
+msgid "value_title"
+msgstr "まず止まらないこと"
+
+msgid "value_p1"
+msgstr "表示速度の数値より、障害や急な手直しを減らすことを優先します。キャッシュを効かせる設計を、誤ったルールで壊さないことも目的です。"
+
+msgid "value_p2"
+msgstr "いったん以前の動きに戻してから、根本原因を調べれば間に合います。"
+
+msgid "design_section_title"
+msgstr "設計の考え方"
+
+msgid "design_title"
+msgstr "危ない操作は確認を挟む"
+
+msgid "design_p1"
+msgstr "影響の大きい操作には段階を設けます。保存があるので「直近の変更だけ信用する」必要がありません。"
+
+msgid "design_p2"
+msgstr "繁忙期でも、まず安定した状態へ戻してから原因を調べられます。"
+
+msgid "pricing_section_title"
+msgstr "料金"
+
+msgid "pricing_title"
+msgstr "月額プラン"
+
+msgid "pricing_subtitle"
+msgstr "店舗の形に合わせて選べます。実際の金額はお支払い画面の表示が優先します。"
+
+msgid "pricing_pro_single_name"
+msgstr "Pro（スタンダード版）"
+
+msgid "pricing_pro_single_price"
+msgstr "$64"
+
+msgid "pricing_pro_single_period"
+msgstr "/ 月"
+
+msgid "pricing_pro_single_desc"
+msgstr "単一の CS-Cart ストア向け。バックアップとロールバックは Pro で利用できます。"
+
+msgid "pricing_pro_mv_name"
+msgstr "Pro（モール版）"
+
+msgid "pricing_pro_mv_price"
+msgstr "$128"
+
+msgid "pricing_pro_mv_period"
+msgstr "/ 月"
+
+msgid "pricing_pro_mv_desc"
+msgstr "モール版用。スタンダード版向けと同じ機能に加え出品者管理画面の除外ルールを追加します。"
+
+msgid "pricing_plan_activations_note"
+msgstr "1 契約につきライセンスのアクティベーションは 2 回分です。本番環境で運用するサイトと、開発・検証用のサイト、と分けて登録する想定です。"
+
+msgid "pricing_checkout_cta"
+msgstr "Pro を開始する（Freemius）"
+
+msgid "pricing_note"
+msgstr "税込表示の有無や最終金額は、Freemius のチェックアウト画面をご確認ください。"
+
+msgid "footer_notice"
+msgstr "CS-Cart は Bolide Network LLC の商標です。Cloudflare は Cloudflare, Inc. の商標です。"
+
+msgid "footer_copyright"
+msgstr "© 2000 – Andplus Co. Ltd."
+
+msgid "footer_corporate_link"
+msgstr "コーポレートサイト"
+
+msgid "footer_privacy_link"
+msgstr "プライバシーポリシー"

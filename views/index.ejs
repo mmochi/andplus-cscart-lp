@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>" class="<%= showEarlyAccessBanner ? 'has-ea-dock' : '' %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= __('page_title') %></title>
+    <meta name="description" content="<%= __('meta_description') %>" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="<%= showEarlyAccessBanner ? 'has-ea-dock' : '' %>">
+    <a class="skip-link" href="#main"><%= __('skip_to_content') %></a>
+
+    <div class="site-top site-top--sticky">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a class="logo" href="#hero"><%= __('brand_name') %></a>
+          <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
+            <a class="nav__link" href="#prereq"><%= __('nav_prereq') %></a>
+            <a class="nav__link" href="#core"><%= __('nav_features') %></a>
+            <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
+          </nav>
+          <div class="lang" role="group" aria-label="<%= __('nav_lang_group_aria') %>">
+            <a
+              class="lang__btn <%= lang === 'en' ? 'is-active' : '' %>"
+              href="<%= langUrl('en') %>"
+              aria-label="<%= __('nav_lang_en') %>"
+              lang="en"
+            >
+              <span class="lang__label lang__label--full"><%= __('nav_lang_en') %></span>
+              <span class="lang__label lang__label--abbr" aria-hidden="true"><%= __('nav_lang_en_abbr') %></span>
+            </a>
+            <a
+              class="lang__btn <%= lang === 'ja' ? 'is-active' : '' %>"
+              href="<%= langUrl('ja') %>"
+              aria-label="<%= __('nav_lang_ja') %>"
+              lang="ja"
+            >
+              <span class="lang__label lang__label--full"><%= __('nav_lang_ja') %></span>
+              <span class="lang__label lang__label--abbr" aria-hidden="true"><%= __('nav_lang_ja_abbr') %></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <% if (showEarlyAccessBanner) { %>
+    <aside
+      id="ea-floating-banner"
+      class="early-access-banner early-access-banner--floating"
+      role="region"
+      aria-label="<%= __('early_access_aria') %>"
+      aria-hidden="true"
+    >
+      <div class="early-access-banner__inner">
+        <div class="early-access-banner__copy">
+          <p class="early-access-banner__line early-access-banner__line--title"><%= __('early_access_line1') %></p>
+          <p class="early-access-banner__line"><%= __('early_access_line2') %></p>
+          <p class="early-access-banner__line"><%= __('early_access_line3') %></p>
+        </div>
+        <button type="button" id="early-access-coupon-btn" class="early-access-banner__cta"><%= __('early_access_cta') %></button>
+      </div>
+    </aside>
+    <script type="application/json" id="ea-coupon-config"><%- JSON.stringify({
+  code: eaCouponCode,
+  alert: __('early_access_alert').replace(/%s/g, eaCouponCode),
+  hint: __('ea_checkout_hint')
+}) %>
+    </script>
+    <% } %>
+
+    <div
+      id="ea-modal"
+      class="ea-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ea-modal-title"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="ea-modal__backdrop" aria-hidden="true"></div>
+      <div class="ea-modal__panel">
+        <h2 id="ea-modal-title" class="ea-modal__title"><%= __('ea_modal_title') %></h2>
+        <p id="ea-modal-body" class="ea-modal__body"></p>
+        <button type="button" id="ea-modal-ok" class="ea-modal__ok btn btn--primary"><%= __('ea_modal_ok') %></button>
+      </div>
+    </div>
+
+    <main id="main">
+      <section id="hero" class="section section--hero" aria-labelledby="hero-heading">
+        <div class="container hero-layout">
+          <div class="hero-layout__copy">
+            <p class="kicker"><%= __('hero_kicker') %></p>
+            <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
+            <p class="lead"><%= __('hero_subtitle') %></p>
+            <div class="hero-cta">
+              <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
+              <a class="btn btn--ghost" href="#core"><%= __('hero_cta_secondary') %></a>
+            </div>
+          </div>
+          <div class="hero-layout__visual" aria-hidden="true">
+            <div class="hero-visual">
+              <svg class="hero-visual__svg" viewBox="0 0 320 280" role="presentation" focusable="false">
+                <defs>
+                  <linearGradient id="heroVisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2d2d33" stop-opacity="0.07" />
+                    <stop offset="100%" stop-color="#2d2d33" stop-opacity="0.02" />
+                  </linearGradient>
+                  <marker
+                    id="heroRollbackArrow"
+                    viewBox="0 0 10 10"
+                    refX="10"
+                    refY="5"
+                    markerWidth="8"
+                    markerHeight="8"
+                    orient="auto"
+                    markerUnits="userSpaceOnUse"
+                  >
+                    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2d2d33" fill-opacity="0.72" />
+                  </marker>
+                </defs>
+                <rect x="8" y="8" width="304" height="264" rx="12" fill="url(#heroVisGrad)" stroke="#e4e4ea" stroke-width="1" />
+                <g stroke="#2d2d33" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.85">
+                  <rect x="48" y="168" width="224" height="52" rx="8" fill="#fafafa" />
+                  <rect x="64" y="108" width="192" height="48" rx="8" fill="#fff" />
+                  <rect x="80" y="52" width="160" height="44" rx="8" fill="#f3f3f5" />
+                </g>
+                <g fill="#2d2d33" opacity="0.35">
+                  <rect x="96" y="68" width="40" height="4" rx="1" />
+                  <rect x="96" y="78" width="72" height="4" rx="1" />
+                  <rect x="96" y="124" width="56" height="4" rx="1" />
+                  <rect x="96" y="134" width="96" height="4" rx="1" />
+                  <rect x="96" y="188" width="88" height="4" rx="1" />
+                  <rect x="96" y="198" width="64" height="4" rx="1" />
+                </g>
+                <path
+                  d="M 238 93 C 286 129 286 164 238 200"
+                  stroke="#2d2d33"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.55"
+                  marker-end="url(#heroRollbackArrow)"
+                />
+                <circle cx="92" cy="70" r="5" fill="#2d2d33" opacity="0.2" />
+                <circle cx="108" cy="70" r="5" fill="#2d2d33" opacity="0.45" />
+                <circle cx="124" cy="70" r="5" fill="#2d2d33" opacity="0.12" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prereq" class="section section--alt" aria-labelledby="prereq-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('prereq_section_title') %></p>
+          <h2 id="prereq-heading" class="section-title"><%= __('prereq_cloudflare_title') %></h2>
+          <p class="prose"><%= __('prereq_cloudflare_p') %></p>
+          <h3 class="prereq-subtitle"><%= __('free_tier_title') %></h3>
+          <p class="prereq-hook"><%= __('free_tier_hook') %></p>
+          <ul class="free-tier-list">
+            <li><%= __('free_tier_item_1') %></li>
+            <li><%= __('free_tier_item_2') %></li>
+          </ul>
+          <p class="prose prose--note"><%= __('free_tier_note') %></p>
+        </div>
+      </section>
+
+      <section id="problem" class="section" aria-labelledby="problem-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('problem_section_title') %></p>
+          <h2 id="problem-heading" class="section-title"><%= __('problem_title') %></h2>
+          <p class="prose"><%= __('problem_p1') %></p>
+          <p class="prose"><%= __('problem_p2') %></p>
+          <p class="prose"><%= __('problem_p3') %></p>
+        </div>
+      </section>
+
+      <section id="solution" class="section" aria-labelledby="solution-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('solution_section_title') %></p>
+          <h2 id="solution-heading" class="section-title"><%= __('solution_title') %></h2>
+          <p class="prose"><%= __('solution_p1') %></p>
+          <p class="prose"><%= __('solution_p2') %></p>
+        </div>
+      </section>
+
+      <div class="section section--alt section--note">
+        <div class="container container--narrow">
+          <p class="pro-disclaimer"><%= __('pro_disclaimer') %></p>
+        </div>
+      </div>
+
+      <section id="core" class="section" aria-labelledby="core-heading">
+        <div class="container">
+          <p class="section-label"><%= __('core_section_title') %></p>
+          <h2 id="core-heading" class="section-title"><%= __('core_title') %></h2>
+          <p class="lead lead--tight"><%= __('core_intro') %></p>
+          <ul class="feature-grid">
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_backup_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_backup_desc') %></p>
+            </li>
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_gen_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_gen_desc') %></p>
+            </li>
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_snapshot_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_snapshot_desc') %></p>
+            </li>
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_fingerprint_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_fingerprint_desc') %></p>
+            </li>
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_change_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_change_desc') %></p>
+            </li>
+            <li class="feature-card">
+              <h3 class="feature-card__title"><%= __('core_feature_rollback_title') %></h3>
+              <p class="feature-card__text"><%= __('core_feature_rollback_desc') %></p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="visibility" class="section section--alt" aria-labelledby="visibility-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('visibility_section_title') %></p>
+          <h2 id="visibility-heading" class="section-title"><%= __('visibility_title') %></h2>
+          <p class="prose"><%= __('visibility_p1') %></p>
+        </div>
+      </section>
+
+      <section id="value" class="section" aria-labelledby="value-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('value_section_title') %></p>
+          <h2 id="value-heading" class="section-title"><%= __('value_title') %></h2>
+          <p class="prose"><%= __('value_p1') %></p>
+          <p class="prose"><%= __('value_p2') %></p>
+        </div>
+      </section>
+
+      <section id="design" class="section section--alt" aria-labelledby="design-heading">
+        <div class="container container--narrow">
+          <p class="section-label"><%= __('design_section_title') %></p>
+          <h2 id="design-heading" class="section-title"><%= __('design_title') %></h2>
+          <p class="prose"><%= __('design_p1') %></p>
+          <p class="prose"><%= __('design_p2') %></p>
+        </div>
+      </section>
+
+      <section id="pricing" class="section" aria-labelledby="pricing-heading">
+        <div class="container">
+          <p class="section-label"><%= __('pricing_section_title') %></p>
+          <h2 id="pricing-heading" class="section-title"><%= __('pricing_title') %></h2>
+          <p class="lead lead--tight"><%= __('pricing_subtitle') %></p>
+          <div class="pricing-grid">
+            <a
+              class="price-card price-card--link"
+              href="https://checkout.freemius.com/app/27895/plan/46093/?trial=paid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h3 class="price-card__name"><%= __('pricing_pro_single_name') %></h3>
+              <p class="price-card__price">
+                <span class="price-card__amount"><%= __('pricing_pro_single_price') %></span>
+                <span class="price-card__period"><%= __('pricing_pro_single_period') %></span>
+              </p>
+              <p class="price-card__desc"><%= __('pricing_pro_single_desc') %></p>
+              <p class="price-card__activations"><%= __('pricing_plan_activations_note') %></p>
+              <span class="price-card__cta"><%= __('pricing_checkout_cta') %></span>
+            </a>
+            <a
+              class="price-card price-card--emphasis price-card--link"
+              href="https://checkout.freemius.com/app/27895/plan/46134/?trial=paid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h3 class="price-card__name"><%= __('pricing_pro_mv_name') %></h3>
+              <p class="price-card__price">
+                <span class="price-card__amount"><%= __('pricing_pro_mv_price') %></span>
+                <span class="price-card__period"><%= __('pricing_pro_mv_period') %></span>
+              </p>
+              <p class="price-card__desc"><%= __('pricing_pro_mv_desc') %></p>
+              <p class="price-card__activations"><%= __('pricing_plan_activations_note') %></p>
+              <span class="price-card__cta"><%= __('pricing_checkout_cta') %></span>
+            </a>
+          </div>
+          <p class="pricing-note"><%= __('pricing_note') %></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-legal">
+          <span class="footer-legal__copy"><%= __('footer_copyright') %></span>
+          <span class="footer-legal__sep" aria-hidden="true">·</span>
+          <a class="footer-legal__link" href="https://www.andplus.co.jp/" target="_blank" rel="noopener noreferrer"
+            ><%= __('footer_corporate_link') %></a
+          >
+          <span class="footer-legal__sep" aria-hidden="true">·</span>
+          <a class="footer-legal__link" href="https://www.andplus.co.jp/privacy/" target="_blank" rel="noopener noreferrer"
+            ><%= __('footer_privacy_link') %></a
+          >
+        </p>
+        <p class="footer-note"><%= __('footer_notice') %></p>
+      </div>
+    </footer>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>
