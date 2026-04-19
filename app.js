@@ -267,6 +267,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view options", { rmWhitespace: false });
 
 app.use(cookieParser());
+/** LP 用画像（例: img/safecache300.png）→ /img/... で配信 */
+app.use("/img", express.static(path.join(__dirname, "img")));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {

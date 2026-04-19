@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= __('page_title') %></title>
+    <link rel="icon" type="image/png" href="<%= basePath %>/img/safecache300.png" sizes="any" />
+    <link rel="apple-touch-icon" href="<%= basePath %>/img/safecache300.png" />
 
     <!-- Primary SEO -->
     <meta name="description" content="<%= __('meta_description') %>" />
@@ -133,7 +135,18 @@
         <div class="container hero-layout">
           <div class="hero-layout__copy">
             <p class="kicker"><%= __('hero_kicker') %></p>
-            <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
+            <div class="hero-title-row">
+              <img
+                class="hero-title__mark"
+                src="<%= basePath %>/img/safecache300.png"
+                width="300"
+                height="300"
+                alt=""
+                decoding="async"
+                fetchpriority="high"
+              />
+              <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
+            </div>
             <p class="lead"><%= __('hero_subtitle') %></p>
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
