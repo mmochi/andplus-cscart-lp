@@ -15,7 +15,7 @@
  * 共通 env に BASE_PATH が無くてもサブパスが効く（ヘッダ優先）。
  *
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
- * AP_SAFECACHE_OG_IMAGE … og:image の URL。完全 URL または basePath からのパス（例: /og-image.png）。
+ * AP_SAFECACHE_OG_IMAGE … og:image。完全 URL、または basePath 付きのパス（例: /img/safecache-og.png）。未設定時は img/safecache-og.png。
  *
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_FREE … LP の Free プラン CTA 先（既定: plan 46092）
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_SINGLE … Pro スタンダード（既定: plan 46093 + trial=paid）
@@ -95,6 +95,9 @@ function normalizePathPrefix(raw) {
 /** env の BASE_PATH（モジュール読み込み時点） */
 const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
 
+/** AP_SAFECACHE_OG_IMAGE 未設定時（`cscart/img` を /img で配信） */
+const DEFAULT_OG_IMAGE_REL_PATH = "/img/safecache-og.png";
+
 /**
  * リクエストごとの公開パスプレフィックス。
  * 1) nginx の X-Forwarded-Prefix（推奨・共通 env に BASE_PATH が無くても動く）
@@ -132,9 +135,11 @@ function buildLpAbsoluteUrl(req, basePath, lang) {
 }
 
 function resolveOgImageUrl(req, basePath) {
-  const raw = process.env.AP_SAFECACHE_OG_IMAGE;
-  if (!raw || !String(raw).trim()) return "";
-  const s = String(raw).trim();
+  const envRaw = process.env.AP_SAFECACHE_OG_IMAGE;
+  const s =
+    envRaw && String(envRaw).trim()
+      ? String(envRaw).trim()
+      : DEFAULT_OG_IMAGE_REL_PATH;
   if (/^https?:\/\//i.test(s)) return s;
   const origin = getPublicOrigin(req);
   const prefix = basePath || "";
