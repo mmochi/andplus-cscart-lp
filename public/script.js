@@ -34,7 +34,16 @@
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
 
+    var closed = false;
+    var autoOkTimer = null;
+
     function cleanup() {
+      if (closed) return;
+      closed = true;
+      if (autoOkTimer !== null) {
+        clearTimeout(autoOkTimer);
+        autoOkTimer = null;
+      }
       modal.setAttribute("hidden", "");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
@@ -56,10 +65,18 @@
     if (backdrop) backdrop.addEventListener("click", onDismiss);
     document.addEventListener("keydown", onEsc);
     okBtn.focus();
+
+    autoOkTimer = setTimeout(function () {
+      autoOkTimer = null;
+      onDismiss();
+    }, EA_MODAL_AUTO_OK_MS);
   }
 
   /** この px より下にスクロールしたらバナー表示、上に戻したら非表示 */
   var EA_SCROLL_REVEAL_PX = 120;
+
+  /** クーポン保存後モーダル: この秒後に OK と同じ処理で閉じる（手動 OK と同じ onClose を走らせる） */
+  var EA_MODAL_AUTO_OK_MS = 3000;
 
   function initEarlyAccessBannerScrollReveal() {
     var banner = document.getElementById("ea-floating-banner");
