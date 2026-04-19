@@ -360,6 +360,10 @@ body {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: -0.02em;
@@ -367,8 +371,24 @@ body {
   text-decoration: none;
 }
 
+.logo__mark {
+  width: 1.75rem;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.logo__text {
+  min-width: 0;
+}
+
 .logo:hover {
   text-decoration: underline;
+}
+
+.logo:hover .logo__mark {
+  opacity: 0.92;
 }
 
 .nav {
@@ -444,6 +464,15 @@ body {
     max-width: 36%;
     font-size: 0.84rem;
     letter-spacing: -0.03em;
+    gap: 0.35rem;
+  }
+
+  .logo__mark {
+    width: 1.35rem;
+    border-radius: 4px;
+  }
+
+  .logo__text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -621,27 +650,6 @@ body {
   font-weight: 600;
   color: var(--muted);
   letter-spacing: 0.04em;
-}
-
-.hero-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem 1rem;
-  margin: 0 0 1rem;
-}
-
-.hero-title__mark {
-  width: clamp(2.5rem, 9vw, 3.35rem);
-  height: auto;
-  flex-shrink: 0;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-.hero-title-row .hero-title {
-  margin: 0;
-  flex: 1;
-  min-width: 0;
 }
 
 .hero-title {

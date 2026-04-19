@@ -54,7 +54,17 @@
     <div class="site-top site-top--sticky">
       <header class="site-header">
         <div class="site-header__inner">
-          <a class="logo" href="#hero"><%= __('brand_name') %></a>
+          <a class="logo" href="#hero">
+            <img
+              class="logo__mark"
+              src="<%= basePath %>/img/safecache300.png"
+              width="300"
+              height="300"
+              alt=""
+              decoding="async"
+            />
+            <span class="logo__text"><%= __('brand_name') %></span>
+          </a>
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
             <a class="nav__link" href="#prereq"><%= __('nav_prereq') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
@@ -135,18 +145,7 @@
         <div class="container hero-layout">
           <div class="hero-layout__copy">
             <p class="kicker"><%= __('hero_kicker') %></p>
-            <div class="hero-title-row">
-              <img
-                class="hero-title__mark"
-                src="<%= basePath %>/img/safecache300.png"
-                width="300"
-                height="300"
-                alt=""
-                decoding="async"
-                fetchpriority="high"
-              />
-              <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
-            </div>
+            <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
             <p class="lead"><%= __('hero_subtitle') %></p>
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
