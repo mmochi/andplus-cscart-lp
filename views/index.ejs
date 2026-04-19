@@ -21,6 +21,9 @@
     <link rel="alternate" hreflang="x-default" href="<%= alternateUrlEn %>" />
 
     <!-- Open Graph -->
+    <% if (fbAppId) { %>
+      <meta property="fb:app_id" content="<%= fbAppId %>" />
+    <% } %>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="<%= __('og_site_name') %>" />
     <meta property="og:title" content="<%= __('page_title') %>" />
@@ -30,10 +33,15 @@
     <meta property="og:locale:alternate" content="<%= lang === 'ja' ? 'en_US' : 'ja_JP' %>" />
     <% if (ogImageUrl) { %>
       <meta property="og:image" content="<%= ogImageUrl %>" />
+      <% if (ogImageUrl.indexOf('https://') === 0) { %>
+        <meta property="og:image:secure_url" content="<%= ogImageUrl %>" />
+      <% } %>
+      <meta property="og:image:width" content="<%= ogImageWidth %>" />
+      <meta property="og:image:height" content="<%= ogImageHeight %>" />
       <meta property="og:image:alt" content="<%= __('page_title') %>" />
     <% } %>
 
-    <!-- Twitter -->
+    <!-- Twitter（summary_large_image＝大画像カード。PC・モバイル同一の meta） -->
     <meta name="twitter:card" content="<%= ogImageUrl ? 'summary_large_image' : 'summary' %>" />
     <meta name="twitter:title" content="<%= __('page_title') %>" />
     <meta name="twitter:description" content="<%= __('meta_description') %>" />
@@ -171,12 +179,14 @@
                     viewBox="0 0 10 10"
                     refX="10"
                     refY="5"
-                    markerWidth="8"
-                    markerHeight="8"
+                    markerWidth="10"
+                    markerHeight="10"
                     orient="auto"
                     markerUnits="userSpaceOnUse"
+                    overflow="visible"
                   >
-                    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2d2d33" fill-opacity="0.72" />
+                    <!-- 先端 (10,5) を ref とし、底辺をやや狭めてすっきり見せる -->
+                    <path d="M 0 2.25 L 10 5 L 0 7.75 Z" fill="#2d2d33" fill-opacity="0.62" />
                   </marker>
                 </defs>
                 <rect x="8" y="8" width="304" height="264" rx="12" fill="url(#heroVisGrad)" stroke="#e4e4ea" stroke-width="1" />
@@ -198,7 +208,7 @@
                   stroke="#2d2d33"
                   stroke-width="2"
                   fill="none"
-                  stroke-linecap="round"
+                  stroke-linecap="butt"
                   stroke-linejoin="round"
                   opacity="0.55"
                   marker-end="url(#heroRollbackArrow)"

@@ -16,6 +16,8 @@
  *
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
  * AP_SAFECACHE_OG_IMAGE … og:image。完全 URL、または basePath 付きのパス（例: /img/safecache-og.png）。未設定時は img/safecache-og.png。
+ * AP_SAFECACHE_OG_IMAGE_WIDTH / HEIGHT … og:image のピクセル（任意。未設定時は既定 1200×630＝safecache-og.png 想定）
+ * AP_SAFECACHE_FB_APP_ID（または FB_APP_ID）… 任意。meta fb:app_id（ページと Meta アプリを紐づけたい／シェアデバッダーが警告を出す場合など）。OGP 自体の表示には通常不要。
  *
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_FREE … LP の Free プラン CTA 先（既定: plan 46092）
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_SINGLE … Pro スタンダード（既定: plan 46093 + trial=paid）
@@ -98,6 +100,10 @@ const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
 /** AP_SAFECACHE_OG_IMAGE 未設定時（`cscart/img` を /img で配信） */
 const DEFAULT_OG_IMAGE_REL_PATH = "/img/safecache-og.png";
 
+/** 既定 OG 画像 safecache-og.png の実寸（meta og:image:width / height 用） */
+const DEFAULT_OG_IMAGE_WIDTH = 1200;
+const DEFAULT_OG_IMAGE_HEIGHT = 630;
+
 /**
  * リクエストごとの公開パスプレフィックス。
  * 1) nginx の X-Forwarded-Prefix（推奨・共通 env に BASE_PATH が無くても動く）
@@ -112,13 +118,35 @@ function resolvePublicBasePath(req) {
   return PUBLIC_BASE_PATH;
 }
 
-/** OGP・canonical 用。未設定時は trust proxy 前提で req から。 */
+/**
+ * リバースプロキシ経由でも公開 URL の scheme / host を取り違えないようにする。
+ * nginx 例: proxy_set_header X-Forwarded-Proto $scheme; proxy_set_header X-Forwarded-Host $host;
+ */
+function getForwardedProto(req) {
+  const h = req.get("x-forwarded-proto");
+  if (h && String(h).trim()) {
+    return String(h).split(",")[0].trim().toLowerCase();
+  }
+  return null;
+}
+
+function getForwardedHost(req) {
+  const h = req.get("x-forwarded-host");
+  if (h && String(h).trim()) {
+    return String(h).split(",")[0].trim();
+  }
+  return null;
+}
+
+/** OGP・canonical 用。AP_SAFECACHE_PUBLIC_ORIGIN 推奨。未設定時は X-Forwarded-* または req から。 */
 function getPublicOrigin(req) {
   const fromEnv = process.env.AP_SAFECACHE_PUBLIC_ORIGIN;
   if (fromEnv && String(fromEnv).trim()) {
     return String(fromEnv).trim().replace(/\/+$/, "");
   }
-  return `${req.protocol}://${req.get("host")}`;
+  const proto = getForwardedProto(req) || req.protocol || "https";
+  const host = getForwardedHost(req) || req.get("host") || "";
+  return `${proto}://${host}`;
 }
 
 /**
@@ -145,6 +173,19 @@ function resolveOgImageUrl(req, basePath) {
   const prefix = basePath || "";
   const p = s.startsWith("/") ? s : `/${s}`;
   return `${origin}${prefix}${p}`;
+}
+
+function resolveOgImageDimensions() {
+  const w = process.env.AP_SAFECACHE_OG_IMAGE_WIDTH;
+  const h = process.env.AP_SAFECACHE_OG_IMAGE_HEIGHT;
+  return {
+    width:
+      w && String(w).trim() ? String(w).trim() : String(DEFAULT_OG_IMAGE_WIDTH),
+    height:
+      h && String(h).trim()
+        ? String(h).trim()
+        : String(DEFAULT_OG_IMAGE_HEIGHT),
+  };
 }
 
 /**
@@ -313,10 +354,16 @@ app.use((req, res, next) => {
   res.locals.alternateUrlEn = buildLpAbsoluteUrl(req, basePath, "en");
   res.locals.alternateUrlJa = buildLpAbsoluteUrl(req, basePath, "ja");
   res.locals.ogImageUrl = resolveOgImageUrl(req, basePath);
+  const ogDim = resolveOgImageDimensions();
+  res.locals.ogImageWidth = ogDim.width;
+  res.locals.ogImageHeight = ogDim.height;
   res.locals.jsonLd = buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl);
   res.locals.prettyJson = (obj, linePadSpaces = 6) =>
     formatJsonForHtml(obj, linePadSpaces);
   res.locals.freemiusCheckoutUrls = getFreemiusCheckoutUrls();
+  res.locals.fbAppId = String(
+    process.env.AP_SAFECACHE_FB_APP_ID || process.env.FB_APP_ID || ""
+  ).trim();
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
