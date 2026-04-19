@@ -116,6 +116,9 @@ msgstr "See pricing"
 msgid "hero_cta_secondary"
 msgstr "See main features"
 
+msgid "hero_cta_free"
+msgstr "Get Free (Freemius)"
+
 msgid "problem_section_title"
 msgstr "The problem"
 
@@ -231,7 +234,22 @@ msgid "pricing_title"
 msgstr "Monthly plans"
 
 msgid "pricing_subtitle"
-msgstr "Pick the plan that matches your store. The checkout screen is the source of truth for the final price."
+msgstr "Choose the Free tier or monthly Pro. The checkout screen is the source of truth for the final price."
+
+msgid "pricing_free_name"
+msgstr "Free"
+
+msgid "pricing_free_amount"
+msgstr "Free"
+
+msgid "pricing_free_desc"
+msgstr "Fetch rules, review locally, and diff snapshots. After checkout, download the ZIP from Freemius and install it in CS-Cart."
+
+msgid "pricing_free_note"
+msgstr "Your license is issued on Freemius; download the ZIP from the confirmation email or your user dashboard."
+
+msgid "pricing_free_cta"
+msgstr "Get Free (Freemius)"
 
 msgid "pricing_pro_single_name"
 msgstr "Pro (single storefront)"

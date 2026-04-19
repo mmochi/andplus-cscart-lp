@@ -17,6 +17,10 @@
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
  * AP_SAFECACHE_OG_IMAGE … og:image の URL。完全 URL または basePath からのパス（例: /og-image.png）。
  *
+ * AP_SAFECACHE_FREEMIUS_CHECKOUT_FREE … LP の Free プラン CTA 先（既定: plan 46092）
+ * AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_SINGLE … Pro スタンダード（既定: plan 46093 + trial=paid）
+ * AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_MV … Pro モール版（既定: plan 46134 + trial=paid）
+ *
  * JSON-LD の Organization はコーポレートサイト https://www.andplus.co.jp/ を正本（@id / url）として参照する。
  */
 const path = require("path");
@@ -61,6 +65,21 @@ const gettextParser = require("gettext-parser");
 const { getEarlyAccessState } = require("./lib/freemiusEaCoupon");
 
 const PORT = process.env.PORT || 3000;
+
+/** Freemius プランのチェックアウト URL（LP の CTA から使用。AP_SAFECACHE_FREEMIUS_CHECKOUT_* で上書き可） */
+function getFreemiusCheckoutUrls() {
+  return {
+    free:
+      process.env.AP_SAFECACHE_FREEMIUS_CHECKOUT_FREE ||
+      "https://checkout.freemius.com/app/27895/plan/46092/",
+    proSingle:
+      process.env.AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_SINGLE ||
+      "https://checkout.freemius.com/app/27895/plan/46093/?trial=paid",
+    proMv:
+      process.env.AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_MV ||
+      "https://checkout.freemius.com/app/27895/plan/46134/?trial=paid",
+  };
+}
 
 /** 先頭 / を付け、末尾 / を除く。ルートのみ（"/"）はプレフィックス無しの ""（テンプレで /style.css と連結するため） */
 function normalizePathPrefix(raw) {
@@ -290,6 +309,7 @@ app.use((req, res, next) => {
   res.locals.jsonLd = buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl);
   res.locals.prettyJson = (obj, linePadSpaces = 6) =>
     formatJsonForHtml(obj, linePadSpaces);
+  res.locals.freemiusCheckoutUrls = getFreemiusCheckoutUrls();
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {

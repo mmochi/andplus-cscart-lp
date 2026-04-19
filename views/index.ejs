@@ -138,6 +138,12 @@
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
               <a class="btn btn--ghost" href="#core"><%= __('hero_cta_secondary') %></a>
+              <a
+                class="btn btn--ghost"
+                href="<%= freemiusCheckoutUrls.free %>"
+                target="_blank"
+                rel="noopener noreferrer"
+              ><%= __('hero_cta_free') %></a>
             </div>
           </div>
           <div class="hero-layout__visual" aria-hidden="true">
@@ -301,8 +307,23 @@
           <p class="lead lead--tight"><%= __('pricing_subtitle') %></p>
           <div class="pricing-grid">
             <a
-              class="price-card price-card--link"
-              href="https://checkout.freemius.com/app/27895/plan/46093/?trial=paid"
+              id="pricing-free"
+              class="price-card price-card--link price-card--free"
+              href="<%= freemiusCheckoutUrls.free %>"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <h3 class="price-card__name"><%= __('pricing_free_name') %></h3>
+              <p class="price-card__price">
+                <span class="price-card__amount"><%= __('pricing_free_amount') %></span>
+              </p>
+              <p class="price-card__desc"><%= __('pricing_free_desc') %></p>
+              <p class="price-card__activations"><%= __('pricing_free_note') %></p>
+              <span class="price-card__cta"><%= __('pricing_free_cta') %></span>
+            </a>
+            <a
+              class="price-card price-card--link price-card--pro-single"
+              href="<%= freemiusCheckoutUrls.proSingle %>"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -317,7 +338,7 @@
             </a>
             <a
               class="price-card price-card--emphasis price-card--link"
-              href="https://checkout.freemius.com/app/27895/plan/46134/?trial=paid"
+              href="<%= freemiusCheckoutUrls.proMv %>"
               target="_blank"
               rel="noopener noreferrer"
             >

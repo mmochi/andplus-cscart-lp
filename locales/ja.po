@@ -116,6 +116,9 @@ msgstr "料金を見る"
 msgid "hero_cta_secondary"
 msgstr "主な機能を見る"
 
+msgid "hero_cta_free"
+msgstr "無料版を取得（Freemius）"
+
 msgid "problem_section_title"
 msgstr "よくある悩み"
 
@@ -231,7 +234,22 @@ msgid "pricing_title"
 msgstr "月額プラン"
 
 msgid "pricing_subtitle"
-msgstr "店舗の形に合わせて選べます。実際の金額はお支払い画面の表示が優先します。"
+msgstr "無料版と月額の Pro から選べます。実際の金額はお支払い画面の表示が優先します。"
+
+msgid "pricing_free_name"
+msgstr "Free"
+
+msgid "pricing_free_amount"
+msgstr "無料"
+
+msgid "pricing_free_desc"
+msgstr "ルールの取得・内容の確認・差分表示が中心です。チェックアウト完了後、Freemius から ZIP をダウンロードしてインストールできます。"
+
+msgid "pricing_free_note"
+msgstr "ライセンスは Freemius で付与されます。メールまたはユーザーダッシュボードから ZIP を取得してください。"
+
+msgid "pricing_free_cta"
+msgstr "Free を取得（Freemius）"
 
 msgid "pricing_pro_single_name"
 msgstr "Pro（スタンダード版）"
@@ -273,7 +291,7 @@ msgid "footer_copyright"
 msgstr "© 2000 – Andplus Co. Ltd."
 
 msgid "footer_corporate_link"
-msgstr "コーポレートサイト"
+msgstr "株式会社あんどぷらす"
 
 msgid "footer_privacy_link"
 msgstr "プライバシーポリシー"

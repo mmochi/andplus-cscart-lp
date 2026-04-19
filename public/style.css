@@ -787,8 +787,13 @@ body {
   background: #fff;
 }
 
+/* Free */
+.pricing-grid > .price-card--link.price-card--free {
+  background-color: #f3f6f9;
+}
+
 /* 月額 Standard（シングル） */
-.pricing-grid > .price-card--link:not(.price-card--emphasis) {
+.pricing-grid > .price-card--link.price-card--pro-single:not(.price-card--emphasis) {
   background-color: azure;
 }
 
