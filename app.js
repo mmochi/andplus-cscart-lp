@@ -15,8 +15,10 @@
  * 共通 env に BASE_PATH が無くてもサブパスが効く（ヘッダ優先）。
  *
  * AP_SAFECACHE_PUBLIC_ORIGIN … OGP・canonical 用のオリジン（例: https://apps.andplus.tech）。未設定時はリクエストから。
- * AP_SAFECACHE_OG_IMAGE … og:image。完全 URL、または basePath 付きのパス（例: /img/safecache-og.png）。未設定時は img/safecache-og.png。
- * AP_SAFECACHE_OG_IMAGE_WIDTH / HEIGHT … og:image のピクセル（任意。未設定時は既定 1200×630＝safecache-og.png 想定）
+ * AP_SAFECACHE_OG_IMAGE_JA / AP_SAFECACHE_OG_IMAGE_EN … 言語別 og:image（完全 URL または /img/... のパス）。
+ * AP_SAFECACHE_OG_IMAGE … 任意。JA/EN どちらも未個別指定のときの共通フォールバック（1 枚だけ運用する場合）。
+ *   解決順: 当該言語の AP_SAFECACHE_OG_IMAGE_JA|EN → なければ AP_SAFECACHE_OG_IMAGE → 既定 /img/safecache-og-ja.png | /img/safecache-og-en.png
+ * AP_SAFECACHE_OG_IMAGE_WIDTH / HEIGHT … og:image のピクセル（任意。未設定時は既定 1200×630）
  * AP_SAFECACHE_FB_APP_ID（または FB_APP_ID）… 任意。meta fb:app_id（ページと Meta アプリを紐づけたい／シェアデバッダーが警告を出す場合など）。OGP 自体の表示には通常不要。
  *
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_FREE … LP の Free プラン CTA 先（既定: plan 46092）
@@ -97,10 +99,11 @@ function normalizePathPrefix(raw) {
 /** env の BASE_PATH（モジュール読み込み時点） */
 const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
 
-/** AP_SAFECACHE_OG_IMAGE 未設定時（`cscart/img` を /img で配信） */
-const DEFAULT_OG_IMAGE_REL_PATH = "/img/safecache-og.png";
+/** AP_SAFECACHE_OG_IMAGE_* 未設定時（`cscart/img` を /img で配信） */
+const DEFAULT_OG_IMAGE_REL_PATH_JA = "/img/safecache-og-ja.png";
+const DEFAULT_OG_IMAGE_REL_PATH_EN = "/img/safecache-og-en.png";
 
-/** 既定 OG 画像 safecache-og.png の実寸（meta og:image:width / height 用） */
+/** 既定 OG 画像の実寸（meta og:image:width / height 用） */
 const DEFAULT_OG_IMAGE_WIDTH = 1200;
 const DEFAULT_OG_IMAGE_HEIGHT = 630;
 
@@ -162,16 +165,28 @@ function buildLpAbsoluteUrl(req, basePath, lang) {
   return `${origin}${pathPart}${q ? `?${q}` : ""}`;
 }
 
-function resolveOgImageUrl(req, basePath) {
-  const envRaw = process.env.AP_SAFECACHE_OG_IMAGE;
-  const s =
-    envRaw && String(envRaw).trim()
-      ? String(envRaw).trim()
-      : DEFAULT_OG_IMAGE_REL_PATH;
-  if (/^https?:\/\//i.test(s)) return s;
+function resolveOgImageUrl(req, basePath, lang) {
+  const perLang =
+    lang === "ja"
+      ? process.env.AP_SAFECACHE_OG_IMAGE_JA
+      : process.env.AP_SAFECACHE_OG_IMAGE_EN;
+  const common = process.env.AP_SAFECACHE_OG_IMAGE;
+  const fallbackPath =
+    lang === "ja" ? DEFAULT_OG_IMAGE_REL_PATH_JA : DEFAULT_OG_IMAGE_REL_PATH_EN;
+
+  let raw;
+  if (perLang && String(perLang).trim()) {
+    raw = String(perLang).trim();
+  } else if (common && String(common).trim()) {
+    raw = String(common).trim();
+  } else {
+    raw = fallbackPath;
+  }
+
+  if (/^https?:\/\//i.test(raw)) return raw;
   const origin = getPublicOrigin(req);
   const prefix = basePath || "";
-  const p = s.startsWith("/") ? s : `/${s}`;
+  const p = raw.startsWith("/") ? raw : `/${raw}`;
   return `${origin}${prefix}${p}`;
 }
 
@@ -206,7 +221,7 @@ function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
   const websiteId = `${siteUrl}#website`;
   const pageId = `${canonicalUrl}#webpage`;
   const softwareId = `${canonicalUrl}#software`;
-  const ogImg = resolveOgImageUrl(req, basePath);
+  const ogImg = resolveOgImageUrl(req, basePath, lang);
 
   const webPage = {
     "@type": "WebPage",
@@ -353,7 +368,7 @@ app.use((req, res, next) => {
   res.locals.canonicalUrl = canonicalUrl;
   res.locals.alternateUrlEn = buildLpAbsoluteUrl(req, basePath, "en");
   res.locals.alternateUrlJa = buildLpAbsoluteUrl(req, basePath, "ja");
-  res.locals.ogImageUrl = resolveOgImageUrl(req, basePath);
+  res.locals.ogImageUrl = resolveOgImageUrl(req, basePath, lang);
   const ogDim = resolveOgImageDimensions();
   res.locals.ogImageWidth = ogDim.width;
   res.locals.ogImageHeight = ogDim.height;
