@@ -26,6 +26,9 @@
  * AP_SAFECACHE_FREEMIUS_CHECKOUT_PRO_MV … Pro モール版（既定: plan 46134 + trial=paid）
  *
  * JSON-LD の Organization はコーポレートサイト https://www.andplus.co.jp/ を正本（@id / url）として参照する。
+ *
+ * /sitemap.xml … LP トップの en / ja（buildLpAbsoluteUrl と同一）。AP_SAFECACHE_PUBLIC_ORIGIN / BASE_PATH / X-Forwarded-*。
+ * /robots.txt … Allow: / と Sitemap: 同上。
  */
 const path = require("path");
 const fs = require("fs");
@@ -211,6 +214,23 @@ function formatJsonForHtml(obj, linePadSpaces) {
   return JSON.stringify(obj, null, 2).replace(/^/gm, pad);
 }
 
+function escapeXml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** 公開サイトの sitemap.xml 絶対 URL（robots / link rel 用） */
+function buildSitemapFileUrl(req) {
+  const origin = getPublicOrigin(req);
+  const basePath = resolvePublicBasePath(req);
+  return basePath === ""
+    ? `${origin}/sitemap.xml`
+    : `${origin}${basePath}/sitemap.xml`;
+}
+
 /** 構造化データ（JSON-LD）— Organization / WebSite / WebPage / SoftwareApplication */
 function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
   const t = (key) => translate(lang, key, catalogs);
@@ -391,6 +411,7 @@ app.use((req, res, next) => {
     process.env.AP_SAFECACHE_FB_APP_ID || process.env.FB_APP_ID || ""
   ).trim();
   res.locals.gaMeasurementId = GA_MEASUREMENT_ID;
+  res.locals.sitemapFileUrl = buildSitemapFileUrl(req);
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
@@ -414,6 +435,42 @@ app.use((req, res, next) => {
   };
 
   next();
+});
+
+app.get("/sitemap.xml", (req, res) => {
+  const basePath = resolvePublicBasePath(req);
+  const locs = [
+    buildLpAbsoluteUrl(req, basePath, "en"),
+    buildLpAbsoluteUrl(req, basePath, "ja"),
+  ];
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${locs
+  .map(
+    (loc) => `  <url>
+    <loc>${escapeXml(loc)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>`
+  )
+  .join("\n")}
+</urlset>
+`;
+  res.status(200).type("application/xml; charset=utf-8").send(body);
+});
+
+app.get("/robots.txt", (req, res) => {
+  const sm = buildSitemapFileUrl(req);
+  res
+    .status(200)
+    .type("text/plain; charset=utf-8")
+    .send(`User-agent: *
+Allow: /
+
+Sitemap: ${sm}
+`);
 });
 
 app.get("/", async (req, res, next) => {
