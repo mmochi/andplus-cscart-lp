@@ -278,6 +278,17 @@ function buildJsonLdGraph(req, basePath, lang, catalogs, canonicalUrl) {
  * クーポンコードは API の `code` から取得（lib/freemiusEaCoupon.js）。
  */
 const EA_COUPON_CODE = process.env.AP_SAFECACHE_EA_COUPON || "";
+
+/** GA4 Measurement ID。`AP_SAFECACHE_GA_MEASUREMENT_ID=""` で無効化、未設定時は既定 ID */
+function resolveGaMeasurementId() {
+  const raw = process.env.AP_SAFECACHE_GA_MEASUREMENT_ID;
+  if (raw !== undefined) {
+    return String(raw).trim();
+  }
+  return "G-SECDETP3W8";
+}
+const GA_MEASUREMENT_ID = resolveGaMeasurementId();
+
 const LOCALES_DIR = path.join(__dirname, "locales");
 /** Cookie name for persisted UI language (query ?lang= overrides). */
 const LANG_COOKIE = "ap_safecache_lp_lang";
@@ -379,6 +390,7 @@ app.use((req, res, next) => {
   res.locals.fbAppId = String(
     process.env.AP_SAFECACHE_FB_APP_ID || process.env.FB_APP_ID || ""
   ).trim();
+  res.locals.gaMeasurementId = GA_MEASUREMENT_ID;
 
   const params = new URLSearchParams();
   Object.entries(req.query).forEach(([k, v]) => {
