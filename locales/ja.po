@@ -296,6 +296,36 @@ msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラ
 msgid "problem_p3"
 msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
 
+msgid "ops_mirror_section_label"
+msgstr "いまのやり方"
+
+msgid "ops_mirror_title"
+msgstr "こんな運用になっていませんか？"
+
+msgid "ops_mirror_1"
+msgstr "Cloudflare の設定を直接変更している"
+
+msgid "ops_mirror_2"
+msgstr "問題が出たら原因を探す"
+
+msgid "ops_mirror_3"
+msgstr "元に戻すときは手作業"
+
+msgid "ops_mirror_4"
+msgstr "どの設定が原因か分からない"
+
+msgid "ops_then_label"
+msgstr "SafeCache なら"
+
+msgid "ops_then_1"
+msgstr "変更は履歴に残る"
+
+msgid "ops_then_2"
+msgstr "問題が出たら履歴から選ぶだけ"
+
+msgid "ops_then_3"
+msgstr "1クリックで復元"
+
 msgid "compare_section_label"
 msgstr "比較"
 

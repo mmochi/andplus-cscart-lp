@@ -982,6 +982,44 @@ body {
   max-width: 42rem;
 }
 
+.section--mirror {
+  padding-block: 2rem 2.25rem;
+}
+
+.problem-checklist--mirror {
+  margin-bottom: 1.25rem;
+}
+
+.ops-then {
+  margin-top: 0.25rem;
+  padding: 1rem 1.15rem 1.05rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(22, 101, 52, 0.22);
+  background: rgba(22, 101, 52, 0.06);
+}
+
+.ops-then__label {
+  margin: 0 0 0.55rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.ops-then__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.ops-then__list li {
+  margin-bottom: 0.35rem;
+}
+
+.ops-then__list li:last-child {
+  margin-bottom: 0;
+}
+
 .section--compare {
   padding-block: 2rem 2.25rem;
 }

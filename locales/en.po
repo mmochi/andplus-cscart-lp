@@ -296,6 +296,36 @@ msgstr "Without a fast path back to the last working state, people avoid touchin
 msgid "problem_p3"
 msgstr "What matters is stable behavior and a way to return to the last working state—not another dashboard that only talks about speed."
 
+msgid "ops_mirror_section_label"
+msgstr "How teams work today"
+
+msgid "ops_mirror_title"
+msgstr "Does this sound like your workflow?"
+
+msgid "ops_mirror_1"
+msgstr "You change Cloudflare settings directly"
+
+msgid "ops_mirror_2"
+msgstr "When something breaks, you start hunting for the cause"
+
+msgid "ops_mirror_3"
+msgstr "Rolling back means redoing work by hand"
+
+msgid "ops_mirror_4"
+msgstr "You never know which setting was actually to blame"
+
+msgid "ops_then_label"
+msgstr "With SafeCache"
+
+msgid "ops_then_1"
+msgstr "Changes land in history automatically"
+
+msgid "ops_then_2"
+msgstr "Pick the snapshot when things go wrong"
+
+msgid "ops_then_3"
+msgstr "Restore in one click"
+
 msgid "compare_section_label"
 msgstr "Compare"
 
