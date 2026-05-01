@@ -6,7 +6,7 @@ msgid "page_title"
 msgstr "AP SafeCache — Roll back Cloudflare rules from CS-Cart (Pro)"
 
 msgid "meta_description"
-msgstr "Recover broken Cloudflare rules from CS-Cart with generation history. Pro is the product; Free is read-only entry."
+msgstr "When one bad rule hits checkout and storefront, recover Cloudflare from CS-Cart with generation history. Pro is the product; Free is read-only entry."
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, backup, rollback, Page Rules, Cache Rules, ANDPLUS, add-on"
@@ -75,7 +75,7 @@ msgid "problem_checklist_intro"
 msgstr "Sound familiar?"
 
 msgid "problem_checklist_1"
-msgstr "A single Cloudflare rule can unexpectedly affect checkout, APIs, and the admin UI."
+msgstr "A single Cloudflare rule can unexpectedly hit checkout, APIs, and the admin—and break orders and cart behavior."
 
 msgid "problem_checklist_2"
 msgstr "During an incident you want to return to the last working state—but you cannot tell what changed in the dashboard."
@@ -153,7 +153,7 @@ msgid "story_title"
 msgstr "From change to recovery"
 
 msgid "story_lead"
-msgstr "We care about the outage window—not vanity convenience on a calm day."
+msgstr "We optimize for the outage window—getting back to revenue-safe behavior before things spread."
 
 msgid "story_flow_aria"
 msgstr "Recovery steps"
@@ -162,10 +162,10 @@ msgid "story_step_1"
 msgstr "Change settings"
 
 msgid "story_step_2"
-msgstr "It breaks"
+msgstr "Orders & storefront impact"
 
 msgid "story_step_3"
-msgstr "Restore"
+msgstr "Restore from history"
 
 msgid "story_step_4"
 msgstr "Investigate"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "Broken"
 
 msgid "story_history_desc_bad"
-msgstr "Cart won’t update ⚠"
+msgstr "Cart won’t update ⚠ (revenue impact)"
 
 msgid "story_history_target_badge"
 msgstr "Restore to this"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ Roll back before this state"
 
 msgid "story_history_result_line"
-msgstr "Restored · cart back to normal"
+msgstr "Restored · orders, storefront, and cart back to normal"
 
 msgid "story_screens_hint"
 msgstr "See the real history UI →"
@@ -219,7 +219,7 @@ msgid "pro_value_title"
 msgstr "History is the face of the product"
 
 msgid "pro_value_lead"
-msgstr "The backup list and generations are the spine—that’s where rollback lives."
+msgstr "The backup list and generations are the spine—that’s where you roll back and stop an outage from spreading."
 
 msgid "plan_cf_note"
 msgstr "Rules are read via the API, so the storefront runs behind Cloudflare (proxied)."
@@ -249,7 +249,7 @@ msgid "hero_title_line2"
 msgstr "break them—roll them back."
 
 msgid "hero_subtitle"
-msgstr "Not another cache toy—insurance when production tilts. Pro restores known-good rules from CS-Cart."
+msgstr "Not another cache toy—insurance when one bad line hits orders and the storefront. Roll known-good rules back from CS-Cart; Pro is the full path."
 
 msgid "hero_cta_primary"
 msgstr "Start Pro"
@@ -267,7 +267,7 @@ msgid "problem_p1"
 msgstr "Page Rules and Cache Rules are powerful, but mistakes can hit checkout, APIs, and the admin in one shot."
 
 msgid "problem_p2"
-msgstr "Without a fast path back to the last working state, people avoid touching Cloudflare during an outage—and recovery slows down."
+msgstr "Without a fast path back to the last working state, people avoid touching Cloudflare during an outage—and slow rollback stacks revenue and trust damage."
 
 msgid "problem_p3"
 msgstr "What matters is stable behavior and a way to return to the last working state—not another dashboard that only talks about speed."
@@ -282,7 +282,7 @@ msgid "solution_p1"
 msgstr "On Pro, Page Rules and Cache Rules are stored separately, and a new history entry is added only when the live configuration actually changes—so you always have a path back to the last working state."
 
 msgid "solution_p2"
-msgstr "During an incident, restore from a saved snapshot instead of guessing which line you changed in the Cloudflare UI."
+msgstr "During an incident, restore from a saved snapshot instead of guessing which line you changed in the Cloudflare UI—then realign checkout and the storefront and debug calmly."
 
 msgid "pro_disclaimer"
 msgstr "Free covers fetch, review, and diff. Backups, rollback, and applying changes to Cloudflare are Pro."

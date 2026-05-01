@@ -6,7 +6,7 @@ msgid "page_title"
 msgstr "AP SafeCache — Cloudflare の設定を、壊しても戻せる（Pro）"
 
 msgid "meta_description"
-msgstr "事故った Cloudflare 設定を CS-Cart から世代履歴で復旧。月額 Pro。無料は取得・差分のみの入口。"
+msgstr "一行のミスが注文・表示に跳ねうる Cloudflare を、CS-Cart から世代履歴で復旧。月額 Pro。無料は取得・差分のみの入口。"
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
@@ -75,7 +75,7 @@ msgid "problem_checklist_intro"
 msgstr "こんな不安はありませんか？"
 
 msgid "problem_checklist_1"
-msgstr "Cloudflare のルールを少し変えただけで、チェックアウトや API・管理画面まで想定外に効いてしまう"
+msgstr "Cloudflare のルールを少し変えただけで、チェックアウトや API・管理画面まで想定外に効き、注文やカートにまで被害が出ることがある"
 
 msgid "problem_checklist_2"
 msgstr "トラブル中に「さっきまで動いていた状態」に戻したいが、ダッシュボードのどこを直したか追えない"
@@ -153,7 +153,7 @@ msgid "story_title"
 msgstr "設定変更から復旧まで"
 
 msgid "story_lead"
-msgstr "正常運用の便利さより、異常時に間に合うか。SafeCache は後者です。"
+msgstr "便利さより、詰んだときに間に合うか。SafeCache は、売上が止まる前に「動いていた状態」へ戻すための道具です。"
 
 msgid "story_flow_aria"
 msgstr "復旧までの流れ"
@@ -162,10 +162,10 @@ msgid "story_step_1"
 msgstr "設定変更"
 
 msgid "story_step_2"
-msgstr "壊れる"
+msgstr "注文・表示に影響"
 
 msgid "story_step_3"
-msgstr "戻せる"
+msgstr "履歴から復元"
 
 msgid "story_step_4"
 msgstr "調べる"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "異常"
 
 msgid "story_history_desc_bad"
-msgstr "カートが更新されない ⚠"
+msgstr "カートが更新されない（売上に影響）⚠"
 
 msgid "story_history_target_badge"
 msgstr "戻す対象"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ この状態の前に戻す"
 
 msgid "story_history_result_line"
-msgstr "復元完了 · カートは正常に復帰"
+msgstr "復元完了 · 注文・表示・カートは正常に復帰"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"
@@ -219,7 +219,7 @@ msgid "pro_value_title"
 msgstr "プロダクトの顔は「履歴」"
 
 msgid "pro_value_lead"
-msgstr "バックアップ一覧と世代が中心。ここから戻せます。"
+msgstr "バックアップ一覧と世代が中心。ここから戻して、詰んだ現場を一度で止められます。"
 
 msgid "plan_cf_note"
 msgstr "ルールは API で読むため、ドメインを Cloudflare 経由（プロキシ）で運用している店舗が対象です。"
@@ -249,7 +249,7 @@ msgid "hero_title_line2"
 msgstr "壊しても戻せます。"
 
 msgid "hero_subtitle"
-msgstr "キャッシュ管理ツールではなく、事故ったときに「動いていた状態」へ戻す保険です。本命は月額 Pro。"
+msgstr "キャッシュの便利ツールではなく、一行のミスが注文・表示に跳ねうる前提の保険です。事故ったときに「動いていた状態」へ戻すのが本命（月額 Pro）。"
 
 msgid "hero_cta_primary"
 msgstr "Pro を始める"
@@ -267,7 +267,7 @@ msgid "problem_p1"
 msgstr "Cloudflare の Page Rules と Cache Rules は便利ですが、設定を誤るとチェックアウトや API、管理画面にまで影響することがあります。"
 
 msgid "problem_p2"
-msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラブル中は Cloudflare を触りづらくなり、復旧が遅れがちです。"
+msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラブル中は Cloudflare を触りづらくなり、復旧が遅れて売上や信用への被害が積み上がりがちです。"
 
 msgid "problem_p3"
 msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
@@ -282,7 +282,7 @@ msgid "solution_p1"
 msgstr "Pro では Page Rules と Cache Rules を別々に保存し、前回から内容が変わったときだけ履歴に追加します。いつでも「動いていた状態」に戻す道を残します。"
 
 msgid "solution_p2"
-msgstr "障害時は、ダッシュボードのどの項目を直したか当てずっぽうにせず、保存しておいた「動いていた状態」へ戻せます。"
+msgstr "障害時は、ダッシュボードのどの項目を直したか当てずっぽうにせず、保存しておいた「動いていた状態」へ戻せます。戻したあとは注文フローと表示を揃えたうえで、落ち着いて原因を追えます。"
 
 msgid "pro_disclaimer"
 msgstr "無料版はルールの取得・内容確認・差分が中心です。バックアップ・ロールバック・Cloudflare への反映は Pro。"
