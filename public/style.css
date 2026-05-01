@@ -987,7 +987,17 @@ body {
 }
 
 .problem-checklist--mirror {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.ops-mirror-footer {
+  margin: 0 0 1.15rem;
+  padding: 0.65rem 0 0;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
 }
 
 .ops-then {

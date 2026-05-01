@@ -306,13 +306,16 @@ msgid "ops_mirror_1"
 msgstr "You change Cloudflare settings directly"
 
 msgid "ops_mirror_2"
-msgstr "When something breaks, you start hunting for the cause"
+msgstr "Every incident starts with detective work"
 
 msgid "ops_mirror_3"
 msgstr "Rolling back means redoing work by hand"
 
 msgid "ops_mirror_4"
-msgstr "You never know which setting was actually to blame"
+msgstr "You can’t tell which change actually caused the impact"
+
+msgid "ops_mirror_footer"
+msgstr "Keeping that workflow is risky."
 
 msgid "ops_then_label"
 msgstr "With SafeCache"

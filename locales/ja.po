@@ -306,13 +306,16 @@ msgid "ops_mirror_1"
 msgstr "Cloudflare の設定を直接変更している"
 
 msgid "ops_mirror_2"
-msgstr "問題が出たら原因を探す"
+msgstr "問題が出たら原因を探すところから始まる"
 
 msgid "ops_mirror_3"
 msgstr "元に戻すときは手作業"
 
 msgid "ops_mirror_4"
-msgstr "どの設定が原因か分からない"
+msgstr "どの変更が影響したのか分からない"
+
+msgid "ops_mirror_footer"
+msgstr "その状態のまま運用を続けるのは危険です。"
 
 msgid "ops_then_label"
 msgstr "SafeCache なら"
