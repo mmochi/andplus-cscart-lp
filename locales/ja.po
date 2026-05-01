@@ -270,7 +270,7 @@ msgid "hero_title"
 msgstr "Cloudflare の設定、壊しても戻せます。"
 
 msgid "hero_subtitle"
-msgstr "キャッシュの便利ツールではなく、一行のミスが注文・表示に跳ねうる前提の保険です。事故ったときに「動いていた状態」へ戻すのが本命（月額 Pro）。"
+msgstr "キャッシュの便利ツールではなく、一行のミスが注文・表示に影響する前提の保険です。事故ったときに「動いていた状態」へ戻すためのアドオンです（Proプラン）。"
 
 msgid "hero_cta_primary"
 msgstr "Pro を始める"
