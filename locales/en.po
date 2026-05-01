@@ -300,22 +300,22 @@ msgid "ops_mirror_section_label"
 msgstr "How teams work today"
 
 msgid "ops_mirror_title"
-msgstr "Does this sound like your workflow?"
+msgstr "Still running the shop like this?"
 
 msgid "ops_mirror_1"
-msgstr "You change Cloudflare settings directly"
+msgstr "You change Cloudflare settings directly in the dashboard"
 
 msgid "ops_mirror_2"
-msgstr "Every incident starts with detective work"
+msgstr "You only investigate after something breaks"
 
 msgid "ops_mirror_3"
-msgstr "Rolling back means redoing work by hand"
+msgstr "Recoveries are manual do-overs"
 
 msgid "ops_mirror_4"
-msgstr "You can’t tell which change actually caused the impact"
+msgstr "You keep shipping without knowing which change hurt you"
 
 msgid "ops_mirror_footer"
-msgstr "Keeping that workflow is risky."
+msgstr "Honestly, touching prod that way for long is dangerous."
 
 msgid "ops_then_label"
 msgstr "With SafeCache"

@@ -300,22 +300,22 @@ msgid "ops_mirror_section_label"
 msgstr "いまのやり方"
 
 msgid "ops_mirror_title"
-msgstr "こんな運用になっていませんか？"
+msgstr "こんな運用、続けていませんか？"
 
 msgid "ops_mirror_1"
 msgstr "Cloudflare の設定を直接変更している"
 
 msgid "ops_mirror_2"
-msgstr "問題が出たら原因を探すところから始まる"
+msgstr "問題が出てから原因を調べている"
 
 msgid "ops_mirror_3"
-msgstr "元に戻すときは手作業"
+msgstr "元に戻すときは手作業でやり直している"
 
 msgid "ops_mirror_4"
-msgstr "どの変更が影響したのか分からない"
+msgstr "どの変更が影響したのか分からないまま運用している"
 
 msgid "ops_mirror_footer"
-msgstr "その状態のまま運用を続けるのは危険です。"
+msgstr "その状態のまま触り続けるのは、正直かなり危険です。"
 
 msgid "ops_then_label"
 msgstr "SafeCache なら"

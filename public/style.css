@@ -986,6 +986,12 @@ body {
   padding-block: 2rem 2.25rem;
 }
 
+.section--mirror-below-hero {
+  padding-top: 1.75rem;
+  padding-bottom: 2.25rem;
+  border-top: 1px solid rgba(216, 216, 222, 0.75);
+}
+
 .problem-checklist--mirror {
   margin-bottom: 0.85rem;
 }
