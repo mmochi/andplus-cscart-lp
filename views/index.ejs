@@ -233,9 +233,16 @@
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
-                  <span class="story-flow__icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M9 7h6M15 17h4" /></svg
-                  ></span>
+                  <span class="story-flow__viz story-flow__viz--rules" aria-hidden="true">
+                    <span class="story-mock story-mock--rules">
+                      <span class="story-mock__chrome"></span>
+                      <span class="story-mock__rules-body">
+                        <span class="story-mock__rule-row"><span class="story-mock__knob"></span><span class="story-mock__rail"><span class="story-mock__thumb"></span></span></span>
+                        <span class="story-mock__rule-row"><span class="story-mock__knob"></span><span class="story-mock__rail story-mock__rail--alt"><span class="story-mock__thumb"></span></span></span>
+                        <span class="story-mock__rule-row story-mock__rule-row--short"><span class="story-mock__chip"></span></span>
+                      </span>
+                    </span>
+                  </span>
                   <span class="story-flow__text"><%= __('story_step_1') %></span>
                 </span>
               </div>
@@ -244,9 +251,20 @@
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
-                  <span class="story-flow__icon story-flow__icon--alert" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4" /><path d="M12 17h.01" /><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /></svg
-                  ></span>
+                  <span class="story-flow__viz story-flow__viz--broken" aria-hidden="true">
+                    <span class="story-mock story-mock--broken">
+                      <span class="story-mock__broken-frame">
+                        <span class="story-mock__broken-grid">
+                          <span class="story-mock__broken-cell"></span>
+                          <span class="story-mock__broken-cell"></span>
+                          <span class="story-mock__broken-cell story-mock__broken-cell--blank"></span>
+                          <span class="story-mock__broken-cell story-mock__broken-cell--blank"></span>
+                        </span>
+                        <span class="story-mock__broken-strip"></span>
+                      </span>
+                      <span class="story-mock__broken-glitch"></span>
+                    </span>
+                  </span>
                   <span class="story-flow__text"><%= __('story_step_2') %></span>
                 </span>
               </div>
@@ -255,9 +273,19 @@
             <div class="story-flow__slot">
               <div class="story-flow__card story-flow__card--rollback">
                 <span class="story-flow__card-inner">
-                  <span class="story-flow__icon story-flow__icon--rollback" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></svg
-                  ></span>
+                  <span class="story-flow__viz story-flow__viz--history" aria-hidden="true">
+                    <span class="story-mock story-mock--history">
+                      <img
+                        class="story-mock__history-img"
+                        src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
+                        width="2082"
+                        height="1542"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                  </span>
                   <span class="story-flow__text"><%= __('story_step_3') %></span>
                 </span>
               </div>
@@ -266,9 +294,26 @@
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
-                  <span class="story-flow__icon story-flow__icon--later" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg
-                  ></span>
+                  <span class="story-flow__viz story-flow__viz--inspect" aria-hidden="true">
+                    <span class="story-mock story-mock--inspect">
+                      <span class="story-mock__inspect-split">
+                        <span class="story-mock__inspect-pane story-mock__inspect-pane--before">
+                          <span class="story-mock__inspect-dot"></span>
+                          <span class="story-mock__inspect-line"></span>
+                          <span class="story-mock__inspect-line story-mock__inspect-line--short"></span>
+                        </span>
+                        <span class="story-mock__inspect-pane story-mock__inspect-pane--after">
+                          <span class="story-mock__inspect-check" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                          </span>
+                          <span class="story-mock__inspect-line"></span>
+                        </span>
+                      </span>
+                      <span class="story-mock__inspect-loupe" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+                      </span>
+                    </span>
+                  </span>
                   <span class="story-flow__text"><%= __('story_step_4') %></span>
                 </span>
               </div>
