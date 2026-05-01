@@ -92,7 +92,7 @@
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
             <a class="nav__link" href="#problem"><%= __('nav_problem') %></a>
             <a class="nav__link" href="#story"><%= __('nav_story') %></a>
-            <a class="nav__link" href="#screens"><%= __('nav_screens_primary') %></a>
+            <a class="nav__link" href="#story"><%= __('nav_screens_primary') %></a>
             <a class="nav__link" href="#pro-value"><%= __('nav_pro_value') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
             <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
@@ -198,38 +198,12 @@
         </div>
       </section>
 
-      <section id="problem" class="section section--alt" aria-labelledby="problem-heading">
-        <div class="container">
-          <p class="section-label"><%= __('problem_section_title') %></p>
-          <h2 id="problem-heading" class="section-title"><%= __('problem_title') %></h2>
-          <p class="problem-checklist-intro"><%= __('problem_checklist_intro') %></p>
-          <ul class="problem-checklist">
-            <li><%= __('problem_checklist_1') %></li>
-            <li><%= __('problem_checklist_2') %></li>
-            <li><%= __('problem_checklist_3') %></li>
-          </ul>
-          <p class="prose"><%= __('problem_p1') %></p>
-          <p class="prose"><%= __('problem_p2') %></p>
-          <p class="prose"><%= __('problem_p3') %></p>
-        </div>
-      </section>
-
-      <section id="solution" class="section" aria-labelledby="solution-heading">
-        <div class="container">
-          <p class="section-label"><%= __('solution_section_title') %></p>
-          <h2 id="solution-heading" class="section-title"><%= __('solution_title') %></h2>
-          <p class="prose"><%= __('solution_p1') %></p>
-          <p class="prose"><%= __('solution_p2') %></p>
-          <p class="pro-disclaimer"><%= __('pro_disclaimer') %></p>
-        </div>
-      </section>
-
       <section id="story" class="section section--alt" aria-labelledby="story-heading">
         <div class="container">
           <p class="section-label"><%= __('story_section_label') %></p>
           <h2 id="story-heading" class="section-title"><%= __('story_title') %></h2>
           <p class="lead lead--tight"><%= __('story_lead') %></p>
-          <div class="story-flow" role="region" aria-label="<%= __('story_flow_aria') %>">
+          <div class="story-flow story-flow--stacked" role="region" aria-label="<%= __('story_flow_aria') %>">
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
@@ -247,7 +221,7 @@
                 </span>
               </div>
             </div>
-            <div class="story-flow__sep" aria-hidden="true"><span class="story-flow__arrow">→</span></div>
+            <div class="story-flow__sep story-flow__sep--between" aria-hidden="true"><span class="story-flow__arrow">↓</span></div>
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
@@ -269,7 +243,7 @@
                 </span>
               </div>
             </div>
-            <div class="story-flow__sep" aria-hidden="true"><span class="story-flow__arrow">→</span></div>
+            <div class="story-flow__sep story-flow__sep--between" aria-hidden="true"><span class="story-flow__arrow">↓</span></div>
             <div class="story-flow__slot">
               <div class="story-flow__card story-flow__card--rollback">
                 <span class="story-flow__card-inner">
@@ -290,7 +264,7 @@
                 </span>
               </div>
             </div>
-            <div class="story-flow__sep" aria-hidden="true"><span class="story-flow__arrow">→</span></div>
+            <div class="story-flow__sep story-flow__sep--between" aria-hidden="true"><span class="story-flow__arrow">↓</span></div>
             <div class="story-flow__slot">
               <div class="story-flow__card">
                 <span class="story-flow__card-inner">
@@ -319,17 +293,13 @@
               </div>
             </div>
           </div>
-          <p class="story-screens-hint"><a class="story-screens-hint__link" href="#screens"><%= __('story_screens_hint') %></a></p>
-        </div>
-      </section>
 
-      <section id="screens" class="section" aria-labelledby="screens-heading">
-        <div class="container">
-          <p class="section-label"><%= __('screens_section_title') %></p>
-          <h2 id="screens-heading" class="section-title"><%= __('screens_title') %></h2>
-          <p class="lead lead--tight"><%= __('screens_intro') %></p>
-          <p class="prose prose--note"><%= __('screens_note') %></p>
-          <div class="screens-gallery" role="region" aria-label="<%= __('screens_gallery_aria') %>">
+          <div id="screens" class="story-gallery-wrap story-gallery-wrap--hidden" aria-labelledby="screens-heading" aria-hidden="true">
+            <p class="section-label"><%= __('screens_section_title') %></p>
+            <h3 id="screens-heading" class="section-title section-title--fuse"><%= __('screens_title') %></h3>
+            <p class="lead lead--tight"><%= __('screens_intro') %></p>
+            <p class="prose prose--note"><%= __('screens_note') %></p>
+            <div class="screens-gallery screens-gallery--fused" role="region" aria-label="<%= __('screens_gallery_aria') %>">
             <div class="screens-expand" id="screens-shot-backups">
               <label class="screens-expand__card">
                 <input type="checkbox" class="screens-expand__state" />
@@ -415,10 +385,37 @@
               </label>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
-      <section id="pro-value" class="section section--alt" aria-labelledby="pro-value-heading">
+      <section id="problem" class="section" aria-labelledby="problem-heading">
+        <div class="container">
+          <p class="section-label"><%= __('problem_section_title') %></p>
+          <h2 id="problem-heading" class="section-title"><%= __('problem_title') %></h2>
+          <p class="problem-checklist-intro"><%= __('problem_checklist_intro') %></p>
+          <ul class="problem-checklist">
+            <li><%= __('problem_checklist_1') %></li>
+            <li><%= __('problem_checklist_2') %></li>
+            <li><%= __('problem_checklist_3') %></li>
+          </ul>
+          <p class="prose"><%= __('problem_p1') %></p>
+          <p class="prose"><%= __('problem_p2') %></p>
+          <p class="prose"><%= __('problem_p3') %></p>
+        </div>
+      </section>
+
+      <section id="solution" class="section section--alt" aria-labelledby="solution-heading">
+        <div class="container">
+          <p class="section-label"><%= __('solution_section_title') %></p>
+          <h2 id="solution-heading" class="section-title"><%= __('solution_title') %></h2>
+          <p class="prose"><%= __('solution_p1') %></p>
+          <p class="prose"><%= __('solution_p2') %></p>
+          <p class="pro-disclaimer"><%= __('pro_disclaimer') %></p>
+        </div>
+      </section>
+
+      <section id="pro-value" class="section" aria-labelledby="pro-value-heading">
         <div class="container">
           <p class="section-label"><%= __('pro_value_section_label') %></p>
           <h2 id="pro-value-heading" class="section-title"><%= __('pro_value_title') %></h2>
