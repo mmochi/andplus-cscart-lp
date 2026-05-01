@@ -59,6 +59,9 @@ msgstr "機能"
 msgid "nav_pricing"
 msgstr "料金"
 
+msgid "nav_problem"
+msgstr "あるある"
+
 msgid "nav_story"
 msgstr "復旧の流れ"
 

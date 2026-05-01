@@ -59,6 +59,9 @@ msgstr "Features"
 msgid "nav_pricing"
 msgstr "Pricing"
 
+msgid "nav_problem"
+msgstr "Pain points"
+
 msgid "nav_story"
 msgstr "Recovery flow"
 
