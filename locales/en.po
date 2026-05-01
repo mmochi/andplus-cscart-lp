@@ -266,11 +266,8 @@ msgstr "CS-Cart · Cloudflare"
 msgid "hero_audience"
 msgstr "Built for CS-Cart stores using Cloudflare"
 
-msgid "hero_title_line1"
-msgstr "Cloudflare settings,"
-
-msgid "hero_title_line2"
-msgstr "break them—roll them back."
+msgid "hero_title"
+msgstr "Cloudflare settings—break them, roll them back."
 
 msgid "hero_subtitle"
 msgstr "Not another cache toy—insurance when one bad line hits orders and the storefront. Roll known-good rules back from CS-Cart; Pro is the full path."

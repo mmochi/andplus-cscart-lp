@@ -174,7 +174,7 @@ msgid "story_title"
 msgstr "Cache Rule 変更から復旧まで"
 
 msgid "story_lead"
-msgstr "ドキュメントの話じゃなく、自分の店で起きたときに間に合うか。戻すだけでなく、復元後に注文・表示がビジネスとして正常に戻るところまで。"
+msgstr "壊れたときにすぐ戻せるかが重要です。注文も表示も、何もなかった状態に戻せます。"
 
 msgid "story_flow_aria"
 msgstr "自分の店での復旧の流れ"
@@ -266,11 +266,8 @@ msgstr "CS-Cart · Cloudflare"
 msgid "hero_audience"
 msgstr "CS-Cart × Cloudflare を運用している方向け"
 
-msgid "hero_title_line1"
-msgstr "Cloudflare の設定、"
-
-msgid "hero_title_line2"
-msgstr "壊しても戻せます。"
+msgid "hero_title"
+msgstr "Cloudflare の設定、壊しても戻せます。"
 
 msgid "hero_subtitle"
 msgstr "キャッシュの便利ツールではなく、一行のミスが注文・表示に跳ねうる前提の保険です。事故ったときに「動いていた状態」へ戻すのが本命（月額 Pro）。"
@@ -447,7 +444,7 @@ msgid "visibility_section_title"
 msgstr "変更の把握"
 
 msgid "visibility_title"
-msgstr "設定変更を「勝手に」見逃さない"
+msgstr "「勝手に変更された設定」を見逃さない"
 
 msgid "visibility_p1"
 msgstr "差分と履歴で、Cloudflare 上で起きた変化を追いやすくします。ダッシュボードだけでは拾いにくい、意図しない変更にも気づきやすくなります。"

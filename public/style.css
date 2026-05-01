@@ -680,10 +680,6 @@ body {
   line-height: 1.15;
 }
 
-.hero-title__line {
-  display: block;
-}
-
 .lead {
   margin: 0 0 1.5rem;
   font-size: 1.1rem;
