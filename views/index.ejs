@@ -443,6 +443,47 @@
         </div>
       </section>
 
+      <section id="compare" class="section section--compare" aria-labelledby="compare-heading">
+        <div class="container">
+          <p class="section-label"><%= __('compare_section_label') %></p>
+          <h2 id="compare-heading" class="section-title"><%= __('compare_title') %></h2>
+          <div class="compare-table-wrap" role="region" aria-label="<%= __('compare_region_aria') %>">
+            <table class="compare-table">
+              <caption class="visually-hidden"><%= __('compare_table_caption') %></caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="compare-table__corner"></th>
+                  <th scope="col" class="compare-table__col compare-table__col--legacy"><%= __('compare_col_legacy') %></th>
+                  <th scope="col" class="compare-table__col compare-table__col--sc"><%= __('compare_col_sc') %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= __('compare_row_change') %></th>
+                  <td><%= __('compare_legacy_change') %></td>
+                  <td><%= __('compare_sc_change') %></td>
+                </tr>
+                <tr>
+                  <th scope="row"><%= __('compare_row_incident') %></th>
+                  <td><%= __('compare_legacy_incident') %></td>
+                  <td><%= __('compare_sc_incident') %></td>
+                </tr>
+                <tr>
+                  <th scope="row"><%= __('compare_row_restore') %></th>
+                  <td><%= __('compare_legacy_restore') %></td>
+                  <td><%= __('compare_sc_restore') %></td>
+                </tr>
+                <tr>
+                  <th scope="row"><%= __('compare_row_peace') %></th>
+                  <td><%= __('compare_legacy_peace') %></td>
+                  <td><%= __('compare_sc_peace') %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <section id="solution" class="section section--alt" aria-labelledby="solution-heading">
         <div class="container">
           <p class="section-label"><%= __('solution_section_title') %></p>

@@ -296,6 +296,60 @@ msgstr "Without a fast path back to the last working state, people avoid touchin
 msgid "problem_p3"
 msgstr "What matters is stable behavior and a way to return to the last working state—not another dashboard that only talks about speed."
 
+msgid "compare_section_label"
+msgstr "Compare"
+
+msgid "compare_title"
+msgstr "Typical ops vs SafeCache"
+
+msgid "compare_region_aria"
+msgstr "Comparison of typical workflow vs SafeCache"
+
+msgid "compare_table_caption"
+msgstr "Side-by-side comparison table"
+
+msgid "compare_col_legacy"
+msgstr "Dashboard-only"
+
+msgid "compare_col_sc"
+msgstr "SafeCache"
+
+msgid "compare_row_change"
+msgstr "Making changes"
+
+msgid "compare_legacy_change"
+msgstr "Manual tweaks in the Cloudflare dashboard"
+
+msgid "compare_sc_change"
+msgstr "Drive rules from CS-Cart admin"
+
+msgid "compare_row_incident"
+msgstr "During an incident"
+
+msgid "compare_legacy_incident"
+msgstr "Start with detective work"
+
+msgid "compare_sc_incident"
+msgstr "Choose the prior snapshot"
+
+msgid "compare_row_restore"
+msgstr "Recovery"
+
+msgid "compare_legacy_restore"
+msgstr "Rebuild settings by hand"
+
+msgid "compare_sc_restore"
+msgstr "Restore in one click"
+
+msgid "compare_row_peace"
+msgstr "Confidence"
+
+msgid "compare_legacy_peace"
+msgstr "Hope nothing else breaks"
+
+msgid "compare_sc_peace"
+msgstr "Rollback is built into the workflow"
+
 msgid "solution_section_title"
 msgstr "Why SafeCache"
 

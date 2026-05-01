@@ -296,6 +296,60 @@ msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラ
 msgid "problem_p3"
 msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
 
+msgid "compare_section_label"
+msgstr "比較"
+
+msgid "compare_title"
+msgstr "従来の運用 vs SafeCache"
+
+msgid "compare_region_aria"
+msgstr "従来の運用と SafeCache の比較"
+
+msgid "compare_table_caption"
+msgstr "従来の運用と SafeCache の比較表"
+
+msgid "compare_col_legacy"
+msgstr "従来の運用"
+
+msgid "compare_col_sc"
+msgstr "SafeCache"
+
+msgid "compare_row_change"
+msgstr "変更"
+
+msgid "compare_legacy_change"
+msgstr "ダッシュボードで手動調整"
+
+msgid "compare_sc_change"
+msgstr "CS-Cart 管理画面から"
+
+msgid "compare_row_incident"
+msgstr "トラブル時"
+
+msgid "compare_legacy_incident"
+msgstr "原因調査から"
+
+msgid "compare_sc_incident"
+msgstr "履歴から選択"
+
+msgid "compare_row_restore"
+msgstr "復旧"
+
+msgid "compare_legacy_restore"
+msgstr "手作業で再設定"
+
+msgid "compare_sc_restore"
+msgstr "1クリックで復元"
+
+msgid "compare_row_peace"
+msgstr "安心感"
+
+msgid "compare_legacy_peace"
+msgstr "不安が残る"
+
+msgid "compare_sc_peace"
+msgstr "戻せる前提で運用"
+
 msgid "solution_section_title"
 msgstr "だから SafeCache"
 
