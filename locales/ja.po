@@ -273,7 +273,7 @@ msgid "hero_subtitle"
 msgstr "キャッシュの便利ツールではなく、一行のミスが注文・表示に影響する前提の保険です。事故ったときに「動いていた状態」へ戻すためのアドオンです（Proプラン）。"
 
 msgid "hero_cta_primary"
-msgstr "Pro を始める"
+msgstr "Proプランで始める"
 
 msgid "hero_cta_secondary"
 msgstr "復旧の流れを見る"
