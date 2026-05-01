@@ -150,25 +150,25 @@ msgid "story_section_label"
 msgstr "Flow"
 
 msgid "story_title"
-msgstr "From change to recovery"
+msgstr "From a Cache Rule change to recovery"
 
 msgid "story_lead"
-msgstr "We optimize for the outage window—getting back to revenue-safe behavior before things spread."
+msgstr "Not docs—your storefront. When the listing goes empty, roll back to the moment before and stop the revenue leak."
 
 msgid "story_flow_aria"
-msgstr "Recovery steps"
+msgstr "Recovery flow for your store"
 
 msgid "story_step_1"
-msgstr "Change settings"
+msgstr "Change a Cache Rule"
 
 msgid "story_step_2"
-msgstr "Orders & storefront impact"
+msgstr "Listing empty (no sales)"
 
 msgid "story_step_3"
-msgstr "Restore from history"
+msgstr "One-click restore from history"
 
 msgid "story_step_4"
-msgstr "Investigate"
+msgstr "Investigate with calm"
 
 msgid "story_history_panel_title"
 msgstr "History"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "Broken"
 
 msgid "story_history_desc_bad"
-msgstr "Cart won’t update ⚠ (revenue impact)"
+msgstr "Product listing empty ⚠ (no sales)"
 
 msgid "story_history_target_badge"
 msgstr "Restore to this"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ Roll back before this state"
 
 msgid "story_history_result_line"
-msgstr "Restored · orders, storefront, and cart back to normal"
+msgstr "Restored · orders and storefront back to normal"
 
 msgid "story_screens_hint"
 msgstr "See the real history UI →"

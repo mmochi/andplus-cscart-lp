@@ -150,25 +150,25 @@ msgid "story_section_label"
 msgstr "流れ"
 
 msgid "story_title"
-msgstr "設定変更から復旧まで"
+msgstr "Cache Rule 変更から復旧まで"
 
 msgid "story_lead"
-msgstr "便利さより、詰んだときに間に合うか。SafeCache は、売上が止まる前に「動いていた状態」へ戻すための道具です。"
+msgstr "ドキュメントの話じゃなく、自分の店で起きたときに間に合うか。一覧が空でも、履歴から「その直前」へ戻して売上の穴を塞げます。"
 
 msgid "story_flow_aria"
-msgstr "復旧までの流れ"
+msgstr "自分の店での復旧の流れ"
 
 msgid "story_step_1"
-msgstr "設定変更"
+msgstr "Cache Rule 変更"
 
 msgid "story_step_2"
-msgstr "注文・表示に影響"
+msgstr "商品一覧が空（売れない）"
 
 msgid "story_step_3"
-msgstr "履歴から復元"
+msgstr "履歴から1クリック復元"
 
 msgid "story_step_4"
-msgstr "調べる"
+msgstr "落ち着いて原因を追う"
 
 msgid "story_history_panel_title"
 msgstr "履歴"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "異常"
 
 msgid "story_history_desc_bad"
-msgstr "カートが更新されない（売上に影響）⚠"
+msgstr "商品一覧が空 ⚠（売れない）"
 
 msgid "story_history_target_badge"
 msgstr "戻す対象"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ この状態の前に戻す"
 
 msgid "story_history_result_line"
-msgstr "復元完了 · 注文・表示・カートは正常に復帰"
+msgstr "復元完了 · 注文・表示ともに正常に復帰"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"
