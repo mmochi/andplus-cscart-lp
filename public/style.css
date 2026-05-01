@@ -517,10 +517,6 @@ body {
   padding: 0 1.25rem;
 }
 
-.container--narrow {
-  max-width: 720px;
-}
-
 .section {
   padding: 4rem 0;
   scroll-margin-top: calc(var(--sticky-top-h) + 0.5rem);
@@ -617,6 +613,21 @@ body {
   vertical-align: middle;
 }
 
+.hero-visual--photo {
+  overflow: hidden;
+}
+
+.hero-visual--photo::after {
+  display: none;
+}
+
+.hero-visual__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section--hero::before {
     background-image: radial-gradient(ellipse 55% 45% at 85% 35%, rgba(45, 45, 51, 0.06) 0%, transparent 55%);
@@ -664,7 +675,6 @@ body {
   margin: 0 0 1.5rem;
   font-size: 1.1rem;
   color: var(--muted);
-  max-width: 40rem;
   line-height: 1.65;
 }
 
@@ -785,35 +795,133 @@ body {
   border: 0;
 }
 
-.section--product-shot {
-  padding-top: 0;
-  padding-bottom: 3rem;
-  scroll-margin-top: calc(var(--sticky-top-h) + 0.5rem);
-}
-
-.lp-shot {
-  margin: 0;
-}
-
-.lp-shot--hero .lp-shot__img {
+.screens-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
   width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  display: block;
-  height: auto;
+  max-width: 100%;
+}
+
+.screens-expand {
+  width: 100%;
+  max-width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #fff;
-  box-shadow: 0 16px 48px rgba(26, 26, 28, 0.08);
+  box-shadow: 0 8px 28px rgba(26, 26, 28, 0.06);
+  overflow: hidden;
 }
 
-.lp-shot__cap {
-  margin: 0.75rem auto 0;
-  max-width: 42rem;
-  font-size: 0.85rem;
+/**
+ * 折りたたみ: checkbox + `<label class="screens-expand__card">` で全体をクリック可能にする。
+ * `for` + `clip` 付きの離れた checkbox は一部ブラウザでトグルが効かないことがある。
+ * 画像の描画高が max-height より短い場合はクリップされず、見た目の変化はヒント文言の切り替えが目印になる。
+ */
+.screens-expand__card {
+  display: block;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.screens-expand__state {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+.screens-expand__frame {
+  overflow: hidden;
+  position: relative;
+  /* 折りたたみ時プレビュー高（全体表示は checkbox チェック後） */
+  max-height: min(24vh, 13rem);
+  background: #f6f6f8;
+  transition: max-height 0.2s ease;
+}
+
+/* 畳んでいるとき下端へフェード（続きがあることを示す） */
+.screens-expand__state:not(:checked) ~ .screens-expand__frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(4.5rem, 52%);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 246, 248, 0) 0%,
+    rgba(246, 246, 248, 0.45) 38%,
+    rgba(246, 246, 248, 0.92) 72%,
+    rgba(246, 246, 248, 1) 100%
+  );
+}
+
+.screens-expand__state:checked ~ .screens-expand__frame::after {
+  content: none;
+}
+
+.screens-expand__state:checked ~ .screens-expand__frame {
+  max-height: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screens-expand__frame {
+    transition: none;
+  }
+}
+
+.screens-expand__img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.screens-expand__caption {
+  display: block;
+  margin: 0;
+  padding: 0.75rem 1rem 0;
+  font-size: 0.88rem;
   color: var(--muted);
-  text-align: center;
   line-height: 1.55;
+  text-align: left;
+}
+
+.screens-expand__toggle-line {
+  display: block;
+  margin: 0;
+  padding: 0.5rem 1rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #622700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.screens-expand__state:focus-visible ~ .screens-expand__toggle-line {
+  outline: 2px solid #622700;
+  outline-offset: 2px;
+}
+
+.screens-expand__hint {
+  display: none;
+}
+
+.screens-expand__state:not(:checked) ~ .screens-expand__toggle-line .screens-expand__hint--more {
+  display: inline;
+}
+
+.screens-expand__state:checked ~ .screens-expand__toggle-line .screens-expand__hint--less {
+  display: inline;
 }
 
 .problem-checklist-intro {
@@ -883,6 +991,63 @@ body {
   font-size: 0.92rem;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.plan-compare {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .plan-compare {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.plan-compare__col {
+  padding: 1.25rem 1.35rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.plan-compare__col--free {
+  border-left: 4px solid rgba(98, 39, 0, 0.35);
+}
+
+.plan-compare__col--pro {
+  border-left: 4px solid #c9b400;
+  background: linear-gradient(180deg, #fffef5 0%, #fff 42%);
+}
+
+.plan-compare__head {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.plan-compare__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.plan-compare__list li {
+  margin-bottom: 0.4rem;
+}
+
+.plan-compare__list li:last-child {
+  margin-bottom: 0;
+}
+
+.plan-cf-note {
+  margin-top: 1.25rem;
 }
 
 .feature-grid {

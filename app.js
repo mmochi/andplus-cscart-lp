@@ -2,9 +2,10 @@
  * AP SafeCache marketing LP — Express + EJS + gettext (.po)
  *
  * 環境変数の読み方:
- * 1) CSCART_AP_SAFECACHE_ENV、2) ../common/cscart-ap-safecache_lp.env、3) ../common/cscart-ap-safecache.env
- *    のうち最初に存在するファイルを1つ読む（clone 単体では common が無いことがある）。
- * 4) このディレクトリの .env があれば必ず読み、さらに上書き（override）。
+ * 1) CSCART_AP_SAFECACHE_ENV（単体）
+ * 2) それ以外は ../common/cscart-ap-safecache.env → cscart-ap-safecache_lp.env の順に存在するものだけ読み、
+ *    後から読んだキーが上書き（LP 用で PORT/BASE_PATH だけ共通 env に置く構成でもよい）
+ * 4) このディレクトリの .env があれば必ず読み、さらに上書き（override: true）。
  * dotenv は既定で process.env を上書きしない。systemd が空の BASE_PATH 等を先に渡すと
  * ファイルの値が効かないため、共通 env / local .env はどちらも override: true で読む。
  *
@@ -38,23 +39,27 @@ const dotenv = require("dotenv");
 const ANDPLUS_CORPORATE_ORIGIN = "https://www.andplus.co.jp";
 
 (function loadEnvFile() {
-  const chain = [];
   const explicit = process.env.CSCART_AP_SAFECACHE_ENV;
   if (explicit && String(explicit).trim()) {
-    chain.push(path.resolve(String(explicit).trim()));
-  }
-  chain.push(path.join(__dirname, "..", "common", "cscart-ap-safecache_lp.env"));
-  chain.push(path.join(__dirname, "..", "common", "cscart-ap-safecache.env"));
-
-  let loaded = false;
-  for (const p of chain) {
+    const p = path.resolve(String(explicit).trim());
     if (fs.existsSync(p)) {
       dotenv.config({ path: p, override: true });
-      loaded = true;
       if (process.env.NODE_ENV !== "production") {
-        console.log(`[env] loaded ${p}`);
+        console.log(`[env] loaded ${p} (CSCART_AP_SAFECACHE_ENV)`);
       }
-      break;
+    }
+  } else {
+    const chain = [
+      path.join(__dirname, "..", "common", "cscart-ap-safecache.env"),
+      path.join(__dirname, "..", "common", "cscart-ap-safecache_lp.env"),
+    ];
+    for (const p of chain) {
+      if (fs.existsSync(p)) {
+        dotenv.config({ path: p, override: true });
+        if (process.env.NODE_ENV !== "production") {
+          console.log(`[env] loaded ${p}`);
+        }
+      }
     }
   }
 
@@ -99,8 +104,25 @@ function normalizePathPrefix(raw) {
   return s;
 }
 
-/** env の BASE_PATH（モジュール読み込み時点） */
-const PUBLIC_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
+/**
+ * env の BASE_PATH（起動時）。追加のプレフィックス配信用（本番 URL と異なるパスだけ置く用途）。
+ * apps.andplus.tech の実パスは下の LP_URL_PREFIX で env 無しでも必ずマウントする。
+ */
+const ENV_BASE_PATH = normalizePathPrefix(process.env.BASE_PATH || "");
+
+/** 公開 LP の既定 URL パス（静的・LP 別名は常にマウント。BASE_PATH 未設定でも有効） */
+const LP_URL_PREFIX = normalizePathPrefix(
+  process.env.AP_SAFECACHE_LP_URL_PREFIX || "/cscart/safecache"
+);
+
+/** static / 付随ルートを掛けるプレフィックス（重複除く） */
+const STATIC_ROUTE_PREFIXES = Array.from(
+  new Set(
+    [LP_URL_PREFIX, ENV_BASE_PATH].filter(
+      (p) => typeof p === "string" && p.length > 0
+    )
+  )
+);
 
 /** AP_SAFECACHE_OG_IMAGE_* 未設定時（`cscart/img` を /img で配信） */
 const DEFAULT_OG_IMAGE_REL_PATH_JA = "/img/safecache-og-ja.png";
@@ -111,9 +133,24 @@ const DEFAULT_OG_IMAGE_WIDTH = 1200;
 const DEFAULT_OG_IMAGE_HEIGHT = 630;
 
 /**
- * リクエストごとの公開パスプレフィックス。
- * 1) nginx の X-Forwarded-Prefix（推奨・共通 env に BASE_PATH が無くても動く）
- * 2) BASE_PATH 環境変数
+ * ブラウザが Node に直結しているローカル（リバプロ無し）。
+ * このとき env の BASE_PATH をリンクに使わない（/style.css のまま）。
+ */
+function isLocalDirectNodeAccess(req) {
+  const h = String(req.hostname || "").toLowerCase();
+  return (
+    h === "localhost" ||
+    h === "127.0.0.1" ||
+    h === "::1" ||
+    h.endsWith(".localhost")
+  );
+}
+
+/**
+ * リクエストごとの公開パスプレフィックス（HTML の basePath・canonical 等）。
+ * 1) nginx の X-Forwarded-Prefix（本番推奨）
+ * 2) 上記が無く、かつ localhost 直結でない → 環境変数 BASE_PATH
+ * 3) localhost 直結 → 常に ""（ルート）
  */
 function resolvePublicBasePath(req) {
   const rawHeader =
@@ -121,7 +158,10 @@ function resolvePublicBasePath(req) {
   if (String(rawHeader).trim() !== "") {
     return normalizePathPrefix(rawHeader);
   }
-  return PUBLIC_BASE_PATH;
+  if (isLocalDirectNodeAccess(req)) {
+    return "";
+  }
+  return ENV_BASE_PATH;
 }
 
 /**
@@ -359,9 +399,20 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view options", { rmWhitespace: false });
 
 app.use(cookieParser());
-/** LP 用画像（例: img/safecache300.png）→ /img/... で配信 */
-app.use("/img", express.static(path.join(__dirname, "img")));
-app.use(express.static(path.join(__dirname, "public")));
+const IMG_DIR = path.join(__dirname, "img");
+const PUBLIC_DIR = path.join(__dirname, "public");
+
+/**
+ * 静的アセット:
+ * - `/img` … `IMG_DIR`（リポジトリ直下の `img/`）のみ。`public/img` は使わない（先にマウントされるため取り違えやすい）。
+ * - `STATIC_ROUTE_PREFIXES` の `/img` … プレフィックス配下の画像
+ * - ルート直下の `express.static(public)` は後段に置く（先に置くと
+ *   GET /cscart/safecache/style.css が public 内の不存在パスとして 404 終了し、プレフィックス static に届かない）
+ */
+app.use("/img", express.static(IMG_DIR));
+for (const prefix of STATIC_ROUTE_PREFIXES) {
+  app.use(`${prefix}/img`, express.static(IMG_DIR));
+}
 
 app.use((req, res, next) => {
   const catalogs = loadCatalogs();
@@ -427,17 +478,15 @@ app.use((req, res, next) => {
     const p = new URLSearchParams(params.toString());
     p.set("lang", targetLang);
     const q = p.toString();
-    const pathPart =
-      req.path === "/"
-        ? `${basePath}/`
-        : `${basePath}${req.path.startsWith("/") ? req.path : `/${req.path}`}`;
+    /* LP はトップのみ。req.path に BASE_PATH が含まれると二重になるため常にトップ URL に揃える */
+    const pathPart = basePath ? `${basePath}/` : "/";
     return q ? `${pathPart}?${q}` : `${pathPart}?lang=${targetLang}`;
   };
 
   next();
 });
 
-app.get("/sitemap.xml", (req, res) => {
+function sendSitemapXml(req, res) {
   const basePath = resolvePublicBasePath(req);
   const locs = [
     buildLpAbsoluteUrl(req, basePath, "en"),
@@ -459,9 +508,9 @@ ${locs
 </urlset>
 `;
   res.status(200).type("application/xml; charset=utf-8").send(body);
-});
+}
 
-app.get("/robots.txt", (req, res) => {
+function sendRobotsTxt(req, res) {
   const sm = buildSitemapFileUrl(req);
   res
     .status(200)
@@ -471,9 +520,9 @@ Allow: /
 
 Sitemap: ${sm}
 `);
-});
+}
 
-app.get("/", async (req, res, next) => {
+async function renderIndexPage(req, res, next) {
   try {
     const cacheSec = parseInt(process.env.FREEMIUS_EA_CACHE_SEC || "90", 10);
     const state = await getEarlyAccessState({
@@ -491,10 +540,40 @@ app.get("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+}
+
+app.get("/sitemap.xml", sendSitemapXml);
+app.get("/robots.txt", sendRobotsTxt);
+app.get("/", renderIndexPage);
+
+for (const prefix of STATIC_ROUTE_PREFIXES) {
+  app.get(`${prefix}/sitemap.xml`, sendSitemapXml);
+  app.get(`${prefix}/robots.txt`, sendRobotsTxt);
+  app.get(`${prefix}/`, renderIndexPage);
+  app.get(prefix, (req, res) => {
+    res.redirect(301, `${prefix}/`);
+  });
+}
+
+/**
+ * BASE_PATH 直下の静的ファイルはルートより後に置く。
+ * 先に置くと GET …/ が index 無しで 404 終了し、LP の app.get に届かない。
+ */
+for (const prefix of STATIC_ROUTE_PREFIXES) {
+  app.use(prefix, express.static(PUBLIC_DIR));
+}
+
+app.use(express.static(PUBLIC_DIR));
 
 const server = app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}`);
+  const host = process.env.HOST || "localhost";
+  const base = `http://${host}:${PORT}`;
+  console.log(`Listening on ${base}/`);
+  if (STATIC_ROUTE_PREFIXES.length) {
+    console.log(
+      `Static/LP aliases: ${STATIC_ROUTE_PREFIXES.map((p) => `${base}${p}/`).join(" ")}`
+    );
+  }
 });
 
 server.on("error", (err) => {

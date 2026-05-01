@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "page_title"
-msgstr "AP SafeCache — Cloudflare settings you can always roll back to"
+msgstr "AP SafeCache — Run CS-Cart safely with Cloudflare"
 
 msgid "meta_description"
-msgstr "Versioned backups and rollback for Cloudflare rules on CS-Cart—reduce breakage risk when clearing or changing cache behavior. Free: fetch and diff; Pro: real restore. Uptime over vanity metrics."
+msgstr "Fetch and diff rules on Free; backups, rollback, and apply to Cloudflare on Pro. Storefront helpers for cache vs session skew."
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, backup, rollback, Page Rules, Cache Rules, ANDPLUS, add-on"
@@ -60,16 +60,10 @@ msgid "nav_pricing"
 msgstr "Pricing"
 
 msgid "nav_prereq"
-msgstr "Prerequisites"
+msgstr "Free vs Pro"
 
-msgid "nav_visual"
-msgstr "UI preview"
-
-msgid "product_visual_heading"
-msgstr "Product UI preview"
-
-msgid "product_visual_caption"
-msgstr "Wireframe-style concept. Swap in real admin screenshots when you have them—trust jumps quickly once the UI is visible."
+msgid "nav_screens"
+msgstr "Screens"
 
 msgid "problem_checklist_intro"
 msgstr "Sound familiar?"
@@ -87,13 +81,13 @@ msgid "screens_section_title"
 msgstr "How it feels in practice"
 
 msgid "screens_title"
-msgstr "Dashboard-only Cloudflare vs SafeCache"
+msgstr "What you see in CS-Cart admin"
 
 msgid "screens_intro"
-msgstr "This product sits in a space that is hard to picture from prose alone—here is the operating model in words."
+msgstr "Admin screenshots—expand/collapse under each. Free vs Pro: see the section above."
 
 msgid "screens_note"
-msgstr "The large preview above is a wireframe. Drop in real tab and list screenshots in production for stronger credibility."
+msgstr "The hero image shows the manage overview."
 
 msgid "screens_compare_aria"
 msgstr "Operating model comparison"
@@ -110,32 +104,86 @@ msgstr "Keeping history and a rollback path with SafeCache"
 msgid "screens_after_body"
 msgstr "Review rules from CS-Cart admin, keep a path back to the last working state, stabilize first, then investigate."
 
-msgid "screens_main_alt"
-msgstr "Concept of the CS-Cart admin UI (sidebar, tabs, list wireframe)"
+msgid "hero_visual_alt"
+msgstr "CS-Cart admin: AP SafeCache manage overview (live screenshot)"
+
+msgid "screens_gallery_aria"
+msgstr "Example admin screenshots"
+
+msgid "screens_monitor_alt"
+msgstr "CS-Cart admin: AP SafeCache Cloudflare live configuration poll and fingerprint status"
+
+msgid "screens_monitor_caption"
+msgstr "Live poll & fingerprint (example screen)"
+
+msgid "screens_backups_alt"
+msgstr "CS-Cart admin: AP SafeCache Page Rules and Cache Rules backup history"
+
+msgid "screens_backups_caption"
+msgstr "Backup list (example screen)"
+
+msgid "screens_cache_rules_alt"
+msgstr "CS-Cart admin: AP SafeCache Cache Rules editor with Cloudflare integration"
+
+msgid "screens_cache_rules_caption"
+msgstr "Cache Rules editor (example screen)"
+
+msgid "screens_ajax_alt"
+msgstr "CS-Cart admin: AP SafeCache Ajax reload tracking log"
+
+msgid "screens_ajax_caption"
+msgstr "Ajax tracking log (example screen)"
+
+msgid "screens_expand_more"
+msgstr "Show full screenshot"
+
+msgid "screens_expand_less"
+msgstr "Collapse"
 
 msgid "prereq_section_title"
-msgstr "Prerequisites"
+msgstr "Plans"
 
-msgid "prereq_cloudflare_title"
-msgstr "This add-on assumes you already use Cloudflare"
+msgid "plan_compare_title"
+msgstr "What Free and Pro include"
 
-msgid "prereq_cloudflare_p"
-msgstr "This add-on uses the Cloudflare API to fetch and compare rule configuration. Your domain should be proxied through Cloudflare. The Cloudflare Free plan is enough for what the add-on reads from the API."
+msgid "plan_compare_aria"
+msgstr "Free versus Pro comparison"
 
-msgid "free_tier_title"
-msgstr "What the free add-on tier covers"
+msgid "plan_free_head"
+msgstr "Free"
 
-msgid "free_tier_hook"
-msgstr "There is only one difference: whether you can roll back."
+msgid "plan_free_item_1"
+msgstr "Fetch Page Rules, Cache Rules, and related zone settings; review in CS-Cart admin."
 
-msgid "free_tier_item_1"
-msgstr "Fetch Page Rules, Cache Rules, and related zone settings and review them in the CS-Cart admin."
+msgid "plan_free_item_2"
+msgstr "Diff saved snapshots vs live Cloudflare configuration."
 
-msgid "free_tier_item_2"
-msgstr "Show a diff between the last saved snapshot and the current live configuration (read-focused workflows)."
+msgid "plan_free_item_3"
+msgstr "Live poll and fingerprint checks."
 
-msgid "free_tier_note"
-msgstr "Fetch and diff are enough on Free. Rolling back to the last working state, applying changes, purging cache, and keeping rollback-ready history are Pro."
+msgid "plan_free_item_4"
+msgstr "Storefront: block/DOM reloads and Ajax tracing—not a substitute for disabling cache."
+
+msgid "plan_pro_head"
+msgstr "Pro"
+
+msgid "plan_pro_item_1"
+msgstr "Backups with generation history."
+
+msgid "plan_pro_item_2"
+msgstr "Rollback to a known-good state."
+
+msgid "plan_pro_item_3"
+msgstr "Write-back to Cloudflare (rules, purge, etc.)."
+
+msgid "plan_pro_item_4"
+msgstr "Edit and sync rules available via the Cloudflare API."
+
+msgid "plan_pro_item_5"
+msgstr "Everything in Free."
+
+msgid "plan_cf_note"
+msgstr "Rules are read via the API, so the storefront runs behind Cloudflare (proxied)."
 
 msgid "nav_lang_group_aria"
 msgstr "Language"
@@ -156,16 +204,16 @@ msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
 msgid "hero_title"
-msgstr "Keep Cloudflare settings in a state you can always roll back to"
+msgstr "Run CS-Cart safely alongside Cloudflare"
 
 msgid "hero_subtitle"
-msgstr "From CS-Cart admin: keep history and roll back when something breaks. Details below."
+msgstr "See rule and cache impact clearly; recover with confidence. Free: visibility and diff—Pro: rollback and apply."
 
 msgid "hero_cta_primary"
 msgstr "See pricing"
 
 msgid "hero_cta_secondary"
-msgstr "See UI preview"
+msgstr "See screenshots"
 
 msgid "hero_cta_free"
 msgstr "Get Free (Freemius)"
@@ -201,13 +249,13 @@ msgid "pro_disclaimer"
 msgstr "Backups, rollback, and applying changes to Cloudflare require Pro. On Free, you can fetch rules and review content locally."
 
 msgid "core_section_title"
-msgstr "Main features (Pro)"
+msgstr "Pro features (summary)"
 
 msgid "core_title"
 msgstr "Backups and rollback"
 
 msgid "core_intro"
-msgstr "Built to keep a caching setup that works from being undone by a bad rule. We optimize for staying up and rollback confidence—not headline synthetic scores."
+msgstr "A compact list aligned with the screenshots above—without repeating the same story."
 
 msgid "core_feature_backup_title"
 msgstr "Separate stores per rule type"

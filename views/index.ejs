@@ -65,7 +65,8 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '<%= gaMeasurementId %>');
+      /* page_location を canonical と揃える（サブパス配信・?lang= の取り違い対策）。コンソールの "to undefined" は gtag 内部デバッグ表示で多くは問題にならない */
+      gtag('config', '<%= gaMeasurementId %>', <%- JSON.stringify({ page_location: canonicalUrl }) %>);
     </script>
     <% } %>
 
@@ -89,8 +90,8 @@
             <span class="logo__text"><%= __('brand_name') %></span>
           </a>
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
-            <a class="nav__link" href="#product-visual"><%= __('nav_visual') %></a>
             <a class="nav__link" href="#prereq"><%= __('nav_prereq') %></a>
+            <a class="nav__link" href="#screens"><%= __('nav_screens') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
             <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
           </nav>
@@ -173,7 +174,7 @@
             <p class="lead"><%= __('hero_subtitle') %></p>
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
-              <a class="btn btn--ghost" href="#product-visual"><%= __('hero_cta_secondary') %></a>
+              <a class="btn btn--ghost" href="#screens"><%= __('hero_cta_secondary') %></a>
               <a
                 class="btn btn--ghost"
                 href="<%= freemiusCheckoutUrls.free %>"
@@ -182,97 +183,53 @@
               ><%= __('hero_cta_free') %></a>
             </div>
           </div>
-          <div class="hero-layout__visual" aria-hidden="true">
-            <div class="hero-visual">
-              <svg class="hero-visual__svg" viewBox="0 0 320 280" role="presentation" focusable="false">
-                <defs>
-                  <linearGradient id="heroVisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#2d2d33" stop-opacity="0.07" />
-                    <stop offset="100%" stop-color="#2d2d33" stop-opacity="0.02" />
-                  </linearGradient>
-                  <marker
-                    id="heroRollbackArrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="10"
-                    markerHeight="10"
-                    orient="auto"
-                    markerUnits="userSpaceOnUse"
-                    overflow="visible"
-                  >
-                    <!-- 先端 (10,5) を ref とし、底辺をやや狭めてすっきり見せる -->
-                    <path d="M 0 2.25 L 10 5 L 0 7.75 Z" fill="#2d2d33" fill-opacity="0.62" />
-                  </marker>
-                </defs>
-                <rect x="8" y="8" width="304" height="264" rx="12" fill="url(#heroVisGrad)" stroke="#e4e4ea" stroke-width="1" />
-                <g stroke="#2d2d33" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.85">
-                  <rect x="48" y="168" width="224" height="52" rx="8" fill="#fafafa" />
-                  <rect x="64" y="108" width="192" height="48" rx="8" fill="#fff" />
-                  <rect x="80" y="52" width="160" height="44" rx="8" fill="#f3f3f5" />
-                </g>
-                <g fill="#2d2d33" opacity="0.35">
-                  <rect x="96" y="68" width="40" height="4" rx="1" />
-                  <rect x="96" y="78" width="72" height="4" rx="1" />
-                  <rect x="96" y="124" width="56" height="4" rx="1" />
-                  <rect x="96" y="134" width="96" height="4" rx="1" />
-                  <rect x="96" y="188" width="88" height="4" rx="1" />
-                  <rect x="96" y="198" width="64" height="4" rx="1" />
-                </g>
-                <path
-                  d="M 238 93 C 286 129 286 164 238 200"
-                  stroke="#2d2d33"
-                  stroke-width="2"
-                  fill="none"
-                  stroke-linecap="butt"
-                  stroke-linejoin="round"
-                  opacity="0.55"
-                  marker-end="url(#heroRollbackArrow)"
-                />
-                <circle cx="92" cy="70" r="5" fill="#2d2d33" opacity="0.2" />
-                <circle cx="108" cy="70" r="5" fill="#2d2d33" opacity="0.45" />
-                <circle cx="124" cy="70" r="5" fill="#2d2d33" opacity="0.12" />
-              </svg>
+          <div class="hero-layout__visual">
+            <div class="hero-visual hero-visual--photo">
+              <img
+                class="hero-visual__img"
+                src="<%= basePath %>/img/<%= lang === 'ja' ? 'overview.png' : 'overview_en.png' %>"
+                width="<%= lang === 'ja' ? 2104 : 2098 %>"
+                height="<%= lang === 'ja' ? 1896 : 1524 %>"
+                alt="<%= __('hero_visual_alt') %>"
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="product-visual" class="section section--product-shot" aria-labelledby="product-visual-heading">
-        <div class="container">
-          <h2 id="product-visual-heading" class="visually-hidden"><%= __('product_visual_heading') %></h2>
-          <figure class="lp-shot lp-shot--hero">
-            <img
-              class="lp-shot__img"
-              src="<%= basePath %>/img/lp-addon-ui-mock.svg"
-              width="960"
-              height="540"
-              alt="<%= __('screens_main_alt') %>"
-              loading="eager"
-              decoding="async"
-            />
-            <figcaption class="lp-shot__cap"><%= __('product_visual_caption') %></figcaption>
-          </figure>
-        </div>
-      </section>
-
       <section id="prereq" class="section section--alt" aria-labelledby="prereq-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('prereq_section_title') %></p>
-          <h2 id="prereq-heading" class="section-title"><%= __('prereq_cloudflare_title') %></h2>
-          <p class="prose"><%= __('prereq_cloudflare_p') %></p>
-          <h3 class="prereq-subtitle"><%= __('free_tier_title') %></h3>
-          <p class="prereq-hook"><%= __('free_tier_hook') %></p>
-          <ul class="free-tier-list">
-            <li><%= __('free_tier_item_1') %></li>
-            <li><%= __('free_tier_item_2') %></li>
-          </ul>
-          <p class="prose prose--note"><%= __('free_tier_note') %></p>
+          <h2 id="prereq-heading" class="section-title"><%= __('plan_compare_title') %></h2>
+          <div class="plan-compare" role="region" aria-label="<%= __('plan_compare_aria') %>">
+            <div class="plan-compare__col plan-compare__col--free">
+              <h3 class="plan-compare__head"><%= __('plan_free_head') %></h3>
+              <ul class="plan-compare__list">
+                <li><%= __('plan_free_item_1') %></li>
+                <li><%= __('plan_free_item_2') %></li>
+                <li><%= __('plan_free_item_3') %></li>
+                <li><%= __('plan_free_item_4') %></li>
+              </ul>
+            </div>
+            <div class="plan-compare__col plan-compare__col--pro">
+              <h3 class="plan-compare__head"><%= __('plan_pro_head') %></h3>
+              <ul class="plan-compare__list">
+                <li><%= __('plan_pro_item_1') %></li>
+                <li><%= __('plan_pro_item_2') %></li>
+                <li><%= __('plan_pro_item_3') %></li>
+                <li><%= __('plan_pro_item_4') %></li>
+                <li><%= __('plan_pro_item_5') %></li>
+              </ul>
+            </div>
+          </div>
+          <p class="prose prose--note plan-cf-note"><%= __('plan_cf_note') %></p>
         </div>
       </section>
 
       <section id="problem" class="section" aria-labelledby="problem-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('problem_section_title') %></p>
           <h2 id="problem-heading" class="section-title"><%= __('problem_title') %></h2>
           <p class="problem-checklist-intro"><%= __('problem_checklist_intro') %></p>
@@ -288,7 +245,7 @@
       </section>
 
       <section id="solution" class="section" aria-labelledby="solution-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('solution_section_title') %></p>
           <h2 id="solution-heading" class="section-title"><%= __('solution_title') %></h2>
           <p class="prose"><%= __('solution_p1') %></p>
@@ -297,29 +254,99 @@
       </section>
 
       <section id="screens" class="section section--alt" aria-labelledby="screens-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('screens_section_title') %></p>
           <h2 id="screens-heading" class="section-title"><%= __('screens_title') %></h2>
           <p class="lead lead--tight"><%= __('screens_intro') %></p>
           <p class="prose prose--note"><%= __('screens_note') %></p>
-          <div class="before-after" role="region" aria-label="<%= __('screens_compare_aria') %>">
-            <div class="before-after__col before-after__col--before">
-              <h3 class="before-after__head"><%= __('screens_before_title') %></h3>
-              <p class="before-after__text"><%= __('screens_before_body') %></p>
+          <div class="screens-gallery" role="region" aria-label="<%= __('screens_gallery_aria') %>">
+            <div class="screens-expand" id="screens-shot-monitor">
+              <label class="screens-expand__card">
+                <input type="checkbox" class="screens-expand__state" />
+                <div class="screens-expand__frame">
+                  <img
+                    class="screens-expand__img"
+                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
+                    width="<%= lang === 'ja' ? 2078 : 2080 %>"
+                    height="<%= lang === 'ja' ? 1040 : 1026 %>"
+                    alt="<%= __('screens_monitor_alt') %>"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="screens-expand__caption"><%= __('screens_monitor_caption') %></span>
+                <span class="screens-expand__toggle-line">
+                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
+                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
+                </span>
+              </label>
             </div>
-            <div class="before-after__col before-after__col--after">
-              <h3 class="before-after__head"><%= __('screens_after_title') %></h3>
-              <p class="before-after__text"><%= __('screens_after_body') %></p>
+            <div class="screens-expand" id="screens-shot-backups">
+              <label class="screens-expand__card">
+                <input type="checkbox" class="screens-expand__state" />
+                <div class="screens-expand__frame">
+                  <img
+                    class="screens-expand__img"
+                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
+                    width="<%= lang === 'ja' ? 2082 : 2080 %>"
+                    height="<%= lang === 'ja' ? 1542 : 1544 %>"
+                    alt="<%= __('screens_backups_alt') %>"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="screens-expand__caption"><%= __('screens_backups_caption') %></span>
+                <span class="screens-expand__toggle-line">
+                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
+                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
+                </span>
+              </label>
+            </div>
+            <div class="screens-expand" id="screens-shot-cache-rules">
+              <label class="screens-expand__card">
+                <input type="checkbox" class="screens-expand__state" />
+                <div class="screens-expand__frame">
+                  <img
+                    class="screens-expand__img"
+                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'cache-rules.png' : 'cache-rules-en.png' %>"
+                    width="<%= lang === 'ja' ? 2364 : 2274 %>"
+                    height="<%= lang === 'ja' ? 2140 : 2148 %>"
+                    alt="<%= __('screens_cache_rules_alt') %>"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="screens-expand__caption"><%= __('screens_cache_rules_caption') %></span>
+                <span class="screens-expand__toggle-line">
+                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
+                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
+                </span>
+              </label>
+            </div>
+            <div class="screens-expand" id="screens-shot-ajax">
+              <label class="screens-expand__card">
+                <input type="checkbox" class="screens-expand__state" />
+                <div class="screens-expand__frame">
+                  <img
+                    class="screens-expand__img"
+                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'ajax.png' : 'ajax-en.png' %>"
+                    width="<%= lang === 'ja' ? 2360 : 2360 %>"
+                    height="<%= lang === 'ja' ? 2144 : 2098 %>"
+                    alt="<%= __('screens_ajax_alt') %>"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="screens-expand__caption"><%= __('screens_ajax_caption') %></span>
+                <span class="screens-expand__toggle-line">
+                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
+                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
+                </span>
+              </label>
             </div>
           </div>
         </div>
       </section>
-
-      <div class="section section--alt section--note">
-        <div class="container container--narrow">
-          <p class="pro-disclaimer"><%= __('pro_disclaimer') %></p>
-        </div>
-      </div>
 
       <section id="core" class="section" aria-labelledby="core-heading">
         <div class="container">
@@ -386,7 +413,7 @@
       </section>
 
       <section id="visibility" class="section section--alt" aria-labelledby="visibility-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('visibility_section_title') %></p>
           <h2 id="visibility-heading" class="section-title"><%= __('visibility_title') %></h2>
           <p class="prose"><%= __('visibility_p1') %></p>
@@ -394,7 +421,7 @@
       </section>
 
       <section id="value" class="section" aria-labelledby="value-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('value_section_title') %></p>
           <h2 id="value-heading" class="section-title"><%= __('value_title') %></h2>
           <p class="prose"><%= __('value_p1') %></p>
@@ -403,7 +430,7 @@
       </section>
 
       <section id="design" class="section section--alt" aria-labelledby="design-heading">
-        <div class="container container--narrow">
+        <div class="container">
           <p class="section-label"><%= __('design_section_title') %></p>
           <h2 id="design-heading" class="section-title"><%= __('design_title') %></h2>
           <p class="prose"><%= __('design_p1') %></p>

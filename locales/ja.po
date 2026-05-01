@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "page_title"
-msgstr "AP SafeCache — Cloudflare の設定を、いつでも戻せる状態にする"
+msgstr "AP SafeCache — Cloudflare と CS-Cart を安全に運用"
 
 msgid "meta_description"
-msgstr "Cloudflare のルールを履歴付きでバックアップし、表示崩れや障害時のリスクを抑えてロールバック。無料版は取得・差分、戻せるかが Pro。速度の数値より止まらない運用。"
+msgstr "ルールの取得・差分は無料。バックアップ・ロールバック・Cloudflare への反映は Pro。キャッシュとセッションのズレ対策も。"
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
@@ -60,16 +60,10 @@ msgid "nav_pricing"
 msgstr "料金"
 
 msgid "nav_prereq"
-msgstr "前提"
+msgstr "Free / Pro"
 
-msgid "nav_visual"
-msgstr "画面"
-
-msgid "product_visual_heading"
-msgstr "製品の画面イメージ"
-
-msgid "product_visual_caption"
-msgstr "※ 管理画面のコンセプト図です。実スクリーンのキャプチャに差し替えると、導入イメージがさらに伝わりやすくなります。"
+msgid "nav_screens"
+msgstr "導入イメージ"
 
 msgid "problem_checklist_intro"
 msgstr "こんな不安はありませんか？"
@@ -87,13 +81,13 @@ msgid "screens_section_title"
 msgstr "導入イメージ"
 
 msgid "screens_title"
-msgstr "「直で触る」と「SafeCache 経由」では何が違うか"
+msgstr "CS-Cart 管理画面での見え方"
 
 msgid "screens_intro"
-msgstr "抽象の説明だけではイメージが湧きにくい領域なので、運用イメージを言語化します。"
+msgstr "管理画面のキャプチャ例。画像の下で展開／折りたたみ。無料／Pro は上の「Free / Pro」を参照。"
 
 msgid "screens_note"
-msgstr "ヒーロー直下の図はワイヤーフレームです。本番では実際のタブや一覧のスクリーンショットを置くと信頼感が高まります。"
+msgstr "ヒーローは管理トップの実画面です。"
 
 msgid "screens_compare_aria"
 msgstr "運用スタイルの比較"
@@ -110,32 +104,86 @@ msgstr "SafeCache で履歴と戻し道を残す"
 msgid "screens_after_body"
 msgstr "CS-Cart 管理画面からルールを把握し、動いていた状態へ戻す道筋を先に用意します。まず止めてから原因を追えます。"
 
-msgid "screens_main_alt"
-msgstr "CS-Cart 管理画面のコンセプト（サイドバー・タブ・一覧のワイヤーフレーム）"
+msgid "hero_visual_alt"
+msgstr "CS-Cart 管理画面：AP SafeCache の管理トップ（実スクリーンショット）"
+
+msgid "screens_gallery_aria"
+msgstr "管理画面のキャプチャ例"
+
+msgid "screens_monitor_alt"
+msgstr "CS-Cart 管理画面：AP SafeCache の Cloudflare ライブ照合とフィンガープリント状態"
+
+msgid "screens_monitor_caption"
+msgstr "ライブ照合・フィンガープリント（画面例）"
+
+msgid "screens_backups_alt"
+msgstr "CS-Cart 管理画面：AP SafeCache の Page Rules / Cache Rules バックアップ履歴"
+
+msgid "screens_backups_caption"
+msgstr "バックアップ一覧（画面例）"
+
+msgid "screens_cache_rules_alt"
+msgstr "CS-Cart 管理画面：AP SafeCache の Cache Rules 編集と Cloudflare 連携"
+
+msgid "screens_cache_rules_caption"
+msgstr "Cache Rules 編集（画面例）"
+
+msgid "screens_ajax_alt"
+msgstr "CS-Cart 管理画面：AP SafeCache の Ajax 追跡ログ"
+
+msgid "screens_ajax_caption"
+msgstr "Ajax 追跡ログ（画面例）"
+
+msgid "screens_expand_more"
+msgstr "クリックで全体を表示"
+
+msgid "screens_expand_less"
+msgstr "クリックで折りたたむ"
 
 msgid "prereq_section_title"
-msgstr "前提条件"
+msgstr "プラン"
 
-msgid "prereq_cloudflare_title"
-msgstr "Cloudflare を使っている前提のアドオンです"
+msgid "plan_compare_title"
+msgstr "できること（無料 / Pro）"
 
-msgid "prereq_cloudflare_p"
-msgstr "本アドオンは Cloudflare の API でルール設定を取得・比較します。ドメインを Cloudflare にプロキシして運用していることが前提です。Cloudflare 側は無料プラン（Free）のままで問題ありません。"
+msgid "plan_compare_aria"
+msgstr "無料版と Pro の比較"
 
-msgid "free_tier_title"
-msgstr "無料版アドオンでできること"
+msgid "plan_free_head"
+msgstr "Free（無料）"
 
-msgid "free_tier_hook"
-msgstr "違いはひとつだけ。「戻せるかどうか」です。"
+msgid "plan_free_item_1"
+msgstr "Page Rules / Cache Rules などを取得し、管理画面で内容を確認"
 
-msgid "free_tier_item_1"
-msgstr "ゾーンの Page Rules や Cache Rules などを取得し、CS-Cart 管理画面で内容を確認する"
+msgid "plan_free_item_2"
+msgstr "保存した設定とライブ設定の差分を表示"
 
-msgid "free_tier_item_2"
-msgstr "ローカルに保存した内容と Cloudflare 上の最新設定の差分を表示する（取得・確認が中心）"
+msgid "plan_free_item_3"
+msgstr "ライブ照合・フィンガープリントで状態を確認"
 
-msgid "free_tier_note"
-msgstr "取得・差分の確認は無料版で足ります。「動いていた状態」へ戻す・Cloudflare に反映する・履歴として残す操作は Pro です。"
+msgid "plan_free_item_4"
+msgstr "ストア側：ブロック／DOM 再取得・Ajax 追跡（キャッシュ無効の代替ではありません）"
+
+msgid "plan_pro_head"
+msgstr "Pro"
+
+msgid "plan_pro_item_1"
+msgstr "バックアップと世代履歴の保持"
+
+msgid "plan_pro_item_2"
+msgstr "動いていた状態へのロールバック"
+
+msgid "plan_pro_item_3"
+msgstr "Cloudflare へのルール反映・キャッシュパージなどの書き込み"
+
+msgid "plan_pro_item_4"
+msgstr "API で扱えるルールの編集と連携"
+
+msgid "plan_pro_item_5"
+msgstr "Free の機能はすべて利用可能"
+
+msgid "plan_cf_note"
+msgstr "ルールは API で読むため、ドメインを Cloudflare 経由（プロキシ）で運用している店舗が対象です。"
 
 msgid "nav_lang_group_aria"
 msgstr "言語"
@@ -156,16 +204,16 @@ msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
 msgid "hero_title"
-msgstr "Cloudflareを、戻せる前提で運用する"
+msgstr "Cloudflare と組み合わせて、CS-Cart を安全に運用する"
 
 msgid "hero_subtitle"
-msgstr "CS-Cart の管理画面から操作。設定は履歴として残り、問題があればすぐに戻せます。"
+msgstr "ルールとキャッシュの影響を把握し、トラブル時に迷いにくくするアドオン。無料は見える化と差分、Pro は復旧と反映。"
 
 msgid "hero_cta_primary"
 msgstr "料金を見る"
 
 msgid "hero_cta_secondary"
-msgstr "画面イメージを見る"
+msgstr "導入イメージを見る"
 
 msgid "hero_cta_free"
 msgstr "無料版を取得（Freemius）"
@@ -201,13 +249,13 @@ msgid "pro_disclaimer"
 msgstr "※ 「戻せる」ためのバックアップ・ロールバック・Cloudflare への設定反映は Pro。無料版はルールの取得と内容の確認が中心です。"
 
 msgid "core_section_title"
-msgstr "主な機能（Pro）"
+msgstr "Pro の機能（整理）"
 
 msgid "core_title"
 msgstr "バックアップとロールバック"
 
 msgid "core_intro"
-msgstr "キャッシュを効かせる設計を、誤設定で壊さないための機能です。速度の数値より、サイトが止まらず・いざというときに戻せること（運用の安心）を優先します。"
+msgstr "直前のキャプチャに対応する、Pro の機能要点だけを列挙します。"
 
 msgid "core_feature_backup_title"
 msgstr "ルールを分けて保存"
