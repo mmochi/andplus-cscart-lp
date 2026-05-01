@@ -90,8 +90,9 @@
             <span class="logo__text"><%= __('brand_name') %></span>
           </a>
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
+            <a class="nav__link" href="#story"><%= __('nav_story') %></a>
+            <a class="nav__link" href="#screens"><%= __('nav_screens_primary') %></a>
             <a class="nav__link" href="#pro-value"><%= __('nav_pro_value') %></a>
-            <a class="nav__link" href="#screens"><%= __('nav_screens') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
             <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
           </nav>
@@ -170,27 +171,23 @@
         <div class="container hero-layout">
           <div class="hero-layout__copy">
             <p class="kicker"><%= __('hero_kicker') %></p>
-            <h1 id="hero-heading" class="hero-title"><%= __('hero_title') %></h1>
+            <h1 id="hero-heading" class="hero-title">
+              <span class="hero-title__line"><%= __('hero_title_line1') %></span>
+              <span class="hero-title__line"><%= __('hero_title_line2') %></span>
+            </h1>
             <p class="lead"><%= __('hero_subtitle') %></p>
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
-              <a class="btn btn--ghost" href="#screens"><%= __('hero_cta_secondary') %></a>
+              <a class="btn btn--ghost" href="#story"><%= __('hero_cta_secondary') %></a>
             </div>
-            <p class="hero-free-link">
-              <a
-                href="<%= freemiusCheckoutUrls.free %>"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><%= __('hero_free_link') %></a>
-            </p>
           </div>
           <div class="hero-layout__visual">
             <div class="hero-visual hero-visual--photo">
               <img
                 class="hero-visual__img"
-                src="<%= basePath %>/img/<%= lang === 'ja' ? 'overview.png' : 'overview_en.png' %>"
-                width="<%= lang === 'ja' ? 2104 : 2098 %>"
-                height="<%= lang === 'ja' ? 1896 : 1524 %>"
+                src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
+                width="<%= lang === 'ja' ? 2082 : 2080 %>"
+                height="<%= lang === 'ja' ? 1542 : 1544 %>"
                 alt="<%= __('hero_visual_alt') %>"
                 loading="eager"
                 decoding="async"
@@ -200,16 +197,35 @@
         </div>
       </section>
 
-      <section id="pro-value" class="section section--alt" aria-labelledby="pro-value-heading">
+      <section id="story" class="section section--alt" aria-labelledby="story-heading">
+        <div class="container">
+          <p class="section-label"><%= __('story_section_label') %></p>
+          <h2 id="story-heading" class="section-title"><%= __('story_title') %></h2>
+          <p class="lead lead--tight"><%= __('story_lead') %></p>
+          <ol class="story-flow" aria-label="<%= __('story_flow_aria') %>">
+            <li class="story-flow__row">
+              <span class="story-flow__text"><%= __('story_step_1') %></span>
+              <span class="story-flow__arrow" aria-hidden="true">→</span>
+            </li>
+            <li class="story-flow__row">
+              <span class="story-flow__text"><%= __('story_step_2') %></span>
+              <span class="story-flow__arrow" aria-hidden="true">→</span>
+            </li>
+            <li class="story-flow__row">
+              <span class="story-flow__text"><%= __('story_step_3') %></span>
+              <span class="story-flow__arrow" aria-hidden="true">→</span>
+            </li>
+            <li class="story-flow__row story-flow__row--final"><span class="story-flow__text"><%= __('story_step_4') %></span></li>
+          </ol>
+          <p class="story-screens-hint"><a class="story-screens-hint__link" href="#screens"><%= __('story_screens_hint') %></a></p>
+        </div>
+      </section>
+
+      <section id="pro-value" class="section" aria-labelledby="pro-value-heading">
         <div class="container">
           <p class="section-label"><%= __('pro_value_section_label') %></p>
           <h2 id="pro-value-heading" class="section-title"><%= __('pro_value_title') %></h2>
           <p class="lead lead--tight"><%= __('pro_value_lead') %></p>
-          <ol class="value-steps" aria-label="<%= __('pro_value_steps_aria') %>">
-            <li class="value-steps__item"><%= __('pro_value_step_1') %></li>
-            <li class="value-steps__item"><%= __('pro_value_step_2') %></li>
-            <li class="value-steps__item"><%= __('pro_value_step_3') %></li>
-          </ol>
           <p class="prose prose--note plan-cf-note"><%= __('plan_cf_note') %></p>
         </div>
       </section>
@@ -247,27 +263,6 @@
           <p class="lead lead--tight"><%= __('screens_intro') %></p>
           <p class="prose prose--note"><%= __('screens_note') %></p>
           <div class="screens-gallery" role="region" aria-label="<%= __('screens_gallery_aria') %>">
-            <div class="screens-expand" id="screens-shot-monitor">
-              <label class="screens-expand__card">
-                <input type="checkbox" class="screens-expand__state" />
-                <div class="screens-expand__frame">
-                  <img
-                    class="screens-expand__img"
-                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
-                    width="<%= lang === 'ja' ? 2078 : 2080 %>"
-                    height="<%= lang === 'ja' ? 1040 : 1026 %>"
-                    alt="<%= __('screens_monitor_alt') %>"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <span class="screens-expand__caption"><%= __('screens_monitor_caption') %></span>
-                <span class="screens-expand__toggle-line">
-                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
-                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
-                </span>
-              </label>
-            </div>
             <div class="screens-expand" id="screens-shot-backups">
               <label class="screens-expand__card">
                 <input type="checkbox" class="screens-expand__state" />
@@ -304,6 +299,27 @@
                   />
                 </div>
                 <span class="screens-expand__caption"><%= __('screens_cache_rules_caption') %></span>
+                <span class="screens-expand__toggle-line">
+                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
+                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
+                </span>
+              </label>
+            </div>
+            <div class="screens-expand" id="screens-shot-monitor">
+              <label class="screens-expand__card">
+                <input type="checkbox" class="screens-expand__state" />
+                <div class="screens-expand__frame">
+                  <img
+                    class="screens-expand__img"
+                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
+                    width="<%= lang === 'ja' ? 2078 : 2080 %>"
+                    height="<%= lang === 'ja' ? 1040 : 1026 %>"
+                    alt="<%= __('screens_monitor_alt') %>"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span class="screens-expand__caption"><%= __('screens_monitor_caption') %></span>
                 <span class="screens-expand__toggle-line">
                   <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
                   <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>

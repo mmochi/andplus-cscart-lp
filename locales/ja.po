@@ -6,7 +6,7 @@ msgid "page_title"
 msgstr "AP SafeCache — Cloudflare の設定を、壊しても戻せる（Pro）"
 
 msgid "meta_description"
-msgstr "CS-Cart から Cloudflare のルールをバックアップ・ロールバック。月額 Pro が本命。無料版は取得・差分だけの入口です。"
+msgstr "事故った Cloudflare 設定を CS-Cart から世代履歴で復旧。月額 Pro。無料は取得・差分のみの入口。"
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
@@ -59,11 +59,14 @@ msgstr "機能"
 msgid "nav_pricing"
 msgstr "料金"
 
+msgid "nav_story"
+msgstr "復旧の流れ"
+
+msgid "nav_screens_primary"
+msgstr "画面（履歴）"
+
 msgid "nav_pro_value"
 msgstr "Proでできること"
-
-msgid "nav_screens"
-msgstr "導入イメージ"
 
 msgid "problem_checklist_intro"
 msgstr "こんな不安はありませんか？"
@@ -81,13 +84,13 @@ msgid "screens_section_title"
 msgstr "導入イメージ"
 
 msgid "screens_title"
-msgstr "CS-Cart 管理画面での見え方"
+msgstr "まず履歴。ここが SafeCache の主役です。"
 
 msgid "screens_intro"
-msgstr "管理画面のキャプチャ例。画像の下で展開／折りたたみ。"
+msgstr "上から順に：バックアップ一覧 → 編集／反映 → ライブ照合 → ストア補助。画像の下で展開／折りたたみ。"
 
 msgid "screens_note"
-msgstr "ヒーローは管理トップの実画面です。"
+msgstr "いちばん上の一覧が、ロールバックの入り口です。ヒーローも同じバックアップ履歴の実画面です。"
 
 msgid "screens_compare_aria"
 msgstr "運用スタイルの比較"
@@ -105,7 +108,7 @@ msgid "screens_after_body"
 msgstr "CS-Cart 管理画面からルールを把握し、動いていた状態へ戻す道筋を先に用意します。まず止めてから原因を追えます。"
 
 msgid "hero_visual_alt"
-msgstr "CS-Cart 管理画面：AP SafeCache の管理トップ（実スクリーンショット）"
+msgstr "CS-Cart 管理画面：AP SafeCache のバックアップ履歴（実スクリーンショット）"
 
 msgid "screens_gallery_aria"
 msgstr "管理画面のキャプチャ例"
@@ -120,7 +123,7 @@ msgid "screens_backups_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Page Rules / Cache Rules バックアップ履歴"
 
 msgid "screens_backups_caption"
-msgstr "バックアップ一覧（画面例）"
+msgstr "バックアップ履歴（復旧の起点）"
 
 msgid "screens_cache_rules_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Cache Rules 編集と Cloudflare 連携"
@@ -140,26 +143,41 @@ msgstr "クリックで全体を表示"
 msgid "screens_expand_less"
 msgstr "クリックで折りたたむ"
 
+msgid "story_section_label"
+msgstr "流れ"
+
+msgid "story_title"
+msgstr "設定変更から復旧まで"
+
+msgid "story_lead"
+msgstr "正常運用の便利さより、異常時に間に合うか。SafeCache は後者です。"
+
+msgid "story_flow_aria"
+msgstr "復旧までの流れ"
+
+msgid "story_step_1"
+msgstr "設定やルールを変更する"
+
+msgid "story_step_2"
+msgstr "フロントや管理画面に想定外の影響（あるある）"
+
+msgid "story_step_3"
+msgstr "世代つき履歴から直前の安定版を選ぶ"
+
+msgid "story_step_4"
+msgstr "復元してから原因調査（慌てない）"
+
+msgid "story_screens_hint"
+msgstr "実際の履歴・編集画面はこちら →"
+
 msgid "pro_value_section_label"
 msgstr "Pro"
 
 msgid "pro_value_title"
-msgstr "Cloudflare の変更を、「やり直せる状態」にする"
+msgstr "プロダクトの顔は「履歴」"
 
 msgid "pro_value_lead"
-msgstr "SafeCache（Pro）はルールを世代付きで保存し、動いていた設定へ戻せます。"
-
-msgid "pro_value_steps_aria"
-msgstr "トラブル時の流れ（例）"
-
-msgid "pro_value_step_1"
-msgstr "ルールやキャッシュ設定を変更する"
-
-msgid "pro_value_step_2"
-msgstr "店舗や管理画面に想定外の影響が出る"
-
-msgid "pro_value_step_3"
-msgstr "保存した状態へ戻してから原因を追う"
+msgstr "バックアップ一覧と世代が中心。ここから戻せます。"
 
 msgid "plan_cf_note"
 msgstr "ルールは API で読むため、ドメインを Cloudflare 経由（プロキシ）で運用している店舗が対象です。"
@@ -182,26 +200,26 @@ msgstr "JA"
 msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
-msgid "hero_title"
-msgstr "Cloudflare の設定、壊しても戻せます。"
+msgid "hero_title_line1"
+msgstr "Cloudflare の設定、"
+
+msgid "hero_title_line2"
+msgstr "壊しても戻せます。"
 
 msgid "hero_subtitle"
-msgstr "CS-Cart 管理画面から世代履歴を残し、動いていた状態へ復元。本命は月額 Pro。"
+msgstr "キャッシュ管理ツールではなく、事故ったときに「動いていた状態」へ戻す保険です。本命は月額 Pro。"
 
 msgid "hero_cta_primary"
 msgstr "Pro を始める"
 
 msgid "hero_cta_secondary"
-msgstr "導入イメージを見る"
-
-msgid "hero_free_link"
-msgstr "無料で試す（取得・差分のみ・Freemius）"
+msgstr "復旧の流れを見る"
 
 msgid "problem_section_title"
-msgstr "よくある悩み"
+msgstr "異常時の話"
 
 msgid "problem_title"
-msgstr "ルールひとつで店舗全体に影響することがある"
+msgstr "一行変えただけで、店全体が揺れることがある"
 
 msgid "problem_p1"
 msgstr "Cloudflare の Page Rules と Cache Rules は便利ですが、設定を誤るとチェックアウトや API、管理画面にまで影響することがあります。"
@@ -213,10 +231,10 @@ msgid "problem_p3"
 msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
 
 msgid "solution_section_title"
-msgstr "このアドオンでできること"
+msgstr "だから SafeCache"
 
 msgid "solution_title"
-msgstr "問題が起きても、「動いていた状態」に戻せる"
+msgstr "まず戻す。あとで原因を追う"
 
 msgid "solution_p1"
 msgstr "Pro では Page Rules と Cache Rules を別々に保存し、前回から内容が変わったときだけ履歴に追加します。いつでも「動いていた状態」に戻す道を残します。"

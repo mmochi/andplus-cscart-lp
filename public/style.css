@@ -671,6 +671,10 @@ body {
   line-height: 1.15;
 }
 
+.hero-title__line {
+  display: block;
+}
+
 .lead {
   margin: 0 0 1.5rem;
   font-size: 1.1rem;
@@ -1050,37 +1054,84 @@ body {
   margin-top: 1.25rem;
 }
 
-.value-steps {
-  margin: 1.25rem 0 0;
-  padding: 0 0 0 1.35rem;
-  max-width: 28rem;
-  font-size: 1.05rem;
-  font-weight: 600;
+.story-flow {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  max-width: 100%;
+}
+
+.story-flow__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: clamp(0.88rem, 2vw, 1.02rem);
+  font-weight: 700;
   color: var(--text);
-  line-height: 1.85;
+  line-height: 1.4;
+  flex: 0 1 auto;
+  min-width: min(100%, 9rem);
+  max-width: 15rem;
 }
 
-.value-steps__item {
-  margin-bottom: 0.35rem;
+.story-flow__row--final {
+  border-left: 4px solid #c9b400;
+  background: linear-gradient(180deg, #fffef5 0%, #fff 55%);
 }
 
-.value-steps__item:last-child {
-  margin-bottom: 0;
+.story-flow__text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.hero-free-link {
-  margin: 0.85rem 0 0;
-  font-size: 0.9rem;
-}
-
-.hero-free-link a {
+.story-flow__arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--muted);
+  line-height: 1;
+}
+
+@media (max-width: 639px) {
+  .story-flow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  .story-flow__row {
+    max-width: none;
+    justify-content: space-between;
+  }
+
+  .story-flow__arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.story-screens-hint {
+  margin: 1.35rem 0 0;
+  font-size: 0.92rem;
+}
+
+.story-screens-hint__link {
+  color: var(--text);
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.hero-free-link a:hover {
-  color: var(--text);
+.story-screens-hint__link:hover {
+  text-decoration-thickness: 2px;
 }
 
 .pricing-grid--pro {

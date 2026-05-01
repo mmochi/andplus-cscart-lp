@@ -6,7 +6,7 @@ msgid "page_title"
 msgstr "AP SafeCache — Roll back Cloudflare rules from CS-Cart (Pro)"
 
 msgid "meta_description"
-msgstr "Back up and roll back Cloudflare Page Rules and Cache Rules from CS-Cart admin. Pro is the real product; Free is read-only entry."
+msgstr "Recover broken Cloudflare rules from CS-Cart with generation history. Pro is the product; Free is read-only entry."
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, backup, rollback, Page Rules, Cache Rules, ANDPLUS, add-on"
@@ -59,11 +59,14 @@ msgstr "Features"
 msgid "nav_pricing"
 msgstr "Pricing"
 
+msgid "nav_story"
+msgstr "Recovery flow"
+
+msgid "nav_screens_primary"
+msgstr "Screens"
+
 msgid "nav_pro_value"
 msgstr "Why Pro"
-
-msgid "nav_screens"
-msgstr "Screens"
 
 msgid "problem_checklist_intro"
 msgstr "Sound familiar?"
@@ -81,13 +84,13 @@ msgid "screens_section_title"
 msgstr "How it feels in practice"
 
 msgid "screens_title"
-msgstr "What you see in CS-Cart admin"
+msgstr "History first—that’s the hero UI."
 
 msgid "screens_intro"
-msgstr "Admin screenshots—expand/collapse under each."
+msgstr "Order: backups → editor → live poll → storefront helpers. Expand/collapse under each shot."
 
 msgid "screens_note"
-msgstr "The hero image shows the manage overview."
+msgstr "The first screenshot is where rollback starts. The hero uses the same backup history shot."
 
 msgid "screens_compare_aria"
 msgstr "Operating model comparison"
@@ -105,7 +108,7 @@ msgid "screens_after_body"
 msgstr "Review rules from CS-Cart admin, keep a path back to the last working state, stabilize first, then investigate."
 
 msgid "hero_visual_alt"
-msgstr "CS-Cart admin: AP SafeCache manage overview (live screenshot)"
+msgstr "CS-Cart admin: AP SafeCache backup history (live screenshot)"
 
 msgid "screens_gallery_aria"
 msgstr "Example admin screenshots"
@@ -120,7 +123,7 @@ msgid "screens_backups_alt"
 msgstr "CS-Cart admin: AP SafeCache Page Rules and Cache Rules backup history"
 
 msgid "screens_backups_caption"
-msgstr "Backup list (example screen)"
+msgstr "Backup history—where recovery starts"
 
 msgid "screens_cache_rules_alt"
 msgstr "CS-Cart admin: AP SafeCache Cache Rules editor with Cloudflare integration"
@@ -140,26 +143,41 @@ msgstr "Show full screenshot"
 msgid "screens_expand_less"
 msgstr "Collapse"
 
+msgid "story_section_label"
+msgstr "Flow"
+
+msgid "story_title"
+msgstr "From change to recovery"
+
+msgid "story_lead"
+msgstr "We care about the outage window—not vanity convenience on a calm day."
+
+msgid "story_flow_aria"
+msgstr "Recovery steps"
+
+msgid "story_step_1"
+msgstr "You change a rule or cache behavior"
+
+msgid "story_step_2"
+msgstr "Storefront or admin starts acting wrong"
+
+msgid "story_step_3"
+msgstr "Pick the last stable generation from history"
+
+msgid "story_step_4"
+msgstr "Restore first—investigate after you’re stable"
+
+msgid "story_screens_hint"
+msgstr "See the real history UI →"
+
 msgid "pro_value_section_label"
 msgstr "Pro"
 
 msgid "pro_value_title"
-msgstr "Keep Cloudflare changes redo-ready"
+msgstr "History is the face of the product"
 
 msgid "pro_value_lead"
-msgstr "SafeCache Pro keeps versioned snapshots so you can return to the last known-good configuration."
-
-msgid "pro_value_steps_aria"
-msgstr "Typical incident flow"
-
-msgid "pro_value_step_1"
-msgstr "Change rules or cache behavior"
-
-msgid "pro_value_step_2"
-msgstr "Checkout, admin, or APIs misbehave"
-
-msgid "pro_value_step_3"
-msgstr "Restore from a snapshot—then investigate calmly"
+msgstr "The backup list and generations are the spine—that’s where rollback lives."
 
 msgid "plan_cf_note"
 msgstr "Rules are read via the API, so the storefront runs behind Cloudflare (proxied)."
@@ -182,26 +200,26 @@ msgstr "JA"
 msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
-msgid "hero_title"
-msgstr "Break Cloudflare settings—then roll them back."
+msgid "hero_title_line1"
+msgstr "Cloudflare settings,"
+
+msgid "hero_title_line2"
+msgstr "break them—roll them back."
 
 msgid "hero_subtitle"
-msgstr "From CS-Cart admin: keep generation history and restore the last working state. Pro is the full story."
+msgstr "Not another cache toy—insurance when production tilts. Pro restores known-good rules from CS-Cart."
 
 msgid "hero_cta_primary"
 msgstr "Start Pro"
 
 msgid "hero_cta_secondary"
-msgstr "See screenshots"
-
-msgid "hero_free_link"
-msgstr "Try Free first (read-only & diff on Freemius)"
+msgstr "See the recovery flow"
 
 msgid "problem_section_title"
-msgstr "The problem"
+msgstr "When things break"
 
 msgid "problem_title"
-msgstr "One rule change can affect the whole storefront"
+msgstr "One line can shake the whole storefront"
 
 msgid "problem_p1"
 msgstr "Page Rules and Cache Rules are powerful, but mistakes can hit checkout, APIs, and the admin in one shot."
@@ -213,10 +231,10 @@ msgid "problem_p3"
 msgstr "What matters is stable behavior and a way to return to the last working state—not another dashboard that only talks about speed."
 
 msgid "solution_section_title"
-msgstr "What this add-on does"
+msgstr "Why SafeCache"
 
 msgid "solution_title"
-msgstr "When things break, return to the last working state"
+msgstr "Restore first—debug second"
 
 msgid "solution_p1"
 msgstr "On Pro, Page Rules and Cache Rules are stored separately, and a new history entry is added only when the live configuration actually changes—so you always have a path back to the last working state."
