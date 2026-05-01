@@ -153,7 +153,7 @@ msgid "story_title"
 msgstr "Cache Rule 変更から復旧まで"
 
 msgid "story_lead"
-msgstr "ドキュメントの話じゃなく、自分の店で起きたときに間に合うか。一覧が空でも、履歴から「その直前」へ戻して売上の穴を塞げます。"
+msgstr "ドキュメントの話じゃなく、自分の店で起きたときに間に合うか。戻すだけでなく、復元後に注文・表示がビジネスとして正常に戻るところまで。"
 
 msgid "story_flow_aria"
 msgstr "自分の店での復旧の流れ"
@@ -162,13 +162,13 @@ msgid "story_step_1"
 msgstr "Cache Rule 変更"
 
 msgid "story_step_2"
-msgstr "商品一覧が空（売れない）"
+msgstr "商品一覧が空（売上止まる）"
 
 msgid "story_step_3"
-msgstr "履歴から1クリック復元"
+msgstr "履歴から直前を選択"
 
 msgid "story_step_4"
-msgstr "落ち着いて原因を追う"
+msgstr "1クリックで復元"
 
 msgid "story_history_panel_title"
 msgstr "履歴"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "異常"
 
 msgid "story_history_desc_bad"
-msgstr "商品一覧が空 ⚠（売れない）"
+msgstr "商品一覧が空 ⚠（売上止まる）"
 
 msgid "story_history_target_badge"
 msgstr "戻す対象"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ この状態の前に戻す"
 
 msgid "story_history_result_line"
-msgstr "復元完了 · 注文・表示ともに正常に復帰"
+msgstr "復元後：注文・表示ともに正常に復帰"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"

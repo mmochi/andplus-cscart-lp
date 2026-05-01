@@ -153,7 +153,7 @@ msgid "story_title"
 msgstr "From a Cache Rule change to recovery"
 
 msgid "story_lead"
-msgstr "Not docs—your storefront. When the listing goes empty, roll back to the moment before and stop the revenue leak."
+msgstr "Not docs—your storefront. Rollback is only half the story; after restore, orders and the storefront return to business-normal."
 
 msgid "story_flow_aria"
 msgstr "Recovery flow for your store"
@@ -162,13 +162,13 @@ msgid "story_step_1"
 msgstr "Change a Cache Rule"
 
 msgid "story_step_2"
-msgstr "Listing empty (no sales)"
+msgstr "Listing empty (revenue stops)"
 
 msgid "story_step_3"
-msgstr "One-click restore from history"
+msgstr "Pick the prior snapshot"
 
 msgid "story_step_4"
-msgstr "Investigate with calm"
+msgstr "Restore in one click"
 
 msgid "story_history_panel_title"
 msgstr "History"
@@ -198,7 +198,7 @@ msgid "story_history_label_bad"
 msgstr "Broken"
 
 msgid "story_history_desc_bad"
-msgstr "Product listing empty ⚠ (no sales)"
+msgstr "Product listing empty ⚠ (revenue stops)"
 
 msgid "story_history_target_badge"
 msgstr "Restore to this"
@@ -207,7 +207,7 @@ msgid "story_history_rollback_line"
 msgstr "→ Roll back before this state"
 
 msgid "story_history_result_line"
-msgstr "Restored · orders and storefront back to normal"
+msgstr "After restore: orders and storefront back to normal"
 
 msgid "story_screens_hint"
 msgstr "See the real history UI →"
