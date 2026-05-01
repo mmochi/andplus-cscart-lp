@@ -90,13 +90,13 @@ msgid "urgency_checklist_3"
 msgstr "キャッシュが効きすぎて更新されない"
 
 msgid "urgency_bridge"
-msgstr "いずれかに心当たりがあれば、すでにリスクが出ている可能性があります。下の流れのとおり、履歴から「動いていた状態」へ戻す道を先に用意できます。"
+msgstr "いずれかに心当たりがあれば、すでにリスクが出ている可能性があります。下の流れのとおり、履歴から「動いていた状態」へ戻すすべを先に用意できます。"
 
 msgid "problem_checklist_intro"
 msgstr "こんな不安はありませんか？"
 
 msgid "problem_checklist_1"
-msgstr "Cloudflare のルールを少し変えただけで、チェックアウトや API・管理画面まで想定外に効き、注文やカートにまで被害が出ることがある"
+msgstr "Cloudflare のルールを少し変えただけで、チェックアウトや API・管理画面まで想定外に影響し、注文やカートにまで被害が出ることがある"
 
 msgid "problem_checklist_2"
 msgstr "トラブル中に「さっきまで動いていた状態」に戻したいが、ダッシュボードのどこを直したか追えない"
@@ -126,7 +126,7 @@ msgid "screens_before_body"
 msgstr "変更履歴が散らばり、障害時は当てずっぽうで直すことになりがちです。誰が・いつ・何を変えたかの再現が重くなります。"
 
 msgid "screens_after_title"
-msgstr "SafeCache で履歴と戻し道を残す"
+msgstr "SafeCache で履歴と戻すすべを残す"
 
 msgid "screens_after_body"
 msgstr "CS-Cart 管理画面からルールを把握し、動いていた状態へ戻す道筋を先に用意します。まず止めてから原因を追えます。"
@@ -288,10 +288,10 @@ msgid "problem_p1"
 msgstr "Cloudflare の Page Rules と Cache Rules は便利ですが、設定を誤るとチェックアウトや API、管理画面にまで影響することがあります。"
 
 msgid "problem_p2"
-msgstr "すぐに「動いていた状態」へ戻せる道がないと、トラブル中は Cloudflare を触りづらくなり、復旧が遅れて売上や信用への被害が積み上がりがちです。"
+msgstr "すぐに「動いていた状態」へ戻せるすべがないと、トラブル中は Cloudflare を触りづらくなり、復旧が遅れて売上や信用への被害が積み上がりがちです。"
 
 msgid "problem_p3"
-msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調する画面ではありません。"
+msgstr "大切なのは、安定して動かすことと、いつでも「動いていた状態」に戻せることです。速度だけを強調するアドオンではありません。"
 
 msgid "ops_mirror_section_label"
 msgstr "いまのやり方"
@@ -387,7 +387,7 @@ msgid "solution_title"
 msgstr "まず戻す。あとで原因を追う"
 
 msgid "solution_p1"
-msgstr "Pro では Page Rules と Cache Rules を別々に保存し、前回から内容が変わったときだけ履歴に追加します。いつでも「動いていた状態」に戻す道を残します。"
+msgstr "Pro では Page Rules と Cache Rules を別々に保存し、前回から内容が変わったときだけ履歴に追加します。いつでも「動いていた状態」に戻すすべを残します。"
 
 msgid "solution_p2"
 msgstr "障害時は、ダッシュボードのどの項目を直したか当てずっぽうにせず、保存しておいた「動いていた状態」へ戻せます。戻したあとは注文フローと表示を揃えたうえで、落ち着いて原因を追えます。"
@@ -480,7 +480,7 @@ msgid "pricing_title"
 msgstr "Pro（月額）"
 
 msgid "pricing_subtitle"
-msgstr "単一ストア向けとモール向けの 2 プラン。表示価格は Freemius のチェックアウトが正です。"
+msgstr "単一ストア向けとモール向けの 2 プラン。"
 
 msgid "pricing_free_link_text"
 msgstr "無料版は取得・差分のみ — Freemius で入手"
@@ -495,7 +495,7 @@ msgid "pricing_pro_single_period"
 msgstr "/ 月"
 
 msgid "pricing_pro_single_desc"
-msgstr "単一の CS-Cart ストア向け。バックアップ・ロールバック・反映はこのプランが前提です。"
+msgstr "単一の CS-Cart ストア向け。バックアップ・ロールバック・反映はこのプランが必要です。"
 
 msgid "pricing_pro_mv_name"
 msgstr "Pro（モール版）"
