@@ -159,16 +159,16 @@ msgid "story_flow_aria"
 msgstr "復旧までの流れ"
 
 msgid "story_step_1"
-msgstr "ルールを変える"
+msgstr "設定変更"
 
 msgid "story_step_2"
-msgstr "想定外に効く"
+msgstr "壊れる"
 
 msgid "story_step_3"
-msgstr "履歴から戻す"
+msgstr "戻せる"
 
 msgid "story_step_4"
-msgstr "あとで原因を見る"
+msgstr "調べる"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"

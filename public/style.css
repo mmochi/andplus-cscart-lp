@@ -1093,10 +1093,9 @@ body {
   border-radius: calc(var(--radius) + 2px);
   border: 1px solid var(--border);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
-  font-size: clamp(0.78rem, 1.35vw, 0.94rem);
   font-weight: 700;
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .story-flow__card-inner {
@@ -1162,6 +1161,9 @@ body {
   min-width: 0;
   max-width: 100%;
   flex: 0 1 auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .story-flow__arrow {

@@ -159,16 +159,16 @@ msgid "story_flow_aria"
 msgstr "Recovery steps"
 
 msgid "story_step_1"
-msgstr "Change a rule"
+msgstr "Change settings"
 
 msgid "story_step_2"
-msgstr "It hits where you didn’t expect"
+msgstr "It breaks"
 
 msgid "story_step_3"
-msgstr "Roll back from history"
+msgstr "Restore"
 
 msgid "story_step_4"
-msgstr "Dig into cause after"
+msgstr "Investigate"
 
 msgid "story_screens_hint"
 msgstr "See the real history UI →"
