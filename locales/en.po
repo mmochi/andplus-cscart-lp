@@ -170,6 +170,45 @@ msgstr "Restore"
 msgid "story_step_4"
 msgstr "Investigate"
 
+msgid "story_history_panel_title"
+msgstr "Generation history (example)"
+
+msgid "story_history_time_1"
+msgstr "12:00"
+
+msgid "story_history_label_ok"
+msgstr "Healthy"
+
+msgid "story_history_desc_ok"
+msgstr "Stable cache behavior"
+
+msgid "story_history_time_2"
+msgstr "12:05"
+
+msgid "story_history_label_change"
+msgstr "Changed"
+
+msgid "story_history_desc_change"
+msgstr "Cache Rule updated"
+
+msgid "story_history_time_3"
+msgstr "12:06"
+
+msgid "story_history_label_bad"
+msgstr "Broken"
+
+msgid "story_history_desc_bad"
+msgstr "Layout / output wrong"
+
+msgid "story_history_target_badge"
+msgstr "Restore to this"
+
+msgid "story_history_rollback_line"
+msgstr "→ Roll back to this generation"
+
+msgid "story_history_result_line"
+msgstr "12:07 Restored · back to a healthy state"
+
 msgid "story_screens_hint"
 msgstr "See the real history UI →"
 

@@ -1313,37 +1313,168 @@ body {
   opacity: 0.75;
 }
 
-.story-mock--history {
+.story-mock--history-ui {
   width: 100%;
-  max-width: 10.75rem;
-  height: 100%;
-  max-height: 6.75rem;
-  border-radius: 6px;
-  overflow: hidden;
+  max-width: 100%;
+  text-align: left;
+  padding: 0.55rem 0.6rem 0.5rem;
+  border-radius: 8px;
   border: 1px solid rgba(45, 45, 51, 0.14);
   background: #fff;
-  box-shadow: 0 1px 4px rgba(26, 26, 28, 0.08);
+  box-shadow: 0 2px 10px rgba(26, 26, 28, 0.08);
+  font-size: clamp(0.72rem, 1.65vw, 0.88rem);
+  line-height: 1.35;
+  color: var(--text);
 }
 
-.story-flow--stacked .story-mock--history {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  max-height: min(48vw, 26rem);
-  min-height: 13rem;
+.story-hui__head {
+  margin: 0 0 0.45rem;
+  padding-bottom: 0.35rem;
+  font-weight: 700;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(216, 216, 222, 0.9);
 }
 
-.story-mock__history-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+.story-hui__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.story-flow--stacked .story-mock__history-img {
-  min-height: 13rem;
-  max-height: min(48vw, 26rem);
+.story-hui__row {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  gap: 0.25rem 0.45rem;
+  align-items: start;
+  padding: 0.4rem 0.35rem;
+  border-radius: 5px;
+  border-left: 3px solid transparent;
+  margin-bottom: 0.35rem;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.story-hui__row:last-of-type {
+  margin-bottom: 0;
+}
+
+.story-hui__row--target {
+  border-left-color: #c9b400;
+  background: linear-gradient(90deg, rgba(255, 249, 229, 0.95) 0%, rgba(255, 255, 255, 0.5) 100%);
+  box-shadow: inset 0 0 0 1px rgba(201, 180, 0, 0.22);
+}
+
+.story-hui__row--bad {
+  background: rgba(254, 242, 242, 0.75);
+  border-left-color: rgba(220, 38, 38, 0.45);
+}
+
+.story-hui__time {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--muted);
+  padding-top: 0.1rem;
+}
+
+.story-hui__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.story-hui__badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.92em;
+}
+
+.story-hui__badge--ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.story-hui__badge--chg {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.story-hui__badge--bad {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.story-hui__desc {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.story-hui__target {
+  align-self: center;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.78em;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #fff4cc 0%, #ffe8a3 100%);
+  border: 1px solid rgba(201, 180, 0, 0.45);
+  color: #5c4a00;
+}
+
+.story-hui__rollback {
+  margin: 0.55rem 0 0;
+  padding: 0.45rem 0.35rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--text);
+  border-top: 1px dashed rgba(148, 163, 184, 0.65);
+}
+
+.story-hui__done {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.45rem -0.6rem -0.5rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0 0 7px 7px;
+  background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%);
+  border-top: 1px solid rgba(22, 163, 74, 0.25);
+  font-weight: 700;
+  font-size: 0.88em;
+  color: #14532d;
+}
+
+.story-hui__done-icon {
+  flex-shrink: 0;
+  display: flex;
+  color: #15803d;
+}
+
+.story-hui__done-text {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 420px) {
+  .story-hui__row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .story-hui__time {
+    padding-top: 0;
+  }
+
+  .story-hui__target {
+    justify-self: start;
+    white-space: normal;
+  }
 }
 
 .story-mock--inspect {
@@ -1516,11 +1647,6 @@ body {
 @media (max-width: 639px) {
   .screens-gallery--fused .screens-expand__frame {
     max-height: min(46vh, 22rem);
-  }
-
-  .story-flow--stacked .story-mock--history {
-    min-height: 11rem;
-    max-height: min(58vw, 18rem);
   }
 }
 

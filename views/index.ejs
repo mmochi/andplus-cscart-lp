@@ -248,17 +248,40 @@
               <div class="story-flow__card story-flow__card--rollback">
                 <span class="story-flow__card-inner">
                   <span class="story-flow__viz story-flow__viz--history" aria-hidden="true">
-                    <span class="story-mock story-mock--history">
-                      <img
-                        class="story-mock__history-img"
-                        src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
-                        width="2082"
-                        height="1542"
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </span>
+                    <div class="story-mock story-mock--history-ui">
+                      <div class="story-hui__head"><%= __('story_history_panel_title') %></div>
+                      <ol class="story-hui__list">
+                        <li class="story-hui__row story-hui__row--target">
+                          <span class="story-hui__time"><%= __('story_history_time_1') %></span>
+                          <div class="story-hui__main">
+                            <span class="story-hui__badge story-hui__badge--ok"><%= __('story_history_label_ok') %></span>
+                            <span class="story-hui__desc"><%= __('story_history_desc_ok') %></span>
+                          </div>
+                          <span class="story-hui__target"><%= __('story_history_target_badge') %></span>
+                        </li>
+                        <li class="story-hui__row">
+                          <span class="story-hui__time"><%= __('story_history_time_2') %></span>
+                          <div class="story-hui__main">
+                            <span class="story-hui__badge story-hui__badge--chg"><%= __('story_history_label_change') %></span>
+                            <span class="story-hui__desc"><%= __('story_history_desc_change') %></span>
+                          </div>
+                        </li>
+                        <li class="story-hui__row story-hui__row--bad">
+                          <span class="story-hui__time"><%= __('story_history_time_3') %></span>
+                          <div class="story-hui__main">
+                            <span class="story-hui__badge story-hui__badge--bad"><%= __('story_history_label_bad') %></span>
+                            <span class="story-hui__desc"><%= __('story_history_desc_bad') %></span>
+                          </div>
+                        </li>
+                      </ol>
+                      <div class="story-hui__rollback"><%= __('story_history_rollback_line') %></div>
+                      <div class="story-hui__done">
+                        <span class="story-hui__done-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                        </span>
+                        <span class="story-hui__done-text"><%= __('story_history_result_line') %></span>
+                      </div>
+                    </div>
                   </span>
                   <span class="story-flow__text"><%= __('story_step_3') %></span>
                 </span>
