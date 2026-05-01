@@ -6,7 +6,7 @@ msgid "page_title"
 msgstr "AP SafeCache — Cloudflare の設定を、いつでも戻せる状態にする"
 
 msgid "meta_description"
-msgstr "Cloudflare のルールを履歴付きでバックアップし、必要ならロールバック。無料版は取得・差分確認、戻せるかどうかが Pro の差です。速度を売り文句にはしません。"
+msgstr "Cloudflare のルールを履歴付きでバックアップし、表示崩れや障害時のリスクを抑えてロールバック。無料版は取得・差分、戻せるかが Pro。速度の数値より止まらない運用。"
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
@@ -62,6 +62,57 @@ msgstr "料金"
 msgid "nav_prereq"
 msgstr "前提"
 
+msgid "nav_visual"
+msgstr "画面"
+
+msgid "product_visual_heading"
+msgstr "製品の画面イメージ"
+
+msgid "product_visual_caption"
+msgstr "※ 管理画面のコンセプト図です。実スクリーンのキャプチャに差し替えると、導入イメージがさらに伝わりやすくなります。"
+
+msgid "problem_checklist_intro"
+msgstr "こんな不安はありませんか？"
+
+msgid "problem_checklist_1"
+msgstr "Cloudflare のルールを少し変えただけで、チェックアウトや API・管理画面まで想定外に効いてしまう"
+
+msgid "problem_checklist_2"
+msgstr "トラブル中に「さっきまで動いていた状態」に戻したいが、ダッシュボードのどこを直したか追えない"
+
+msgid "problem_checklist_3"
+msgstr "CDN やキャッシュ周りの設定を、エンジニア以外に任せるのが怖い"
+
+msgid "screens_section_title"
+msgstr "導入イメージ"
+
+msgid "screens_title"
+msgstr "「直で触る」と「SafeCache 経由」では何が違うか"
+
+msgid "screens_intro"
+msgstr "抽象の説明だけではイメージが湧きにくい領域なので、運用イメージを言語化します。"
+
+msgid "screens_note"
+msgstr "ヒーロー直下の図はワイヤーフレームです。本番では実際のタブや一覧のスクリーンショットを置くと信頼感が高まります。"
+
+msgid "screens_compare_aria"
+msgstr "運用スタイルの比較"
+
+msgid "screens_before_title"
+msgstr "Cloudflare をダッシュボードだけで触り続ける"
+
+msgid "screens_before_body"
+msgstr "変更履歴が散らばり、障害時は当てずっぽうで直すことになりがちです。誰が・いつ・何を変えたかの再現が重くなります。"
+
+msgid "screens_after_title"
+msgstr "SafeCache で履歴と戻し道を残す"
+
+msgid "screens_after_body"
+msgstr "CS-Cart 管理画面からルールを把握し、動いていた状態へ戻す道筋を先に用意します。まず止めてから原因を追えます。"
+
+msgid "screens_main_alt"
+msgstr "CS-Cart 管理画面のコンセプト（サイドバー・タブ・一覧のワイヤーフレーム）"
+
 msgid "prereq_section_title"
 msgstr "前提条件"
 
@@ -114,7 +165,7 @@ msgid "hero_cta_primary"
 msgstr "料金を見る"
 
 msgid "hero_cta_secondary"
-msgstr "主な機能を見る"
+msgstr "画面イメージを見る"
 
 msgid "hero_cta_free"
 msgstr "無料版を取得（Freemius）"
@@ -156,7 +207,7 @@ msgid "core_title"
 msgstr "バックアップとロールバック"
 
 msgid "core_intro"
-msgstr "キャッシュを効かせる設計を、誤設定で壊さないための機能です。速度の数値より、いざというときに戻せることを重視しています。"
+msgstr "キャッシュを効かせる設計を、誤設定で壊さないための機能です。速度の数値より、サイトが止まらず・いざというときに戻せること（運用の安心）を優先します。"
 
 msgid "core_feature_backup_title"
 msgstr "ルールを分けて保存"
@@ -192,7 +243,7 @@ msgid "core_feature_rollback_title"
 msgstr "「動いていた状態」へ戻す"
 
 msgid "core_feature_rollback_desc"
-msgstr "「動いていた状態」に戻してから、落ち着いて原因を調べられます。"
+msgstr "まず安定した表示・動作に戻してから原因を調べられ、問い合わせや売上への波及を抑えられます。"
 
 msgid "visibility_section_title"
 msgstr "変更の把握"

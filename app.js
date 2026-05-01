@@ -485,6 +485,8 @@ app.get("/", async (req, res, next) => {
     });
     res.locals.showEarlyAccessBanner = state.showBanner;
     res.locals.eaCouponCode = state.code;
+    /* EJS strict / ミドルウェア順の差でも落ちないよう、描画直前に必ず渡す */
+    res.locals.sitemapFileUrl = buildSitemapFileUrl(req);
     res.render("index");
   } catch (err) {
     next(err);
