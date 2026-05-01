@@ -953,6 +953,26 @@ body {
   margin-bottom: 0;
 }
 
+.section--urgency {
+  padding-block: 2rem 2.25rem;
+}
+
+.problem-checklist--signal {
+  border-left: 4px solid rgba(180, 83, 9, 0.42);
+  background: rgba(255, 251, 235, 0.65);
+}
+
+.urgency-bridge {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+.prose--tight {
+  max-width: 42rem;
+}
+
 .before-after {
   display: grid;
   gap: 1rem;

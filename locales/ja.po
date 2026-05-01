@@ -71,6 +71,27 @@ msgstr "画面（履歴）"
 msgid "nav_pro_value"
 msgstr "Proでできること"
 
+msgid "urgency_section_label"
+msgstr "見えにくいリスク"
+
+msgid "urgency_title"
+msgstr "気づかないうちに壊れていることがあります"
+
+msgid "urgency_checklist_intro"
+msgstr "こんな状態、起きていませんか？"
+
+msgid "urgency_checklist_1"
+msgstr "商品が表示されないページがある"
+
+msgid "urgency_checklist_2"
+msgstr "ログイン状態がおかしい"
+
+msgid "urgency_checklist_3"
+msgstr "キャッシュが効きすぎて更新されない"
+
+msgid "urgency_bridge"
+msgstr "いずれかに心当たりがあれば、すでにリスクが出ている可能性があります。下の流れのとおり、履歴から「動いていた状態」へ戻す道を先に用意できます。"
+
 msgid "problem_checklist_intro"
 msgstr "こんな不安はありませんか？"
 

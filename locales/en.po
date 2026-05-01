@@ -71,6 +71,27 @@ msgstr "Screens"
 msgid "nav_pro_value"
 msgstr "Why Pro"
 
+msgid "urgency_section_label"
+msgstr "Easy to miss"
+
+msgid "urgency_title"
+msgstr "It may already be broken before you notice"
+
+msgid "urgency_checklist_intro"
+msgstr "Any of this sound familiar?"
+
+msgid "urgency_checklist_1"
+msgstr "Some storefront pages show no products"
+
+msgid "urgency_checklist_2"
+msgstr "Login or session feels inconsistent"
+
+msgid "urgency_checklist_3"
+msgstr "Cache is too sticky—changes never seem to show"
+
+msgid "urgency_bridge"
+msgstr "If any ring true, the damage may already be live. The flow below is how you keep a rollback path to the last known-good state."
+
 msgid "problem_checklist_intro"
 msgstr "Sound familiar?"
 
