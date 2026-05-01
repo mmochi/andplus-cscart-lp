@@ -974,10 +974,6 @@ body {
   color: var(--muted);
 }
 
-.prose--tight {
-  max-width: 42rem;
-}
-
 .section--mirror {
   padding-block: 2rem 2.25rem;
 }
