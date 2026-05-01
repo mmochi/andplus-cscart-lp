@@ -263,6 +263,9 @@ msgstr "JA"
 msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
+msgid "hero_audience"
+msgstr "CS-Cart × Cloudflare を運用している方向け"
+
 msgid "hero_title_line1"
 msgstr "Cloudflare の設定、"
 
