@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "page_title"
-msgstr "AP SafeCache — Cloudflare と CS-Cart を安全に運用"
+msgstr "AP SafeCache — Cloudflare の設定を、壊しても戻せる（Pro）"
 
 msgid "meta_description"
-msgstr "ルールの取得・差分は無料。バックアップ・ロールバック・Cloudflare への反映は Pro。キャッシュとセッションのズレ対策も。"
+msgstr "CS-Cart から Cloudflare のルールをバックアップ・ロールバック。月額 Pro が本命。無料版は取得・差分だけの入口です。"
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, バックアップ, ロールバック, Page Rules, Cache Rules, あんどぷらす, アドオン"
@@ -59,8 +59,8 @@ msgstr "機能"
 msgid "nav_pricing"
 msgstr "料金"
 
-msgid "nav_prereq"
-msgstr "Free / Pro"
+msgid "nav_pro_value"
+msgstr "Proでできること"
 
 msgid "nav_screens"
 msgstr "導入イメージ"
@@ -84,7 +84,7 @@ msgid "screens_title"
 msgstr "CS-Cart 管理画面での見え方"
 
 msgid "screens_intro"
-msgstr "管理画面のキャプチャ例。画像の下で展開／折りたたみ。無料／Pro は上の「Free / Pro」を参照。"
+msgstr "管理画面のキャプチャ例。画像の下で展開／折りたたみ。"
 
 msgid "screens_note"
 msgstr "ヒーローは管理トップの実画面です。"
@@ -140,47 +140,26 @@ msgstr "クリックで全体を表示"
 msgid "screens_expand_less"
 msgstr "クリックで折りたたむ"
 
-msgid "prereq_section_title"
-msgstr "プラン"
-
-msgid "plan_compare_title"
-msgstr "できること（無料 / Pro）"
-
-msgid "plan_compare_aria"
-msgstr "無料版と Pro の比較"
-
-msgid "plan_free_head"
-msgstr "Free（無料）"
-
-msgid "plan_free_item_1"
-msgstr "Page Rules / Cache Rules などを取得し、管理画面で内容を確認"
-
-msgid "plan_free_item_2"
-msgstr "保存した設定とライブ設定の差分を表示"
-
-msgid "plan_free_item_3"
-msgstr "ライブ照合・フィンガープリントで状態を確認"
-
-msgid "plan_free_item_4"
-msgstr "ストア側：ブロック／DOM 再取得・Ajax 追跡（キャッシュ無効の代替ではありません）"
-
-msgid "plan_pro_head"
+msgid "pro_value_section_label"
 msgstr "Pro"
 
-msgid "plan_pro_item_1"
-msgstr "バックアップと世代履歴の保持"
+msgid "pro_value_title"
+msgstr "Cloudflare の変更を、「やり直せる状態」にする"
 
-msgid "plan_pro_item_2"
-msgstr "動いていた状態へのロールバック"
+msgid "pro_value_lead"
+msgstr "SafeCache（Pro）はルールを世代付きで保存し、動いていた設定へ戻せます。"
 
-msgid "plan_pro_item_3"
-msgstr "Cloudflare へのルール反映・キャッシュパージなどの書き込み"
+msgid "pro_value_steps_aria"
+msgstr "トラブル時の流れ（例）"
 
-msgid "plan_pro_item_4"
-msgstr "API で扱えるルールの編集と連携"
+msgid "pro_value_step_1"
+msgstr "ルールやキャッシュ設定を変更する"
 
-msgid "plan_pro_item_5"
-msgstr "Free の機能はすべて利用可能"
+msgid "pro_value_step_2"
+msgstr "店舗や管理画面に想定外の影響が出る"
+
+msgid "pro_value_step_3"
+msgstr "保存した状態へ戻してから原因を追う"
 
 msgid "plan_cf_note"
 msgstr "ルールは API で読むため、ドメインを Cloudflare 経由（プロキシ）で運用している店舗が対象です。"
@@ -204,19 +183,19 @@ msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
 msgid "hero_title"
-msgstr "Cloudflare と組み合わせて、CS-Cart を安全に運用する"
+msgstr "Cloudflare の設定、壊しても戻せます。"
 
 msgid "hero_subtitle"
-msgstr "ルールとキャッシュの影響を把握し、トラブル時に迷いにくくするアドオン。無料は見える化と差分、Pro は復旧と反映。"
+msgstr "CS-Cart 管理画面から世代履歴を残し、動いていた状態へ復元。本命は月額 Pro。"
 
 msgid "hero_cta_primary"
-msgstr "料金を見る"
+msgstr "Pro を始める"
 
 msgid "hero_cta_secondary"
 msgstr "導入イメージを見る"
 
-msgid "hero_cta_free"
-msgstr "無料版を取得（Freemius）"
+msgid "hero_free_link"
+msgstr "無料で試す（取得・差分のみ・Freemius）"
 
 msgid "problem_section_title"
 msgstr "よくある悩み"
@@ -246,7 +225,7 @@ msgid "solution_p2"
 msgstr "障害時は、ダッシュボードのどの項目を直したか当てずっぽうにせず、保存しておいた「動いていた状態」へ戻せます。"
 
 msgid "pro_disclaimer"
-msgstr "※ 「戻せる」ためのバックアップ・ロールバック・Cloudflare への設定反映は Pro。無料版はルールの取得と内容の確認が中心です。"
+msgstr "無料版はルールの取得・内容確認・差分が中心です。バックアップ・ロールバック・Cloudflare への反映は Pro。"
 
 msgid "core_section_title"
 msgstr "Pro の機能（整理）"
@@ -255,7 +234,7 @@ msgid "core_title"
 msgstr "バックアップとロールバック"
 
 msgid "core_intro"
-msgstr "直前のキャプチャに対応する、Pro の機能要点だけを列挙します。"
+msgstr "バックアップとロールバックの要点だけ。"
 
 msgid "core_feature_backup_title"
 msgstr "ルールを分けて保存"
@@ -330,25 +309,13 @@ msgid "pricing_section_title"
 msgstr "料金"
 
 msgid "pricing_title"
-msgstr "月額プラン"
+msgstr "Pro（月額）"
 
 msgid "pricing_subtitle"
-msgstr "無料版と月額の Pro から選べます。実際の金額はお支払い画面の表示が優先します。"
+msgstr "単一ストア向けとモール向けの 2 プラン。表示価格は Freemius のチェックアウトが正です。"
 
-msgid "pricing_free_name"
-msgstr "Free"
-
-msgid "pricing_free_amount"
-msgstr "無料"
-
-msgid "pricing_free_desc"
-msgstr "ルールの取得・内容の確認・差分表示が中心です。チェックアウト完了後、Freemius から ZIP をダウンロードしてインストールできます。"
-
-msgid "pricing_free_note"
-msgstr "ライセンスは Freemius で付与されます。メールまたはユーザーダッシュボードから ZIP を取得してください。"
-
-msgid "pricing_free_cta"
-msgstr "Free を取得（Freemius）"
+msgid "pricing_free_link_text"
+msgstr "無料版は取得・差分のみ — Freemius で入手"
 
 msgid "pricing_pro_single_name"
 msgstr "Pro（スタンダード版）"
@@ -360,7 +327,7 @@ msgid "pricing_pro_single_period"
 msgstr "/ 月"
 
 msgid "pricing_pro_single_desc"
-msgstr "単一の CS-Cart ストア向け。バックアップとロールバックは Pro で利用できます。"
+msgstr "単一の CS-Cart ストア向け。バックアップ・ロールバック・反映はこのプランが前提です。"
 
 msgid "pricing_pro_mv_name"
 msgstr "Pro（モール版）"

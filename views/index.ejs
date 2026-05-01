@@ -90,7 +90,7 @@
             <span class="logo__text"><%= __('brand_name') %></span>
           </a>
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
-            <a class="nav__link" href="#prereq"><%= __('nav_prereq') %></a>
+            <a class="nav__link" href="#pro-value"><%= __('nav_pro_value') %></a>
             <a class="nav__link" href="#screens"><%= __('nav_screens') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
             <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
@@ -175,13 +175,14 @@
             <div class="hero-cta">
               <a class="btn btn--primary" href="#pricing"><%= __('hero_cta_primary') %></a>
               <a class="btn btn--ghost" href="#screens"><%= __('hero_cta_secondary') %></a>
+            </div>
+            <p class="hero-free-link">
               <a
-                class="btn btn--ghost"
                 href="<%= freemiusCheckoutUrls.free %>"
                 target="_blank"
                 rel="noopener noreferrer"
-              ><%= __('hero_cta_free') %></a>
-            </div>
+                ><%= __('hero_free_link') %></a>
+            </p>
           </div>
           <div class="hero-layout__visual">
             <div class="hero-visual hero-visual--photo">
@@ -199,31 +200,16 @@
         </div>
       </section>
 
-      <section id="prereq" class="section section--alt" aria-labelledby="prereq-heading">
+      <section id="pro-value" class="section section--alt" aria-labelledby="pro-value-heading">
         <div class="container">
-          <p class="section-label"><%= __('prereq_section_title') %></p>
-          <h2 id="prereq-heading" class="section-title"><%= __('plan_compare_title') %></h2>
-          <div class="plan-compare" role="region" aria-label="<%= __('plan_compare_aria') %>">
-            <div class="plan-compare__col plan-compare__col--free">
-              <h3 class="plan-compare__head"><%= __('plan_free_head') %></h3>
-              <ul class="plan-compare__list">
-                <li><%= __('plan_free_item_1') %></li>
-                <li><%= __('plan_free_item_2') %></li>
-                <li><%= __('plan_free_item_3') %></li>
-                <li><%= __('plan_free_item_4') %></li>
-              </ul>
-            </div>
-            <div class="plan-compare__col plan-compare__col--pro">
-              <h3 class="plan-compare__head"><%= __('plan_pro_head') %></h3>
-              <ul class="plan-compare__list">
-                <li><%= __('plan_pro_item_1') %></li>
-                <li><%= __('plan_pro_item_2') %></li>
-                <li><%= __('plan_pro_item_3') %></li>
-                <li><%= __('plan_pro_item_4') %></li>
-                <li><%= __('plan_pro_item_5') %></li>
-              </ul>
-            </div>
-          </div>
+          <p class="section-label"><%= __('pro_value_section_label') %></p>
+          <h2 id="pro-value-heading" class="section-title"><%= __('pro_value_title') %></h2>
+          <p class="lead lead--tight"><%= __('pro_value_lead') %></p>
+          <ol class="value-steps" aria-label="<%= __('pro_value_steps_aria') %>">
+            <li class="value-steps__item"><%= __('pro_value_step_1') %></li>
+            <li class="value-steps__item"><%= __('pro_value_step_2') %></li>
+            <li class="value-steps__item"><%= __('pro_value_step_3') %></li>
+          </ol>
           <p class="prose prose--note plan-cf-note"><%= __('plan_cf_note') %></p>
         </div>
       </section>
@@ -250,6 +236,7 @@
           <h2 id="solution-heading" class="section-title"><%= __('solution_title') %></h2>
           <p class="prose"><%= __('solution_p1') %></p>
           <p class="prose"><%= __('solution_p2') %></p>
+          <p class="pro-disclaimer"><%= __('pro_disclaimer') %></p>
         </div>
       </section>
 
@@ -443,24 +430,10 @@
           <p class="section-label"><%= __('pricing_section_title') %></p>
           <h2 id="pricing-heading" class="section-title"><%= __('pricing_title') %></h2>
           <p class="lead lead--tight"><%= __('pricing_subtitle') %></p>
-          <div class="pricing-grid">
+          <div class="pricing-grid pricing-grid--pro">
             <a
-              id="pricing-free"
-              class="price-card price-card--link price-card--free"
-              href="<%= freemiusCheckoutUrls.free %>"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h3 class="price-card__name"><%= __('pricing_free_name') %></h3>
-              <p class="price-card__price">
-                <span class="price-card__amount"><%= __('pricing_free_amount') %></span>
-              </p>
-              <p class="price-card__desc"><%= __('pricing_free_desc') %></p>
-              <p class="price-card__activations"><%= __('pricing_free_note') %></p>
-              <span class="price-card__cta"><%= __('pricing_free_cta') %></span>
-            </a>
-            <a
-              class="price-card price-card--link price-card--pro-single"
+              id="pricing-pro-single"
+              class="price-card price-card--link price-card--pro-single price-card--emphasis"
               href="<%= freemiusCheckoutUrls.proSingle %>"
               target="_blank"
               rel="noopener noreferrer"
@@ -475,7 +448,8 @@
               <span class="price-card__cta"><%= __('pricing_checkout_cta') %></span>
             </a>
             <a
-              class="price-card price-card--emphasis price-card--link"
+              id="pricing-pro-mv"
+              class="price-card price-card--link price-card--pro-mv"
               href="<%= freemiusCheckoutUrls.proMv %>"
               target="_blank"
               rel="noopener noreferrer"
@@ -490,6 +464,15 @@
               <span class="price-card__cta"><%= __('pricing_checkout_cta') %></span>
             </a>
           </div>
+          <p class="pricing-free-link-wrap">
+            <a
+              id="pricing-free"
+              class="pricing-free-link"
+              href="<%= freemiusCheckoutUrls.free %>"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><%= __('pricing_free_link_text') %></a>
+          </p>
           <p class="pricing-note"><%= __('pricing_note') %></p>
         </div>
       </section>
@@ -501,12 +484,10 @@
           <span class="footer-legal__copy"><%= __('footer_copyright') %></span>
           <span class="footer-legal__sep" aria-hidden="true">·</span>
           <a class="footer-legal__link" href="https://www.andplus.co.jp/" target="_blank" rel="noopener noreferrer"
-            ><%= __('footer_corporate_link') %></a
-          >
+            ><%= __('footer_corporate_link') %></a>
           <span class="footer-legal__sep" aria-hidden="true">·</span>
           <a class="footer-legal__link" href="https://www.andplus.co.jp/privacy/" target="_blank" rel="noopener noreferrer"
-            ><%= __('footer_privacy_link') %></a
-          >
+            ><%= __('footer_privacy_link') %></a>
         </p>
         <p class="footer-note"><%= __('footer_notice') %></p>
       </div>

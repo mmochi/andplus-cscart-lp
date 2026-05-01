@@ -397,6 +397,8 @@ app.set("trust proxy", 1);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set("view options", { rmWhitespace: false });
+/** 本番でも EJS をキャッシュしない（デフォルトは NODE_ENV=production でキャッシュ ON）。テンプレ更新後に再起動しなくても反映される */
+app.set("view cache", false);
 
 app.use(cookieParser());
 const IMG_DIR = path.join(__dirname, "img");

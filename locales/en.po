@@ -3,10 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "page_title"
-msgstr "AP SafeCache — Run CS-Cart safely with Cloudflare"
+msgstr "AP SafeCache — Roll back Cloudflare rules from CS-Cart (Pro)"
 
 msgid "meta_description"
-msgstr "Fetch and diff rules on Free; backups, rollback, and apply to Cloudflare on Pro. Storefront helpers for cache vs session skew."
+msgstr "Back up and roll back Cloudflare Page Rules and Cache Rules from CS-Cart admin. Pro is the real product; Free is read-only entry."
 
 msgid "meta_keywords"
 msgstr "AP SafeCache, Cloudflare, CS-Cart, backup, rollback, Page Rules, Cache Rules, ANDPLUS, add-on"
@@ -59,8 +59,8 @@ msgstr "Features"
 msgid "nav_pricing"
 msgstr "Pricing"
 
-msgid "nav_prereq"
-msgstr "Free vs Pro"
+msgid "nav_pro_value"
+msgstr "Why Pro"
 
 msgid "nav_screens"
 msgstr "Screens"
@@ -84,7 +84,7 @@ msgid "screens_title"
 msgstr "What you see in CS-Cart admin"
 
 msgid "screens_intro"
-msgstr "Admin screenshots—expand/collapse under each. Free vs Pro: see the section above."
+msgstr "Admin screenshots—expand/collapse under each."
 
 msgid "screens_note"
 msgstr "The hero image shows the manage overview."
@@ -140,47 +140,26 @@ msgstr "Show full screenshot"
 msgid "screens_expand_less"
 msgstr "Collapse"
 
-msgid "prereq_section_title"
-msgstr "Plans"
-
-msgid "plan_compare_title"
-msgstr "What Free and Pro include"
-
-msgid "plan_compare_aria"
-msgstr "Free versus Pro comparison"
-
-msgid "plan_free_head"
-msgstr "Free"
-
-msgid "plan_free_item_1"
-msgstr "Fetch Page Rules, Cache Rules, and related zone settings; review in CS-Cart admin."
-
-msgid "plan_free_item_2"
-msgstr "Diff saved snapshots vs live Cloudflare configuration."
-
-msgid "plan_free_item_3"
-msgstr "Live poll and fingerprint checks."
-
-msgid "plan_free_item_4"
-msgstr "Storefront: block/DOM reloads and Ajax tracing—not a substitute for disabling cache."
-
-msgid "plan_pro_head"
+msgid "pro_value_section_label"
 msgstr "Pro"
 
-msgid "plan_pro_item_1"
-msgstr "Backups with generation history."
+msgid "pro_value_title"
+msgstr "Keep Cloudflare changes redo-ready"
 
-msgid "plan_pro_item_2"
-msgstr "Rollback to a known-good state."
+msgid "pro_value_lead"
+msgstr "SafeCache Pro keeps versioned snapshots so you can return to the last known-good configuration."
 
-msgid "plan_pro_item_3"
-msgstr "Write-back to Cloudflare (rules, purge, etc.)."
+msgid "pro_value_steps_aria"
+msgstr "Typical incident flow"
 
-msgid "plan_pro_item_4"
-msgstr "Edit and sync rules available via the Cloudflare API."
+msgid "pro_value_step_1"
+msgstr "Change rules or cache behavior"
 
-msgid "plan_pro_item_5"
-msgstr "Everything in Free."
+msgid "pro_value_step_2"
+msgstr "Checkout, admin, or APIs misbehave"
+
+msgid "pro_value_step_3"
+msgstr "Restore from a snapshot—then investigate calmly"
 
 msgid "plan_cf_note"
 msgstr "Rules are read via the API, so the storefront runs behind Cloudflare (proxied)."
@@ -204,19 +183,19 @@ msgid "hero_kicker"
 msgstr "CS-Cart · Cloudflare"
 
 msgid "hero_title"
-msgstr "Run CS-Cart safely alongside Cloudflare"
+msgstr "Break Cloudflare settings—then roll them back."
 
 msgid "hero_subtitle"
-msgstr "See rule and cache impact clearly; recover with confidence. Free: visibility and diff—Pro: rollback and apply."
+msgstr "From CS-Cart admin: keep generation history and restore the last working state. Pro is the full story."
 
 msgid "hero_cta_primary"
-msgstr "See pricing"
+msgstr "Start Pro"
 
 msgid "hero_cta_secondary"
 msgstr "See screenshots"
 
-msgid "hero_cta_free"
-msgstr "Get Free (Freemius)"
+msgid "hero_free_link"
+msgstr "Try Free first (read-only & diff on Freemius)"
 
 msgid "problem_section_title"
 msgstr "The problem"
@@ -246,7 +225,7 @@ msgid "solution_p2"
 msgstr "During an incident, restore from a saved snapshot instead of guessing which line you changed in the Cloudflare UI."
 
 msgid "pro_disclaimer"
-msgstr "Backups, rollback, and applying changes to Cloudflare require Pro. On Free, you can fetch rules and review content locally."
+msgstr "Free covers fetch, review, and diff. Backups, rollback, and applying changes to Cloudflare are Pro."
 
 msgid "core_section_title"
 msgstr "Pro features (summary)"
@@ -255,7 +234,7 @@ msgid "core_title"
 msgstr "Backups and rollback"
 
 msgid "core_intro"
-msgstr "A compact list aligned with the screenshots above—without repeating the same story."
+msgstr "What Pro delivers—in short."
 
 msgid "core_feature_backup_title"
 msgstr "Separate stores per rule type"
@@ -330,25 +309,13 @@ msgid "pricing_section_title"
 msgstr "Pricing"
 
 msgid "pricing_title"
-msgstr "Monthly plans"
+msgstr "Pro (monthly)"
 
 msgid "pricing_subtitle"
-msgstr "Choose the Free tier or monthly Pro. The checkout screen is the source of truth for the final price."
+msgstr "Single storefront vs Multi-Vendor footprint. Freemius checkout shows the final price."
 
-msgid "pricing_free_name"
-msgstr "Free"
-
-msgid "pricing_free_amount"
-msgstr "Free"
-
-msgid "pricing_free_desc"
-msgstr "Fetch rules, review locally, and diff snapshots. After checkout, download the ZIP from Freemius and install it in CS-Cart."
-
-msgid "pricing_free_note"
-msgstr "Your license is issued on Freemius; download the ZIP from the confirmation email or your user dashboard."
-
-msgid "pricing_free_cta"
-msgstr "Get Free (Freemius)"
+msgid "pricing_free_link_text"
+msgstr "Free tier: fetch & diff only — get it on Freemius"
 
 msgid "pricing_pro_single_name"
 msgstr "Pro (single storefront)"
@@ -360,7 +327,7 @@ msgid "pricing_pro_single_period"
 msgstr "/ month"
 
 msgid "pricing_pro_single_desc"
-msgstr "For one CS-Cart storefront. Backups and rollback are available on Pro."
+msgstr "For one CS-Cart storefront—the default Pro footprint."
 
 msgid "pricing_pro_mv_name"
 msgstr "Pro (Multi-Vendor)"

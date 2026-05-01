@@ -1050,6 +1050,61 @@ body {
   margin-top: 1.25rem;
 }
 
+.value-steps {
+  margin: 1.25rem 0 0;
+  padding: 0 0 0 1.35rem;
+  max-width: 28rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.85;
+}
+
+.value-steps__item {
+  margin-bottom: 0.35rem;
+}
+
+.value-steps__item:last-child {
+  margin-bottom: 0;
+}
+
+.hero-free-link {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+}
+
+.hero-free-link a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-free-link a:hover {
+  color: var(--text);
+}
+
+.pricing-grid--pro {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing-free-link-wrap {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+.pricing-free-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pricing-free-link:hover {
+  color: var(--text);
+}
+
 .feature-grid {
   list-style: none;
   margin: 0;
@@ -1116,14 +1171,9 @@ body {
   background: #fff;
 }
 
-/* Free */
-.pricing-grid > .price-card--link.price-card--free {
+/* Pro（モール）：シングルより控えめなトーン */
+.pricing-grid > .price-card--link.price-card--pro-mv {
   background-color: #f3f6f9;
-}
-
-/* 月額 Standard（シングル） */
-.pricing-grid > .price-card--link.price-card--pro-single:not(.price-card--emphasis) {
-  background-color: azure;
 }
 
 .price-card--link {
@@ -1211,7 +1261,7 @@ body {
 }
 
 .pro-disclaimer {
-  margin: 0;
+  margin: 1rem 0 0;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--muted);
