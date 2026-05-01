@@ -171,7 +171,7 @@ msgid "story_step_4"
 msgstr "調べる"
 
 msgid "story_history_panel_title"
-msgstr "世代履歴（例）"
+msgstr "履歴"
 
 msgid "story_history_time_1"
 msgstr "12:00"
@@ -180,7 +180,7 @@ msgid "story_history_label_ok"
 msgstr "正常"
 
 msgid "story_history_desc_ok"
-msgstr "キャッシュ安定"
+msgstr "商品一覧OK"
 
 msgid "story_history_time_2"
 msgstr "12:05"
@@ -198,16 +198,16 @@ msgid "story_history_label_bad"
 msgstr "異常"
 
 msgid "story_history_desc_bad"
-msgstr "表示崩れ"
+msgstr "カートが更新されない ⚠"
 
 msgid "story_history_target_badge"
 msgstr "戻す対象"
 
 msgid "story_history_rollback_line"
-msgstr "→ この世代に戻す"
+msgstr "→ この状態の前に戻す"
 
 msgid "story_history_result_line"
-msgstr "12:07 復元完了 · 表示は正常に復帰"
+msgstr "復元完了 · カートは正常に復帰"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"
