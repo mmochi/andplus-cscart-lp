@@ -159,16 +159,16 @@ msgid "story_flow_aria"
 msgstr "Recovery steps"
 
 msgid "story_step_1"
-msgstr "You change a rule or cache behavior"
+msgstr "Change a rule"
 
 msgid "story_step_2"
-msgstr "Storefront or admin starts acting wrong"
+msgstr "It hits where you didn’t expect"
 
 msgid "story_step_3"
-msgstr "Pick the last stable generation from history"
+msgstr "Roll back from history"
 
 msgid "story_step_4"
-msgstr "Restore first—investigate after you’re stable"
+msgstr "Dig into cause after"
 
 msgid "story_screens_hint"
 msgstr "See the real history UI →"

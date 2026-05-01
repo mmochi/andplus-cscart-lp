@@ -159,16 +159,16 @@ msgid "story_flow_aria"
 msgstr "復旧までの流れ"
 
 msgid "story_step_1"
-msgstr "設定やルールを変更する"
+msgstr "ルールを変える"
 
 msgid "story_step_2"
-msgstr "フロントや管理画面に想定外の影響（あるある）"
+msgstr "想定外に効く"
 
 msgid "story_step_3"
-msgstr "世代つき履歴から直前の安定版を選ぶ"
+msgstr "履歴から戻す"
 
 msgid "story_step_4"
-msgstr "復元してから原因調査（慌てない）"
+msgstr "あとで原因を見る"
 
 msgid "story_screens_hint"
 msgstr "実際の履歴・編集画面はこちら →"
