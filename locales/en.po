@@ -105,16 +105,22 @@ msgid "problem_checklist_3"
 msgstr "Handing CDN and cache settings to non-engineers feels risky."
 
 msgid "screens_section_title"
-msgstr "How it feels in practice"
+msgstr "Screens"
 
 msgid "screens_title"
-msgstr "History first—that’s the hero UI."
+msgstr "Real screens from the add-on in CS-Cart admin."
 
-msgid "screens_intro"
-msgstr "Order: backups → editor → live poll → storefront helpers. Expand/collapse under each shot."
+msgid "screens_shot_backups_heading"
+msgstr "Backup history"
 
-msgid "screens_note"
-msgstr "The first screenshot is where rollback starts. The hero uses the same backup history shot."
+msgid "screens_shot_cache_heading"
+msgstr "Cache Rules editor"
+
+msgid "screens_shot_monitor_heading"
+msgstr "Live configuration poll"
+
+msgid "screens_shot_ajax_heading"
+msgstr "Ajax reload tracking"
 
 msgid "screens_compare_aria"
 msgstr "Operating model comparison"
@@ -137,35 +143,35 @@ msgstr "CS-Cart admin: AP SafeCache backup history (live screenshot)"
 msgid "screens_gallery_aria"
 msgstr "Example admin screenshots"
 
+msgid "screens_grid_hint"
+msgstr "Click to enlarge"
+
+msgid "screens_lb_title"
+msgstr "Enlarged admin screenshots"
+
+msgid "screens_lb_close"
+msgstr "Close"
+
+msgid "screens_lb_prev"
+msgstr "Previous screen"
+
+msgid "screens_lb_next"
+msgstr "Next screen"
+
+msgid "screens_lb_swipe_hint"
+msgstr "Swipe horizontally to switch screens (or use arrow keys)"
+
 msgid "screens_monitor_alt"
 msgstr "CS-Cart admin: AP SafeCache Cloudflare live configuration poll and fingerprint status"
-
-msgid "screens_monitor_caption"
-msgstr "Live poll & fingerprint (example screen)"
 
 msgid "screens_backups_alt"
 msgstr "CS-Cart admin: AP SafeCache Page Rules and Cache Rules backup history"
 
-msgid "screens_backups_caption"
-msgstr "Backup history—where recovery starts"
-
 msgid "screens_cache_rules_alt"
 msgstr "CS-Cart admin: AP SafeCache Cache Rules editor with Cloudflare integration"
 
-msgid "screens_cache_rules_caption"
-msgstr "Cache Rules editor (example screen)"
-
 msgid "screens_ajax_alt"
 msgstr "CS-Cart admin: AP SafeCache Ajax reload tracking log"
-
-msgid "screens_ajax_caption"
-msgstr "Ajax tracking log (example screen)"
-
-msgid "screens_expand_more"
-msgstr "Show full screenshot"
-
-msgid "screens_expand_less"
-msgstr "Collapse"
 
 msgid "story_section_label"
 msgstr "Flow"

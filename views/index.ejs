@@ -92,7 +92,7 @@
           <nav class="nav" aria-label="<%= __('nav_primary_aria') %>">
             <a class="nav__link" href="#problem"><%= __('nav_problem') %></a>
             <a class="nav__link" href="#story"><%= __('nav_story') %></a>
-            <a class="nav__link" href="#story"><%= __('nav_screens_primary') %></a>
+            <a class="nav__link" href="#screens"><%= __('nav_screens_primary') %></a>
             <a class="nav__link" href="#pro-value"><%= __('nav_pro_value') %></a>
             <a class="nav__link" href="#core"><%= __('nav_features') %></a>
             <a class="nav__link" href="#pricing"><%= __('nav_pricing') %></a>
@@ -351,98 +351,170 @@
             </div>
           </div>
 
-          <div id="screens" class="story-gallery-wrap story-gallery-wrap--hidden" aria-labelledby="screens-heading" aria-hidden="true">
+          <div id="screens" class="story-gallery-wrap" aria-labelledby="screens-heading">
             <p class="section-label"><%= __('screens_section_title') %></p>
             <h3 id="screens-heading" class="section-title section-title--fuse"><%= __('screens_title') %></h3>
-            <p class="lead lead--tight"><%= __('screens_intro') %></p>
-            <p class="prose prose--note"><%= __('screens_note') %></p>
-            <div class="screens-gallery screens-gallery--fused" role="region" aria-label="<%= __('screens_gallery_aria') %>">
-            <div class="screens-expand" id="screens-shot-backups">
-              <label class="screens-expand__card">
-                <input type="checkbox" class="screens-expand__state" />
-                <div class="screens-expand__frame">
-                  <img
-                    class="screens-expand__img"
-                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
-                    width="<%= lang === 'ja' ? 2082 : 2080 %>"
-                    height="<%= lang === 'ja' ? 1542 : 1544 %>"
-                    alt="<%= __('screens_backups_alt') %>"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <span class="screens-expand__caption"><%= __('screens_backups_caption') %></span>
-                <span class="screens-expand__toggle-line">
-                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
-                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
-                </span>
-              </label>
-            </div>
-            <div class="screens-expand" id="screens-shot-cache-rules">
-              <label class="screens-expand__card">
-                <input type="checkbox" class="screens-expand__state" />
-                <div class="screens-expand__frame">
-                  <img
-                    class="screens-expand__img"
-                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'cache-rules.png' : 'cache-rules-en.png' %>"
-                    width="<%= lang === 'ja' ? 2364 : 2274 %>"
-                    height="<%= lang === 'ja' ? 2140 : 2148 %>"
-                    alt="<%= __('screens_cache_rules_alt') %>"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <span class="screens-expand__caption"><%= __('screens_cache_rules_caption') %></span>
-                <span class="screens-expand__toggle-line">
-                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
-                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
-                </span>
-              </label>
-            </div>
-            <div class="screens-expand" id="screens-shot-monitor">
-              <label class="screens-expand__card">
-                <input type="checkbox" class="screens-expand__state" />
-                <div class="screens-expand__frame">
-                  <img
-                    class="screens-expand__img"
-                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
-                    width="<%= lang === 'ja' ? 2078 : 2080 %>"
-                    height="<%= lang === 'ja' ? 1040 : 1026 %>"
-                    alt="<%= __('screens_monitor_alt') %>"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <span class="screens-expand__caption"><%= __('screens_monitor_caption') %></span>
-                <span class="screens-expand__toggle-line">
-                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
-                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
-                </span>
-              </label>
-            </div>
-            <div class="screens-expand" id="screens-shot-ajax">
-              <label class="screens-expand__card">
-                <input type="checkbox" class="screens-expand__state" />
-                <div class="screens-expand__frame">
-                  <img
-                    class="screens-expand__img"
-                    src="<%= basePath %>/img/<%= lang === 'ja' ? 'ajax.png' : 'ajax-en.png' %>"
-                    width="<%= lang === 'ja' ? 2360 : 2360 %>"
-                    height="<%= lang === 'ja' ? 2144 : 2098 %>"
-                    alt="<%= __('screens_ajax_alt') %>"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <span class="screens-expand__caption"><%= __('screens_ajax_caption') %></span>
-                <span class="screens-expand__toggle-line">
-                  <span class="screens-expand__hint screens-expand__hint--more"><%= __('screens_expand_more') %></span>
-                  <span class="screens-expand__hint screens-expand__hint--less"><%= __('screens_expand_less') %></span>
-                </span>
-              </label>
+            <div class="screens-gallery" role="region" aria-label="<%= __('screens_gallery_aria') %>">
+              <div class="screens-grid">
+                <button
+                  type="button"
+                  class="screens-grid__open"
+                  id="screens-shot-backups"
+                  data-slide-index="0"
+                  aria-haspopup="dialog"
+                  aria-controls="screens-lb"
+                  aria-expanded="false"
+                >
+                  <span class="screens-grid__thumb-wrap">
+                    <img
+                      class="screens-grid__thumb"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
+                      width="<%= lang === 'ja' ? 2082 : 2080 %>"
+                      height="<%= lang === 'ja' ? 1542 : 1544 %>"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <span class="screens-grid__title"><%= __('screens_shot_backups_heading') %></span>
+                  <span class="screens-grid__hint"><%= __('screens_grid_hint') %></span>
+                </button>
+                <button
+                  type="button"
+                  class="screens-grid__open"
+                  id="screens-shot-cache-rules"
+                  data-slide-index="1"
+                  aria-haspopup="dialog"
+                  aria-controls="screens-lb"
+                  aria-expanded="false"
+                >
+                  <span class="screens-grid__thumb-wrap">
+                    <img
+                      class="screens-grid__thumb"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'cache-rules.png' : 'cache-rules-en.png' %>"
+                      width="<%= lang === 'ja' ? 2364 : 2274 %>"
+                      height="<%= lang === 'ja' ? 2140 : 2148 %>"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <span class="screens-grid__title"><%= __('screens_shot_cache_heading') %></span>
+                  <span class="screens-grid__hint"><%= __('screens_grid_hint') %></span>
+                </button>
+                <button
+                  type="button"
+                  class="screens-grid__open"
+                  id="screens-shot-monitor"
+                  data-slide-index="2"
+                  aria-haspopup="dialog"
+                  aria-controls="screens-lb"
+                  aria-expanded="false"
+                >
+                  <span class="screens-grid__thumb-wrap">
+                    <img
+                      class="screens-grid__thumb"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
+                      width="<%= lang === 'ja' ? 2078 : 2080 %>"
+                      height="<%= lang === 'ja' ? 1040 : 1026 %>"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <span class="screens-grid__title"><%= __('screens_shot_monitor_heading') %></span>
+                  <span class="screens-grid__hint"><%= __('screens_grid_hint') %></span>
+                </button>
+                <button
+                  type="button"
+                  class="screens-grid__open"
+                  id="screens-shot-ajax"
+                  data-slide-index="3"
+                  aria-haspopup="dialog"
+                  aria-controls="screens-lb"
+                  aria-expanded="false"
+                >
+                  <span class="screens-grid__thumb-wrap">
+                    <img
+                      class="screens-grid__thumb"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'ajax.png' : 'ajax-en.png' %>"
+                      width="<%= lang === 'ja' ? 2360 : 2360 %>"
+                      height="<%= lang === 'ja' ? 2144 : 2098 %>"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <span class="screens-grid__title"><%= __('screens_shot_ajax_heading') %></span>
+                  <span class="screens-grid__hint"><%= __('screens_grid_hint') %></span>
+                </button>
+              </div>
             </div>
           </div>
-          </div>
+
+          <dialog id="screens-lb" class="screens-lb" aria-labelledby="screens-lb-title">
+            <p id="screens-lb-title" class="visually-hidden"><%= __('screens_lb_title') %></p>
+            <div class="screens-lb__panel">
+              <button type="button" class="screens-lb__close" data-screens-lb-close aria-label="<%= __('screens_lb_close') %>">
+                <span aria-hidden="true">×</span>
+              </button>
+              <button type="button" class="screens-lb__nav screens-lb__nav--prev" data-screens-lb-prev aria-label="<%= __('screens_lb_prev') %>">
+                <span aria-hidden="true">‹</span>
+              </button>
+              <button type="button" class="screens-lb__nav screens-lb__nav--next" data-screens-lb-next aria-label="<%= __('screens_lb_next') %>">
+                <span aria-hidden="true">›</span>
+              </button>
+              <div class="screens-lb__viewport" data-screens-lb-viewport>
+                <div class="screens-lb__strip" id="screens-lb-strip">
+                  <figure class="screens-lb__slide">
+                    <img
+                      class="screens-lb__img"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'backups.png' : 'backups-en.png' %>"
+                      width="<%= lang === 'ja' ? 2082 : 2080 %>"
+                      height="<%= lang === 'ja' ? 1542 : 1544 %>"
+                      alt="<%= __('screens_backups_alt') %>"
+                      decoding="async"
+                    />
+                    <figcaption class="screens-lb__cap"><%= __('screens_shot_backups_heading') %></figcaption>
+                  </figure>
+                  <figure class="screens-lb__slide">
+                    <img
+                      class="screens-lb__img"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'cache-rules.png' : 'cache-rules-en.png' %>"
+                      width="<%= lang === 'ja' ? 2364 : 2274 %>"
+                      height="<%= lang === 'ja' ? 2140 : 2148 %>"
+                      alt="<%= __('screens_cache_rules_alt') %>"
+                      decoding="async"
+                    />
+                    <figcaption class="screens-lb__cap"><%= __('screens_shot_cache_heading') %></figcaption>
+                  </figure>
+                  <figure class="screens-lb__slide">
+                    <img
+                      class="screens-lb__img"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'monitor.png' : 'monitor-en.png' %>"
+                      width="<%= lang === 'ja' ? 2078 : 2080 %>"
+                      height="<%= lang === 'ja' ? 1040 : 1026 %>"
+                      alt="<%= __('screens_monitor_alt') %>"
+                      decoding="async"
+                    />
+                    <figcaption class="screens-lb__cap"><%= __('screens_shot_monitor_heading') %></figcaption>
+                  </figure>
+                  <figure class="screens-lb__slide">
+                    <img
+                      class="screens-lb__img"
+                      src="<%= basePath %>/img/<%= lang === 'ja' ? 'ajax.png' : 'ajax-en.png' %>"
+                      width="<%= lang === 'ja' ? 2360 : 2360 %>"
+                      height="<%= lang === 'ja' ? 2144 : 2098 %>"
+                      alt="<%= __('screens_ajax_alt') %>"
+                      decoding="async"
+                    />
+                    <figcaption class="screens-lb__cap"><%= __('screens_shot_ajax_heading') %></figcaption>
+                  </figure>
+                </div>
+              </div>
+              <p class="screens-lb__swipe-hint"><%= __('screens_lb_swipe_hint') %></p>
+            </div>
+          </dialog>
         </div>
       </section>
 

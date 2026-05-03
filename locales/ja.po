@@ -66,7 +66,7 @@ msgid "nav_story"
 msgstr "復旧の流れ"
 
 msgid "nav_screens_primary"
-msgstr "画面（履歴）"
+msgstr "画面"
 
 msgid "nav_pro_value"
 msgstr "Proでできること"
@@ -105,16 +105,22 @@ msgid "problem_checklist_3"
 msgstr "CDN やキャッシュ周りの設定を、エンジニア以外に任せるのが怖い"
 
 msgid "screens_section_title"
-msgstr "導入イメージ"
+msgstr "画面"
 
 msgid "screens_title"
-msgstr "まず履歴。ここが SafeCache の主役です。"
+msgstr "実際のアドオンの画面です。"
 
-msgid "screens_intro"
-msgstr "上から順に：バックアップ一覧 → 編集／反映 → ライブ照合 → ストア補助。画像の下で展開／折りたたみ。"
+msgid "screens_shot_backups_heading"
+msgstr "バックアップ履歴"
 
-msgid "screens_note"
-msgstr "いちばん上の一覧が、ロールバックの入り口です。ヒーローも同じバックアップ履歴の実画面です。"
+msgid "screens_shot_cache_heading"
+msgstr "Cache Rules 編集"
+
+msgid "screens_shot_monitor_heading"
+msgstr "ライブ照合"
+
+msgid "screens_shot_ajax_heading"
+msgstr "Ajax 追跡ログ"
 
 msgid "screens_compare_aria"
 msgstr "運用スタイルの比較"
@@ -137,35 +143,35 @@ msgstr "CS-Cart 管理画面：AP SafeCache のバックアップ履歴（実ス
 msgid "screens_gallery_aria"
 msgstr "管理画面のキャプチャ例"
 
+msgid "screens_grid_hint"
+msgstr "クリックで拡大"
+
+msgid "screens_lb_title"
+msgstr "管理画面のスクリーンショットを拡大表示"
+
+msgid "screens_lb_close"
+msgstr "閉じる"
+
+msgid "screens_lb_prev"
+msgstr "前の画面へ"
+
+msgid "screens_lb_next"
+msgstr "次の画面へ"
+
+msgid "screens_lb_swipe_hint"
+msgstr "横にスワイプして切り替え（または矢印キー）"
+
 msgid "screens_monitor_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Cloudflare ライブ照合とフィンガープリント状態"
-
-msgid "screens_monitor_caption"
-msgstr "ライブ照合・フィンガープリント（画面例）"
 
 msgid "screens_backups_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Page Rules / Cache Rules バックアップ履歴"
 
-msgid "screens_backups_caption"
-msgstr "バックアップ履歴（復旧の起点）"
-
 msgid "screens_cache_rules_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Cache Rules 編集と Cloudflare 連携"
 
-msgid "screens_cache_rules_caption"
-msgstr "Cache Rules 編集（画面例）"
-
 msgid "screens_ajax_alt"
 msgstr "CS-Cart 管理画面：AP SafeCache の Ajax 追跡ログ"
-
-msgid "screens_ajax_caption"
-msgstr "Ajax 追跡ログ（画面例）"
-
-msgid "screens_expand_more"
-msgstr "クリックで全体を表示"
-
-msgid "screens_expand_less"
-msgstr "クリックで折りたたむ"
 
 msgid "story_section_label"
 msgstr "流れ"
