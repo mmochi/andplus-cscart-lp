@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node -e \"console.log('[cscart-safecache-lp] no compile step (Express+EJS).'); process.exit(0)\"",
     "start": "node app.js",
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "dist:index": "node scripts/generate-dist-index.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
