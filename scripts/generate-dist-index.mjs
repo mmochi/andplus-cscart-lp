@@ -68,11 +68,13 @@ function main() {
     return true;
   });
 
-  /** @type {Map<string, Map<string, { href: string; label: string }[]>>} */
+  /** @type {Map<string, Map<string, { href: string; label: string; mtime: number }[]>>} */
   const grouped = new Map();
 
   for (const abs of all) {
     const { rel, href, bucket, sub, base } = classify(abs);
+    const st = fs.statSync(abs);
+    const mtime = st.mtimeMs;
     if (!grouped.has(bucket)) {
       grouped.set(bucket, new Map());
     }
@@ -85,12 +87,14 @@ function main() {
       href,
       // サブフォルダ見出しがあるときはファイル名のみ（h3 と重複させない）
       label: sub !== '' ? base : rel,
+      mtime,
     });
   }
 
   for (const m of grouped.values()) {
     for (const arr of m.values()) {
-      arr.sort((a, b) => a.label.localeCompare(b.label, 'ja'));
+      // 新しいファイル（更新日時が新しい）を先頭
+      arr.sort((a, b) => b.mtime - a.mtime || b.label.localeCompare(a.label, 'ja'));
     }
   }
 
@@ -132,7 +136,16 @@ function main() {
       continue;
     }
     body += `  <h2>${escHtml(bucketTitle(bucket))}</h2>\n`;
-    const subs = [...m.keys()].sort((a, b) => a.localeCompare(b, 'ja'));
+    // バージョンフォルダ名は新しい方が先（4.20.1 が 4.19.1 より上）。直下のみは末尾。
+    const subs = [...m.keys()].sort((a, b) => {
+      if (a === '(root)') {
+        return 1;
+      }
+      if (b === '(root)') {
+        return -1;
+      }
+      return b.localeCompare(a, 'ja', { numeric: true });
+    });
     for (const sub of subs) {
       const items = m.get(sub);
       if (!items || items.length === 0) {
